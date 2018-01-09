@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Consorcio Transportes Andalucia</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="google_maps_key">AIzaSyAgWoroTajBibyp5HRaCXAgyuMLC5iA7j4</string>
+    <string name="permission_rationale">Se necesitan permisillos</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- Paradas Activity -->
+    <string name="title_activity_paradas">Paradas</string>
+
+    <!-- Horarios Activity -->
+    <string name="title_activity_horarios">Horarios</string>
+
+    <!-- Puntos De Ventas Activity -->
+    <string name="title_activity_puntos_venta">Puntos de Venta</string>
+
+</resources>
