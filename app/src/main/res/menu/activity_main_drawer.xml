@@ -17,7 +17,7 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/title_activity_puntos_venta" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_saldo"
             android:icon="@drawable/ic_menu_manage"
             android:title="Saldo" />
     </group>

@@ -48,10 +48,6 @@
         </activity>
 
         <activity
-            android:name=".activitys.ParadasActivity"
-            android:parentActivityName=".activitys.MainActivity" />
-
-        <activity
             android:name=".activitys.HorariosActivity"
             android:parentActivityName=".activitys.MainActivity" />
 
