@@ -2,34 +2,30 @@ package com.consorcio.consorciotransportesandalucia.activitys;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.consorcio.consorciotransportesandalucia.R;
+import com.consorcio.consorciotransportesandalucia.fragments.LineasFragment;
+import com.consorcio.consorciotransportesandalucia.fragments.MiConsorcioFragment;
 import com.consorcio.consorciotransportesandalucia.fragments.ParadasFragment;
 import com.consorcio.consorciotransportesandalucia.fragments.PuntosDeVentasFragment;
 import com.consorcio.consorciotransportesandalucia.fragments.SaldoFragment;
 import com.consorcio.consorciotransportesandalucia.utils.Const;
 import com.consorcio.consorciotransportesandalucia.utils.MessageUtil;
-
-import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -117,16 +113,18 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_paradas) {
             fragment = new ParadasFragment();
             title = getString(R.string.title_activity_paradas);
-        } else if (id == R.id.nav_horarios) {
-            //intent = new Intent(this,HorariosActivity.class);
+        } else if (id == R.id.nav_horarios_lineas) {
+            fragment = new LineasFragment();
+            title = getString(R.string.title_activity_lineas);
         } else if (id == R.id.nav_puntos_venta) {
             fragment = new PuntosDeVentasFragment();
             title = getString(R.string.title_activity_puntos_venta);
         } else if (id == R.id.nav_saldo) {
             fragment = new SaldoFragment();
             title = getString(R.string.title_activity_saldo);
-        } else if (id == R.id.nav_share) {
-
+        } else if (id == R.id.nav_consorcio_detail) {
+            fragment = new MiConsorcioFragment();
+            title = getString(R.string.title_activity_consorcio_detail);
         } else if (id == R.id.nav_send) {
 
         }

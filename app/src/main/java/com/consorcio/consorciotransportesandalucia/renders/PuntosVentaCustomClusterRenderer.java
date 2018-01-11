@@ -2,6 +2,8 @@ package com.consorcio.consorciotransportesandalucia.renders;
 
 import android.content.Context;
 
+
+import com.consorcio.consorciotransportesandalucia.R;
 import com.consorcio.consorciotransportesandalucia.models.PuntosVenta;
 import com.consorcio.consorciotransportesandalucia.models.TipoPuntoVenta;
 import com.google.android.gms.maps.GoogleMap;
@@ -17,8 +19,11 @@ import com.google.maps.android.clustering.view.DefaultClusterRenderer;
 
 public class PuntosVentaCustomClusterRenderer extends DefaultClusterRenderer<PuntosVenta> {
 
+    private Context context;
+
     public PuntosVentaCustomClusterRenderer(Context context, GoogleMap map, ClusterManager<PuntosVenta> clusterManager) {
         super(context, map, clusterManager);
+        this.context = context;
     }
 
 
@@ -28,30 +33,38 @@ public class PuntosVentaCustomClusterRenderer extends DefaultClusterRenderer<Pun
         BitmapDescriptor markerDescriptor = null;
 
 
-        if (item.tipo == null)
+        if (item.tipo == null) {
             item.setTipo(TipoPuntoVenta.Default);
+        }
 
-            switch (item.getTipo()) {
+        String type = "";
+
+        switch (item.getTipo()) {
 
                 case Comercio:
-                    markerDescriptor = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE);
+                    markerDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.bussines);
+                    type = TipoPuntoVenta.Comercio.toString();
                     break;
                 case Estanco:
-                    markerDescriptor = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE);
+                    markerDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.bussines);
+                    type = TipoPuntoVenta.Estanco.toString();
                     break;
                 case Papelería:
-                    markerDescriptor = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE);
+                    markerDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.papeleria);
+                    type = TipoPuntoVenta.Papelería.toString();
                     break;
                 case Kiosco:
-                    markerDescriptor = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW);
+                    markerDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.kiosko);
+                    type = TipoPuntoVenta.Kiosco.toString();
                     break;
                 case Default:
                     markerDescriptor = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED);
+                    type = context.getString(R.string.info_bussines_unknow_puntos_venta);
                     break;
             }
 
-            markerOptions.icon(markerDescriptor);
-            markerOptions.title(item.getDireccion());
+            markerOptions.icon(markerDescriptor).snippet(item.getDireccion());
+            markerOptions.title(type);
 
     }
 }

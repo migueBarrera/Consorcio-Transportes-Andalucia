@@ -33,10 +33,10 @@ public class ParadasCustomClusterRenderer extends DefaultClusterRenderer<Parada>
 
     @Override protected void onBeforeClusterItemRendered(Parada item,
                                                          MarkerOptions markerOptions) {
-        //final BitmapDescriptor markerDescriptor = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE);
+        final BitmapDescriptor markerDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.busstop);
 
-        //markerOptions.icon(markerDescriptor);
-        //markerOptions.title("papa");
+        markerOptions.icon(markerDescriptor).snippet(item.getNombre());
+        markerOptions.title("zona D");
     }
 
 

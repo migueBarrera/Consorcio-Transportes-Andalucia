@@ -1,26 +1,36 @@
 package com.consorcio.consorciotransportesandalucia.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.consorcio.consorciotransportesandalucia.R;
-import com.consorcio.consorciotransportesandalucia.models.Consorcio;
+import com.consorcio.consorciotransportesandalucia.activitys.LineaDetailActivity;
+import com.consorcio.consorciotransportesandalucia.adapters.LineasAdapter;
+import com.consorcio.consorciotransportesandalucia.interfaces.RecyclerOnItemClickListener;
+import com.consorcio.consorciotransportesandalucia.models.CapsuleLineas;
+import com.consorcio.consorciotransportesandalucia.models.Linea;
 import com.consorcio.consorciotransportesandalucia.utils.ClienteApi;
 import com.consorcio.consorciotransportesandalucia.utils.Const;
 import com.consorcio.consorciotransportesandalucia.utils.SharedPreferencesUtil;
 import com.consorcio.consorciotransportesandalucia.utils.Util;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class MiConsorcioFragment extends Fragment {
+public class LineasFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -32,14 +42,17 @@ public class MiConsorcioFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public MiConsorcioFragment() {
+    @BindView(R.id.rv_lineas)
+    RecyclerView recyclerView;
+
+    public LineasFragment() {
         // Required empty public constructor
     }
 
 
     // TODO: Rename and change types and number of parameters
-    public static MiConsorcioFragment newInstance(String param1, String param2) {
-        MiConsorcioFragment fragment = new MiConsorcioFragment();
+    public static LineasFragment newInstance(String param1, String param2) {
+        LineasFragment fragment = new LineasFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,39 +72,37 @@ public class MiConsorcioFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_mi_consorcio, container, false);
-        return v;
+        View view = inflater.inflate(R.layout.fragment_lineas, container, false);
+        ButterKnife.bind(this, view);
+
+        return view;
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        loadDataConsorcio();
+        loadLineas();
     }
 
-    private void loadDataConsorcio() {
+    private void loadLineas() {
         if (Util.hasInternet(getContext())){
             ClienteApi clienteApi = new ClienteApi(getContext());
-            int idConsorcio = SharedPreferencesUtil.getInt(getActivity(), Const.SHAREDKEYS.ID_CONSORCIO);
-            clienteApi.getConsorcioDetail(null, idConsorcio, new Callback<Consorcio>() {
+            int idConsorcio = SharedPreferencesUtil.getInt(getActivity(),Const.SHAREDKEYS.ID_CONSORCIO);
+            clienteApi.getLineas(null, idConsorcio, new Callback<CapsuleLineas>() {
                 @Override
-                public void onResponse(Call<Consorcio> call, Response<Consorcio> response) {
+                public void onResponse(Call<CapsuleLineas> call, Response<CapsuleLineas> response) {
                     if (response.isSuccessful()){
-                        Consorcio consorcio = response.body();
-                        setDataToView(consorcio);
+                        CapsuleLineas capsuleLineas = response.body();
+                        setDataToView(capsuleLineas);
                     }
                 }
 
                 @Override
-                public void onFailure(Call<Consorcio> call, Throwable t) {
+                public void onFailure(Call<CapsuleLineas> call, Throwable t) {
 
                 }
             });
         }
-    }
-
-    private void setDataToView(Consorcio consorcio) {
-        //TODO desidir el diseño de la pagina y maquetar
     }
 
     @Override
@@ -111,6 +122,24 @@ public class MiConsorcioFragment extends Fragment {
         mListener = null;
     }
 
+    private void setDataToView(final CapsuleLineas capsuleLineas){
+        LineasAdapter adapter = new LineasAdapter(getContext(),capsuleLineas.getLineas().toArray(new Linea[0]));
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager llm = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(llm);
+        recyclerView.setRecycledViewPool(new RecyclerView.RecycledViewPool());
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(adapter);
+        adapter.SetOnItemClickListener(new RecyclerOnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Linea linea = capsuleLineas.getLineas().get(position);
+                SharedPreferencesUtil.setInt(getActivity(),Const.SHAREDKEYS.ID_LINEA,Integer.valueOf(linea.getIdLinea()));
+                Intent i = new Intent(getContext(), LineaDetailActivity.class);
+                startActivity(i);
+            }
+        });
+    }
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name

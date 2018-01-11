@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.consorcio.consorciotransportesandalucia.interfaces.RestInterface;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleConsorcio;
+import com.consorcio.consorciotransportesandalucia.models.CapsuleLineas;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleParadas;
 import com.consorcio.consorciotransportesandalucia.models.CapsulePuntosVenta;
 import com.consorcio.consorciotransportesandalucia.models.Consorcio;
@@ -44,5 +45,13 @@ public class ClienteApi {
 
     public void getConsorcioDetail(Map<String, String> mapHeaders,int idConsorcio, Callback<Consorcio> getConsorcioCallback) {
         service.getConsorcioDetail(idConsorcio).enqueue(getConsorcioCallback);
+    }
+
+    public void getLineas(Map<String, String> mapHeaders,int idConsorcio, Callback<CapsuleLineas> getLineasCallback) {
+        service.getLineas(idConsorcio).enqueue(getLineasCallback);
+    }
+
+    public void getParadasDeLinea(Map<String, String> mapHeaders,int idConsorcio,int idLinea, Callback<CapsuleParadas> getParadasLineaCallback) {
+        service.getParadasDeLinea(idConsorcio,idLinea).enqueue(getParadasLineaCallback);
     }
 }

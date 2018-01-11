@@ -3,15 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+    <item android:title="Horarios">
+        <menu>
+            <item
+                android:id="@+id/nav_horarios_lineas"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/title_activity_lineas" />
+            <item
+                android:id="@+id/nav_horarios_Origen"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Origen y Destino" />
+        </menu>
+    </item>
+
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_paradas"
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/title_activity_paradas" />
-        <item
-            android:id="@+id/nav_horarios"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/title_activity_horarios" />
         <item
             android:id="@+id/nav_puntos_venta"
             android:icon="@drawable/ic_menu_slideshow"
@@ -19,15 +28,15 @@
         <item
             android:id="@+id/nav_saldo"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Saldo" />
+            android:title="@string/title_activity_saldo" />
     </group>
 
     <item android:title="Consorcio">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_consorcio_detail"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Datos del Consorcio" />
+                android:title="@string/title_activity_consorcio_detail" />
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"

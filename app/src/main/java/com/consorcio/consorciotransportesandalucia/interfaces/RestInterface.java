@@ -1,6 +1,7 @@
 package com.consorcio.consorciotransportesandalucia.interfaces;
 
 import com.consorcio.consorciotransportesandalucia.models.CapsuleConsorcio;
+import com.consorcio.consorciotransportesandalucia.models.CapsuleLineas;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleParadas;
 import com.consorcio.consorciotransportesandalucia.models.CapsulePuntosVenta;
 import com.consorcio.consorciotransportesandalucia.models.Consorcio;
@@ -27,4 +28,11 @@ public interface RestInterface {
 
     @GET(Const.REST.GET_CONSORCIO_DETAIL)
     Call<Consorcio> getConsorcioDetail(@Path("idConsorcio") int idConsorcio);
+
+    @GET(Const.REST.GET_LINEAS)
+    Call<CapsuleLineas> getLineas(@Path("idConsorcio") int idConsorcio);
+
+    @GET(Const.REST.GET_PARADAS_DE_LINEAS)
+    Call<CapsuleParadas> getParadasDeLinea(@Path("idConsorcio") int idConsorcio,@Path("idLinea") int idLinea);
+
 }

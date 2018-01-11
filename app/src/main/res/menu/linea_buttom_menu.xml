@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_linea_horario"
+        android:title="Horario" />
+
+    <item
+        android:id="@+id/navigation_linea_itinerary"
+        android:title="Itinerario" />
+
+    <item
+        android:id="@+id/navigation_linea_info"
+        android:title="Información" />
+
+</menu>

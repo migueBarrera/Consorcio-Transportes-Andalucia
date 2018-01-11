@@ -9,18 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.consorcio.consorciotransportesandalucia.R;
-import com.consorcio.consorciotransportesandalucia.models.Consorcio;
-import com.consorcio.consorciotransportesandalucia.utils.ClienteApi;
-import com.consorcio.consorciotransportesandalucia.utils.Const;
-import com.consorcio.consorciotransportesandalucia.utils.SharedPreferencesUtil;
-import com.consorcio.consorciotransportesandalucia.utils.Util;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-
-public class MiConsorcioFragment extends Fragment {
+public class LineaInfoFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -32,14 +22,14 @@ public class MiConsorcioFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public MiConsorcioFragment() {
+    public LineaInfoFragment() {
         // Required empty public constructor
     }
 
 
     // TODO: Rename and change types and number of parameters
-    public static MiConsorcioFragment newInstance(String param1, String param2) {
-        MiConsorcioFragment fragment = new MiConsorcioFragment();
+    public static LineaInfoFragment newInstance(String param1, String param2) {
+        LineaInfoFragment fragment = new LineaInfoFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,40 +49,10 @@ public class MiConsorcioFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_mi_consorcio, container, false);
-        return v;
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_linea_info, container, false);
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        loadDataConsorcio();
-    }
-
-    private void loadDataConsorcio() {
-        if (Util.hasInternet(getContext())){
-            ClienteApi clienteApi = new ClienteApi(getContext());
-            int idConsorcio = SharedPreferencesUtil.getInt(getActivity(), Const.SHAREDKEYS.ID_CONSORCIO);
-            clienteApi.getConsorcioDetail(null, idConsorcio, new Callback<Consorcio>() {
-                @Override
-                public void onResponse(Call<Consorcio> call, Response<Consorcio> response) {
-                    if (response.isSuccessful()){
-                        Consorcio consorcio = response.body();
-                        setDataToView(consorcio);
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<Consorcio> call, Throwable t) {
-
-                }
-            });
-        }
-    }
-
-    private void setDataToView(Consorcio consorcio) {
-        //TODO desidir el diseño de la pagina y maquetar
-    }
 
     @Override
     public void onAttach(Context context) {
@@ -110,7 +70,6 @@ public class MiConsorcioFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name

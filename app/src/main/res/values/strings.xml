@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Consorcio Transportes Andalucia</string>
-
     <string name="google_maps_key">AIzaSyAgWoroTajBibyp5HRaCXAgyuMLC5iA7j4</string>
     <string name="permission_rationale">Se necesitan permisillos</string>
 
@@ -21,9 +20,16 @@
 
     <!-- Puntos De Ventas Activity -->
     <string name="title_activity_puntos_venta">Puntos de Venta</string>
+    <string name="info_bussines_unknow_puntos_venta">Negocio desconocido</string>
 
     <!-- Saldo Activity -->
     <string name="title_activity_saldo">Saldo</string>
+
+    <!-- Consorcio Detail Activity -->
+    <string name="title_activity_consorcio_detail">Datos del Consorcio</string>
+
+    <!-- Lineas Activity -->
+    <string name="title_activity_lineas">Lineas</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

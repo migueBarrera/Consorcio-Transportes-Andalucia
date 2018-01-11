@@ -2,13 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.consorcio.consorciotransportesandalucia.fragments.ParadasFragment">
+    tools:context="com.consorcio.consorciotransportesandalucia.fragments.LineaHorarioFragment">
 
-    <fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.consorcio.consorciotransportesandalucia.fragments.ParadasFragment"/>
+        android:text="@string/hello_blank_fragment" />
 
 </FrameLayout>

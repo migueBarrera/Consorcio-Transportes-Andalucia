@@ -12,6 +12,7 @@ public class Const {
 
     public class SHAREDKEYS{
         public static final String ID_CONSORCIO = "Id_consorcio";
+        public static final String ID_LINEA = "Id_linea";
     }
 
     public class TAGS{
@@ -24,5 +25,7 @@ public class Const {
         public static final String GET_CONSORCIO_DETAIL = BASE_URL + "consorcios/consorcio";
         public static final String GET_PARADAS =  BASE_URL +"paradas";
         public static final String GET_PUNTOS_DE_VENTAS = BASE_URL +"puntos_venta";
+        public static final String GET_LINEAS = BASE_URL + "lineas";
+        public static final String GET_PARADAS_DE_LINEAS = BASE_URL + "lineas/{idLinea}/paradas";
     }
 }

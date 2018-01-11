@@ -64,6 +64,30 @@ public class Parada implements ClusterItem {
 
     public void setNucleo(String nucleo) { this.nucleo = nucleo; }
 
+    private String idLinea;
+
+    public String getIdLinea() { return this.idLinea; }
+
+    public void setIdLinea(String idLinea) { this.idLinea = idLinea; }
+
+    private String sentido;
+
+    public String getSentido() { return this.sentido; }
+
+    public void setSentido(String sentido) { this.sentido = sentido; }
+
+    private int orden;
+
+    public int getOrden() { return this.orden; }
+
+    public void setOrden(int orden) { this.orden = orden; }
+
+    private String modos;
+
+    public String getModos() { return this.modos; }
+
+    public void setModos(String modos) { this.modos = modos; }
+
     @Override
     public LatLng getPosition() {
         return new LatLng(getLatitud(),getLongitud());
