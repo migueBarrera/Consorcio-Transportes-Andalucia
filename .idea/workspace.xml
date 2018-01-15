@@ -6,26 +6,24 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b374f49-243a-4a94-a789-302169270387" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/activitys/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/activitys/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/LineaItinerarioFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/LineaItinerarioFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/LineasFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/LineasFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/MiConsorcioFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/MiConsorcioFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/ParadasFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/ParadasFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/PuntosDeVentasFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/PuntosDeVentasFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/interfaces/RestInterface.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/interfaces/RestInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/Parada.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/Parada.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/renders/ParadasCustomClusterRenderer.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/renders/ParadasCustomClusterRenderer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/renders/PuntosVentaCustomClusterRenderer.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/renders/PuntosVentaCustomClusterRenderer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/utils/ClienteApi.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/utils/ClienteApi.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/utils/Const.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/utils/Const.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_paradas.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_paradas.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -49,11 +47,56 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LineaDetailActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/activitys/LineaDetailActivity.java">
+      <file leaf-file-name="ClienteApi.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/utils/ClienteApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="26" column="31" lean-forward="false" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+            <state relative-caret-position="183">
+              <caret line="56" column="83" lean-forward="false" selection-start-line="56" selection-start-column="83" selection-end-line="56" selection-end-column="83" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Const.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/utils/Const.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="31" column="105" lean-forward="false" selection-start-line="31" selection-start-column="105" selection-end-line="31" selection-end-column="105" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RestInterface.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/interfaces/RestInterface.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="298">
+              <caret line="41" column="128" lean-forward="false" selection-start-line="41" selection-start-column="128" selection-end-line="41" selection-end-column="128" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LineasOrigenDestinoFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/LineasOrigenDestinoFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="273" column="0" lean-forward="false" selection-start-line="273" selection-start-column="0" selection-end-line="273" selection-end-column="0" />
+              <folding>
+                <element signature="method#loadMunicipios#0;class#LineasOrigenDestinoFragment#0" expanded="false" />
+                <element signature="method#loadNucleos#0;class#LineasOrigenDestinoFragment#0" expanded="false" />
+                <element signature="method#filterNucleos#0;class#LineasOrigenDestinoFragment#0" expanded="false" />
+                <element signature="e#10243#10259#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LineasHorariosAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/adapters/LineasHorariosAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="42" column="54" lean-forward="false" selection-start-line="42" selection-start-column="54" selection-end-line="42" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -61,32 +104,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LineaItinerarioFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/LineaItinerarioFragment.java">
+      <file leaf-file-name="Municipio.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/Municipio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1205">
-              <caret line="123" column="94" lean-forward="false" selection-start-line="123" selection-start-column="94" selection-end-line="123" selection-end-column="94" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LineasFragment.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/LineasFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="136" column="0" lean-forward="false" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Linea.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/Linea.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="153">
+              <caret line="9" column="36" lean-forward="false" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
+              <folding>
+                <element signature="e#516#517#0" expanded="true" />
+                <element signature="e#549#550#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1865,36 +1891,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_paradas.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/utils/MessageUtil.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/activitys/ParadasActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" />
-        <option value="$PROJECT_DIR$/app/proguard-rules.pro" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/CapsuleParadas.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/utils/Util.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/utils/SharedPreferencesUtil.java" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_puntos_de_ventas.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/CapsulePuntosVenta.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/SaldoFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/utils/MainMenuUtil.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/PuntosVenta.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/TipoPuntoVenta.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/PuntosDeVentasFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/ParadasFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/CapsuleConsorcio.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/Consorcio.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/MiConsorcioFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/renders/PuntosVentaCustomClusterRenderer.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/renders/ParadasCustomClusterRenderer.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/CapsuleLineas.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/activitys/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_lineas.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/row_adapter_lineas.xml" />
@@ -1911,11 +1918,30 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/Parada.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_linea_itinerario.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_paradas.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/activitys/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/bg_custom_spinner.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_lineas_origen_destino.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/CapsuleMunicipio.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/CapsuleNucleo.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/LineaItinerarioFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/LineasFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/MiConsorcioFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/ParadasFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/PuntosDeVentasFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/Municipio.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/Horario.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/Frecuencia.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/Nucleo.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/Bloque.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/CapsuleLineasPorNucleo.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/adapters/LineasHorariosAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/utils/Const.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/interfaces/RestInterface.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/utils/ClienteApi.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/utils/Const.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/LineasFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/LineaItinerarioFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/LineasOrigenDestinoFragment.java" />
       </list>
     </option>
   </component>
@@ -1940,8 +1966,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -1962,6 +1986,46 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsorcioTransportesAndalucia" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mipmap" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsorcioTransportesAndalucia" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -2017,10 +2081,6 @@
               <option name="myItemId" value="consorciotransportesandalucia" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="renders" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -2038,6 +2098,10 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="consorciotransportesandalucia" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="interfaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -2080,22 +2144,35 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="activitys" />
+              <option name="myItemId" value="adapters" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsorcioTransportesAndalucia" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="ProjectPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="G:/sdk" />
-    <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
-    <property name="device.picker.selection" value="192.168.1.107:5555" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="device.picker.selection" value="192.168.1.56:5555" />
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.packageName">
@@ -2103,6 +2180,9 @@
     </key>
     <key name="android.template.parentActivityClass">
       <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\Projects\ConsorcioTransportesAndalucia\app\src\main\res\drawable" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -2188,7 +2268,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1515682289684" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1516028293990" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2236,7 +2316,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1515682289685" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1516028293990" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2419,7 +2499,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1515682289686" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1516028293991" />
       </method>
     </configuration>
     <list size="1">
@@ -2459,6 +2539,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2472,7 +2553,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32516703" sideWeight="0.81449896" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42316258" sideWeight="0.81449896" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -2482,7 +2563,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4443207" sideWeight="0.48294243" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27060133" sideWeight="0.48294243" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2533,138 +2614,29 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/LineasFragment.java</url>
-          <line>136</line>
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/LineasOrigenDestinoFragment.java</url>
+          <line>276</line>
           <properties />
-          <option name="timeStamp" value="19" />
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/LineasOrigenDestinoFragment.java</url>
+          <line>296</line>
+          <properties />
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/LineasOrigenDestinoFragment.java</url>
+          <line>273</line>
+          <properties />
+          <option name="timeStamp" value="31" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="20" />
+      <option name="time" value="32" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/utils/SharedPreferencesUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="36" column="45" lean-forward="false" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="37" column="61" lean-forward="false" selection-start-line="37" selection-start-column="61" selection-end-line="37" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_puntos_de_ventas.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="99" lean-forward="false" selection-start-line="13" selection-start-column="99" selection-end-line="13" selection-end-column="99" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/CapsulePuntosVenta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="102" lean-forward="false" selection-start-line="13" selection-start-column="102" selection-end-line="13" selection-end-column="102" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_saldo.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/SaldoFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="70" column="11" lean-forward="false" selection-start-line="70" selection-start-column="11" selection-end-line="70" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://G:/sdk/platforms/android-26/android.jar!/android/view/MenuItem.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/MenuItem.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/utils/MainMenuUtil.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/PuntosVenta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="34" column="10" lean-forward="false" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/PuntosDeVentasFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="119" column="92" lean-forward="false" selection-start-line="119" selection-start-column="92" selection-end-line="119" selection-end-column="92" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/CapsuleConsorcio.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="96" lean-forward="false" selection-start-line="13" selection-start-column="96" selection-end-line="13" selection-end-column="96" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/Consorcio.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="6" column="24" lean-forward="false" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_mi_consorcio.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/app_bar_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="33" lean-forward="false" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/renders/PuntosVentaCustomClusterRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -2673,14 +2645,6 @@
             <element signature="imports" expanded="false" />
             <element signature="e#2452#2513#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/MiConsorcioFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-495">
-          <caret line="10" column="53" lean-forward="false" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2693,25 +2657,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="43" lean-forward="false" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="43" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="31" column="47" lean-forward="false" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="39" lean-forward="false" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
@@ -2721,43 +2680,27 @@
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="13" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding>
-            <element signature="e#400#431#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_lineas.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="35" lean-forward="false" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
@@ -2772,7 +2715,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="11" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2780,112 +2722,87 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/row_adapter_lineas.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="23" column="48" lean-forward="false" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="48" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/interfaces/RecyclerOnItemClickListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="54" lean-forward="false" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/main.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="55" lean-forward="true" selection-start-line="1" selection-start-column="6" selection-end-line="2" selection-end-column="55" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/linea_buttom_menu.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/linea_buttom_menu.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="64" lean-forward="false" selection-start-line="1" selection-start-column="64" selection-end-line="1" selection-end-column="64" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_linea_horario.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_linea_horario.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_linea_info.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/adapters/LineasAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_linea_detail.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="37" lean-forward="false" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="37" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/activitys/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="45" column="31" lean-forward="false" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4270#4311#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/activitys/LineaDetailActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
+        <state relative-caret-position="221">
           <caret line="26" column="31" lean-forward="false" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2905,75 +2822,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/ParadaLinea.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="49" lean-forward="false" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/ParadaLinea.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/Parada.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="980">
           <caret line="88" column="62" lean-forward="false" selection-start-line="88" selection-start-column="62" selection-end-line="88" selection-end-column="62" />
           <folding>
-            <element signature="e#2375#2376#0" expanded="true" />
-            <element signature="e#2436#2437#0" expanded="true" />
+            <element signature="e#2375#2376#0" expanded="false" />
+            <element signature="e#2436#2437#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_linea_itinerario.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="44" lean-forward="false" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_paradas.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="44" lean-forward="false" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/Linea.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
+        <state relative-caret-position="833">
           <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/interfaces/RestInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="37" column="1" lean-forward="true" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/utils/ClienteApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="54" column="53" lean-forward="false" selection-start-line="54" selection-start-column="53" selection-end-line="54" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/utils/Const.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="14" column="55" lean-forward="false" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
           <folding />
         </state>
       </provider>
@@ -2983,6 +2869,88 @@
         <state relative-caret-position="394">
           <caret line="38" column="21" lean-forward="false" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="21" />
           <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/com/consorcio/consorciotransportesandalucia/R.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="4144" column="28" lean-forward="false" selection-start-line="4144" selection-start-column="28" selection-end-line="4144" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="52" lean-forward="false" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/activitys/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="117" column="24" lean-forward="false" selection-start-line="117" selection-start-column="24" selection-end-line="117" selection-end-column="24" />
+          <folding>
+            <element signature="e#2742#2784#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="40" column="66" lean-forward="false" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_custom_spinner.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="48" lean-forward="true" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="12" lean-forward="true" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/CapsuleMunicipio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="96" lean-forward="false" selection-start-line="13" selection-start-column="96" selection-end-line="13" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/LineaItinerarioFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="119" column="42" lean-forward="false" selection-start-line="119" selection-start-column="42" selection-end-line="119" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/MiConsorcioFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="73" column="51" lean-forward="false" selection-start-line="73" selection-start-column="51" selection-end-line="73" selection-end-column="51" />
+          <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
@@ -2990,25 +2958,162 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/ParadasFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="172" column="9" lean-forward="true" selection-start-line="172" selection-start-column="9" selection-end-line="172" selection-end-column="9" />
+        <state relative-caret-position="192">
+          <caret line="116" column="53" lean-forward="false" selection-start-line="116" selection-start-column="53" selection-end-line="116" selection-end-column="53" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/LineaItinerarioFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/PuntosDeVentasFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1205">
-          <caret line="123" column="94" lean-forward="false" selection-start-line="123" selection-start-column="94" selection-end-line="123" selection-end-column="94" />
+        <state relative-caret-position="192">
+          <caret line="99" column="54" lean-forward="false" selection-start-line="99" selection-start-column="54" selection-end-line="99" selection-end-column="54" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/CapsuleNucleo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/CapsuleLineasPorNucleo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="81" lean-forward="false" selection-start-line="31" selection-start-column="81" selection-end-line="31" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/Bloque.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="58" lean-forward="false" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/Nucleo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="66" lean-forward="false" selection-start-line="23" selection-start-column="66" selection-end-line="23" selection-end-column="66" />
+          <folding>
+            <element signature="e#1129#1130#0" expanded="true" />
+            <element signature="e#1163#1164#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/Frecuencia.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="66" lean-forward="false" selection-start-line="23" selection-start-column="66" selection-end-line="23" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/Horario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="24" lean-forward="false" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/models/Municipio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="36" lean-forward="false" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
+          <folding>
+            <element signature="e#516#517#0" expanded="true" />
+            <element signature="e#549#550#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/LineasFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="136" column="0" lean-forward="false" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+        <state relative-caret-position="184">
+          <caret line="46" column="4" lean-forward="false" selection-start-line="46" selection-start-column="4" selection-end-line="47" selection-end-column="30" />
+          <folding>
+            <element signature="e#5206#5658#0" expanded="true" />
+            <element signature="e#5657#5658#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_lineas_origen_destino.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="105" column="73" lean-forward="false" selection-start-line="105" selection-start-column="29" selection-end-line="105" selection-end-column="73" />
+          <folding>
+            <element signature="e#1070#1128#0" expanded="true" />
+            <element signature="e#1823#1878#0" expanded="true" />
+            <element signature="e#2208#3897#0" expanded="false" />
+            <element signature="e#2790#2849#0" expanded="true" />
+            <element signature="e#3545#3601#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/adapters/LineasAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="502">
+          <caret line="103" column="0" lean-forward="true" selection-start-line="23" selection-start-column="27" selection-end-line="103" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/adapters/LineasHorariosAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="42" column="54" lean-forward="false" selection-start-line="42" selection-start-column="54" selection-end-line="42" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/utils/Const.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="31" column="105" lean-forward="false" selection-start-line="31" selection-start-column="105" selection-end-line="31" selection-end-column="105" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/interfaces/RestInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="41" column="128" lean-forward="false" selection-start-line="41" selection-start-column="128" selection-end-line="41" selection-end-column="128" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/utils/ClienteApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="56" column="83" lean-forward="false" selection-start-line="56" selection-start-column="83" selection-end-line="56" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/consorcio/consorciotransportesandalucia/fragments/LineasOrigenDestinoFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="273" column="0" lean-forward="false" selection-start-line="273" selection-start-column="0" selection-end-line="273" selection-end-column="0" />
+          <folding>
+            <element signature="method#loadMunicipios#0;class#LineasOrigenDestinoFragment#0" expanded="false" />
+            <element signature="method#loadNucleos#0;class#LineasOrigenDestinoFragment#0" expanded="false" />
+            <element signature="method#filterNucleos#0;class#LineasOrigenDestinoFragment#0" expanded="false" />
+            <element signature="e#10243#10259#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -20,6 +20,7 @@ import android.view.View;
 
 import com.consorcio.consorciotransportesandalucia.R;
 import com.consorcio.consorciotransportesandalucia.fragments.LineasFragment;
+import com.consorcio.consorciotransportesandalucia.fragments.LineasOrigenDestinoFragment;
 import com.consorcio.consorciotransportesandalucia.fragments.MiConsorcioFragment;
 import com.consorcio.consorciotransportesandalucia.fragments.ParadasFragment;
 import com.consorcio.consorciotransportesandalucia.fragments.PuntosDeVentasFragment;
@@ -56,11 +57,7 @@ public class MainActivity extends AppCompatActivity
 
         if (!checkPermissions())
             requestPermissions();
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
 
         //Inicializamos el MapsFragemnts al inicio
         Fragment mapsFragment = new ParadasFragment();
@@ -68,6 +65,11 @@ public class MainActivity extends AppCompatActivity
         transaction.add(R.id.fragment_container, mapsFragment).commit();
         //Set title to toolbar
         setTitleToToolbar(getString(R.string.title_activity_paradas));
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
     }
 
@@ -113,7 +115,10 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_paradas) {
             fragment = new ParadasFragment();
             title = getString(R.string.title_activity_paradas);
-        } else if (id == R.id.nav_horarios_lineas) {
+        } else if (id == R.id.nav_horarios_origen){
+            fragment = new LineasOrigenDestinoFragment();
+            title = getString(R.string.title_activity_lineas_origen_destino);
+        }else if (id == R.id.nav_horarios_lineas) {
             fragment = new LineasFragment();
             title = getString(R.string.title_activity_lineas);
         } else if (id == R.id.nav_puntos_venta) {

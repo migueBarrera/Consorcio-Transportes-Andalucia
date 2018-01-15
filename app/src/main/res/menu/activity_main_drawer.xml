@@ -10,9 +10,9 @@
                 android:icon="@drawable/ic_menu_share"
                 android:title="@string/title_activity_lineas" />
             <item
-                android:id="@+id/nav_horarios_Origen"
+                android:id="@+id/nav_horarios_origen"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Origen y Destino" />
+                android:title="@string/title_activity_lineas_origen_destino" />
         </menu>
     </item>
 

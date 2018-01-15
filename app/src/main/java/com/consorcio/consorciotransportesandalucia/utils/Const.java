@@ -27,5 +27,8 @@ public class Const {
         public static final String GET_PUNTOS_DE_VENTAS = BASE_URL +"puntos_venta";
         public static final String GET_LINEAS = BASE_URL + "lineas";
         public static final String GET_PARADAS_DE_LINEAS = BASE_URL + "lineas/{idLinea}/paradas";
+        public static final String GET_MUNICIPIOS = BASE_URL + "municipios/";
+        public static final String GET_NUCLEOS = BASE_URL + "nucleos";
+        public static final String GET_LINEAS_NUCLEO_ORIGEN_DESTINO = BASE_URL + "horarios_origen_destino";
     }
 }

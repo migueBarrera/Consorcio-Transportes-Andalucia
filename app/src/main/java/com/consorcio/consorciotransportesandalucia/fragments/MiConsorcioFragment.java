@@ -71,7 +71,7 @@ public class MiConsorcioFragment extends Fragment {
 
     private void loadDataConsorcio() {
         if (Util.hasInternet(getContext())){
-            ClienteApi clienteApi = new ClienteApi(getContext());
+            ClienteApi clienteApi = new ClienteApi();
             int idConsorcio = SharedPreferencesUtil.getInt(getActivity(), Const.SHAREDKEYS.ID_CONSORCIO);
             clienteApi.getConsorcioDetail(null, idConsorcio, new Callback<Consorcio>() {
                 @Override

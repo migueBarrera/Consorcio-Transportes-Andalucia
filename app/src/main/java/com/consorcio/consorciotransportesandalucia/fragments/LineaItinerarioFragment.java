@@ -86,7 +86,7 @@ public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallb
     public void onStart() {
         super.onStart();
         if (Util.hasInternet(getContext())){
-            ClienteApi clienteApi = new ClienteApi(getContext());
+            ClienteApi clienteApi = new ClienteApi();
             int idConsorcio = SharedPreferencesUtil.getInt(getActivity(), Const.SHAREDKEYS.ID_CONSORCIO);
             int idLinea = SharedPreferencesUtil.getInt(getActivity(), Const.SHAREDKEYS.ID_LINEA);
             clienteApi.getParadasDeLinea(null, idConsorcio, idLinea, new Callback<CapsuleParadas>() {

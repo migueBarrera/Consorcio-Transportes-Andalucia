@@ -5,6 +5,9 @@ import android.content.Context;
 import com.consorcio.consorciotransportesandalucia.interfaces.RestInterface;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleConsorcio;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleLineas;
+import com.consorcio.consorciotransportesandalucia.models.CapsuleLineasPorNucleo;
+import com.consorcio.consorciotransportesandalucia.models.CapsuleMunicipio;
+import com.consorcio.consorciotransportesandalucia.models.CapsuleNucleo;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleParadas;
 import com.consorcio.consorciotransportesandalucia.models.CapsulePuntosVenta;
 import com.consorcio.consorciotransportesandalucia.models.Consorcio;
@@ -24,7 +27,7 @@ public class ClienteApi {
     private Retrofit miRetrofit;
     private RestInterface service;
 
-    public ClienteApi(Context contexto) {
+    public ClienteApi() {
         miRetrofit = new Retrofit.Builder().baseUrl(Const.REST.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -51,7 +54,22 @@ public class ClienteApi {
         service.getLineas(idConsorcio).enqueue(getLineasCallback);
     }
 
+    public void getLineasPorNucleos(Map<String, String> mapHeaders,int idConsorcio, Callback<CapsuleLineasPorNucleo> getLineasCallback) {
+        service.getLineasPorNucleos(mapHeaders,idConsorcio).enqueue(getLineasCallback);
+    }
+
     public void getParadasDeLinea(Map<String, String> mapHeaders,int idConsorcio,int idLinea, Callback<CapsuleParadas> getParadasLineaCallback) {
         service.getParadasDeLinea(idConsorcio,idLinea).enqueue(getParadasLineaCallback);
     }
+
+    public void getMunicipios(Map<String, String> mapHeaders,int idConsorcio,Callback<CapsuleMunicipio> getMunicipiosCallback){
+        service.getMunicipios(idConsorcio).enqueue(getMunicipiosCallback);
+    }
+
+    public void getNucleos(Map<String, String> mapHeaders,int idConsorcio,Callback<CapsuleNucleo> getNucleosCallback){
+        service.getNucleos(idConsorcio).enqueue(getNucleosCallback);
+    }
+
+
+
 }

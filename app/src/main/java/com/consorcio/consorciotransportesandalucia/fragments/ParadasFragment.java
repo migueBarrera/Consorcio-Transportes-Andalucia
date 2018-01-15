@@ -1,6 +1,8 @@
 package com.consorcio.consorciotransportesandalucia.fragments;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -43,6 +45,7 @@ public class ParadasFragment extends Fragment implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private ClusterManager<Parada> mClusterManager;
+    Dialog progressDialog;
 
     public ParadasFragment() {
         // Required empty public constructor
@@ -109,11 +112,14 @@ public class ParadasFragment extends Fragment implements OnMapReadyCallback {
 
     private void loadParadas() {
         if (Util.hasInternet(getContext())){
-            ClienteApi miClienteApi = new ClienteApi(getActivity());
+            //Activamos el progress
+            progressDialog = ProgressDialog.show(getContext(), "", getResources().getString(R.string.progress_paradas), true);
+            ClienteApi miClienteApi = new ClienteApi();
             int idConsorcio = SharedPreferencesUtil.getInt(getActivity(), Const.SHAREDKEYS.ID_CONSORCIO);
             miClienteApi.getParadas(null, idConsorcio, new Callback<CapsuleParadas>() {
                 @Override
                 public void onResponse(Call<CapsuleParadas> call, Response<CapsuleParadas> response) {
+                    progressDialog.dismiss();
                     if (response.isSuccessful()){
                         CapsuleParadas capsuleParadas = response.body();
                         setDataToView(capsuleParadas);
@@ -122,7 +128,7 @@ public class ParadasFragment extends Fragment implements OnMapReadyCallback {
 
                 @Override
                 public void onFailure(Call<CapsuleParadas> call, Throwable t) {
-
+                    progressDialog.dismiss();
                 }
             });
         }

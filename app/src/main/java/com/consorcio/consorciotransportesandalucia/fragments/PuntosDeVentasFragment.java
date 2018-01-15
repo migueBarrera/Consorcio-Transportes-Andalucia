@@ -1,6 +1,8 @@
 package com.consorcio.consorciotransportesandalucia.fragments;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -46,6 +48,7 @@ public class PuntosDeVentasFragment extends Fragment implements OnMapReadyCallba
 
     private GoogleMap mMap;
     private ClusterManager<PuntosVenta> mClusterManager;
+    Dialog progressDialog;
 
     public PuntosDeVentasFragment() {
         // Required empty public constructor
@@ -92,11 +95,14 @@ public class PuntosDeVentasFragment extends Fragment implements OnMapReadyCallba
 
     private void loadPuntosVenta() {
         if (Util.hasInternet(getContext())){
-            ClienteApi miClienteApi = new ClienteApi(getActivity());
+            //Activamos el progress
+            progressDialog = ProgressDialog.show(getContext(), "", getResources().getString(R.string.progress_puntos_ventas), true);
+            ClienteApi miClienteApi = new ClienteApi();
             int idConsorcio = SharedPreferencesUtil.getInt(getActivity(), Const.SHAREDKEYS.ID_CONSORCIO);
             miClienteApi.getPuntosVenta(null, idConsorcio, new Callback<CapsulePuntosVenta>() {
                 @Override
                 public void onResponse(Call<CapsulePuntosVenta> call, Response<CapsulePuntosVenta> response) {
+                    progressDialog.dismiss();
                     if (response.isSuccessful()){
                         CapsulePuntosVenta capsulePuntosVenta = response.body();
                         setDataToView(capsulePuntosVenta);
@@ -105,7 +111,7 @@ public class PuntosDeVentasFragment extends Fragment implements OnMapReadyCallba
 
                 @Override
                 public void onFailure(Call<CapsulePuntosVenta> call, Throwable t) {
-
+                    progressDialog.dismiss();
                 }
             });
         }
@@ -159,11 +165,11 @@ public class PuntosDeVentasFragment extends Fragment implements OnMapReadyCallba
         // (Activity extends context, so we can pass 'this' in the constructor.)
         mClusterManager = new ClusterManager<PuntosVenta>(getContext(), mMap);
 
-        // Point the map's listeners at the listeners implemented by the cluster
+
+// Point the map's listeners at the listeners implemented by the cluster
         // manager.
         mMap.setOnCameraIdleListener(mClusterManager);
         mMap.setOnMarkerClickListener(mClusterManager);
-
         //Render Map
         final PuntosVentaCustomClusterRenderer renderer = new PuntosVentaCustomClusterRenderer(getContext(), mMap, mClusterManager);
         mClusterManager.setRenderer(renderer);

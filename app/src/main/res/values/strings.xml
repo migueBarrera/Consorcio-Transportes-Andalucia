@@ -9,6 +9,11 @@
 
     <string name="action_settings">Settings</string>
 
+    <!-- Progress Dialog -->
+    <string name="progress_lineas">Cargando lineas...</string>
+    <string name="progress_paradas">Cargando paradas...</string>
+    <string name="progress_puntos_ventas">Cargando puntos de ventas...</string>
+
     <!-- Main Activity -->
     <string name="title_activity_main">MainActivity</string>
 
@@ -30,6 +35,13 @@
 
     <!-- Lineas Activity -->
     <string name="title_activity_lineas">Lineas</string>
+
+    <!-- Lineas Origen Y Destino Activity -->
+    <string name="title_activity_lineas_origen_destino">Origen y destino</string>
+    <string name="municipio_origen__activity_lineas_origen_destino">Municipio origen</string>
+    <string name="municipio_destino__activity_lineas_origen_destino">Municipio destino</string>
+    <string name="nucleo_origen__activity_lineas_origen_destino">Nucleo origen</string>
+    <string name="nucleo_destino__activity_lineas_origen_destino">Nucleo destino</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

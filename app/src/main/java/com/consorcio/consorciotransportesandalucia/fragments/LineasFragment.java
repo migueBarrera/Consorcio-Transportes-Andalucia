@@ -1,5 +1,7 @@
 package com.consorcio.consorciotransportesandalucia.fragments;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -44,6 +46,7 @@ public class LineasFragment extends Fragment {
 
     @BindView(R.id.rv_lineas)
     RecyclerView recyclerView;
+    Dialog progressDialog;
 
     public LineasFragment() {
         // Required empty public constructor
@@ -86,11 +89,14 @@ public class LineasFragment extends Fragment {
 
     private void loadLineas() {
         if (Util.hasInternet(getContext())){
-            ClienteApi clienteApi = new ClienteApi(getContext());
+            //Activamos el progress
+            progressDialog = ProgressDialog.show(getContext(), "", getResources().getString(R.string.progress_lineas), true);
+            ClienteApi clienteApi = new ClienteApi();
             int idConsorcio = SharedPreferencesUtil.getInt(getActivity(),Const.SHAREDKEYS.ID_CONSORCIO);
             clienteApi.getLineas(null, idConsorcio, new Callback<CapsuleLineas>() {
                 @Override
                 public void onResponse(Call<CapsuleLineas> call, Response<CapsuleLineas> response) {
+                    progressDialog.dismiss();
                     if (response.isSuccessful()){
                         CapsuleLineas capsuleLineas = response.body();
                         setDataToView(capsuleLineas);
@@ -99,7 +105,7 @@ public class LineasFragment extends Fragment {
 
                 @Override
                 public void onFailure(Call<CapsuleLineas> call, Throwable t) {
-
+                    progressDialog.dismiss();
                 }
             });
         }
