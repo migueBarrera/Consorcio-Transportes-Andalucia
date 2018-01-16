@@ -59,6 +59,8 @@ public class PuntosVentaCustomClusterRenderer extends DefaultClusterRenderer<Pun
                     break;
                 case Default:
                     markerDescriptor = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED);
+                    if (item.getDireccion().contains("Metro") || item.getDireccion().contains("METRO"))
+                        markerDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.metro);
                     type = context.getString(R.string.info_bussines_unknow_puntos_venta);
                     break;
             }

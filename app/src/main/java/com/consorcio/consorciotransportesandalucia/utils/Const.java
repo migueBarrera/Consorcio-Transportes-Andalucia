@@ -30,5 +30,8 @@ public class Const {
         public static final String GET_MUNICIPIOS = BASE_URL + "municipios/";
         public static final String GET_NUCLEOS = BASE_URL + "nucleos";
         public static final String GET_LINEAS_NUCLEO_ORIGEN_DESTINO = BASE_URL + "horarios_origen_destino";
+        public static final String GET_ATENCION_USUARIO = BASE_URL + "att_usuario";
+        public static final String GET_LINEA_DETALLE = BASE_URL + "lineas/{idLinea}";
+        public static final String GET_HORARIOS_LINEA = BASE_URL + "horarios_lineas";
     }
 }

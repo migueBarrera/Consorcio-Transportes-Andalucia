@@ -1,7 +1,10 @@
 package com.consorcio.consorciotransportesandalucia.fragments;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -31,25 +34,28 @@ import com.consorcio.consorciotransportesandalucia.utils.ClienteApi;
 import com.consorcio.consorciotransportesandalucia.utils.Const;
 import com.consorcio.consorciotransportesandalucia.utils.SharedPreferencesUtil;
 import com.consorcio.consorciotransportesandalucia.utils.Util;
+import com.google.gson.Gson;
 
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LineasOrigenDestinoFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -67,12 +73,12 @@ public class LineasOrigenDestinoFragment extends Fragment {
     ArrayList<Municipio> listMunicipios;
     @BindView(R.id.fragment_lineas_origen_destino_recycler_view)
     RecyclerView recyclerView;
+    Dialog progressDialog;
 
     public LineasOrigenDestinoFragment() {
         // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
     public static LineasOrigenDestinoFragment newInstance(String param1, String param2) {
         LineasOrigenDestinoFragment fragment = new LineasOrigenDestinoFragment();
         Bundle args = new Bundle();
@@ -97,20 +103,9 @@ public class LineasOrigenDestinoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_lineas_origen_destino, container, false);
         ButterKnife.bind(this, view);
 
-        return view;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
         loadData();
-    }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+        return view;
     }
 
     @Override
@@ -129,7 +124,6 @@ public class LineasOrigenDestinoFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
@@ -261,9 +255,10 @@ public class LineasOrigenDestinoFragment extends Fragment {
         }
     }
 
-
     private void loadLineas(int idNucleoOrigen,int idNucleoDestino){
         if (Util.hasInternet(getContext())){
+            //Activamos el progress
+            progressDialog = ProgressDialog.show(getContext(), "", getResources().getString(R.string.progress_lineas), true);
             ClienteApi clienteApi = new ClienteApi();
             int idConsorcio = SharedPreferencesUtil.getInt(getActivity(), Const.SHAREDKEYS.ID_CONSORCIO);
 
@@ -271,29 +266,57 @@ public class LineasOrigenDestinoFragment extends Fragment {
             params.put("idNucleoOrigen", String.valueOf(idNucleoOrigen));
             params.put("idNucleoDestino", String.valueOf(idNucleoDestino));
 
-            clienteApi.getLineasPorNucleos(params, idConsorcio, new Callback<CapsuleLineasPorNucleo>() {
+            clienteApi.getLineasPorNucleos(params, idConsorcio, new Callback<ResponseBody>() {
                 @Override
-                public void onResponse(Call<CapsuleLineasPorNucleo> call, Response<CapsuleLineasPorNucleo> response) {
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    progressDialog.dismiss();
                     if (response.isSuccessful()){
                         ArrayList<Horario> misHorarios = new ArrayList<>();
-                        ArrayList<Horario> horarios = response.body().getHorario();
-                        for (Horario h:
-                             horarios) {
-                            if (hasItem(misHorarios,h)){
-                                
-                            }else {
-                                misHorarios.add(h);
+                        ResponseBody responseBody = response.body();
+                        Gson g = new Gson();
+                        try {
+                            String d = responseBody.string();
+                            CapsuleLineasPorNucleo capsuleLineasPorNucleo = g.fromJson(d,CapsuleLineasPorNucleo.class);
+                            ArrayList<Horario> horarios = capsuleLineasPorNucleo.getHorario();
+                            //Quitamos las lineas duplicadas
+                            for (Horario h : horarios) {
+                                int i = hasItem(misHorarios,h);
+
+                                if (i>-1){
+                                    i--;
+                                    misHorarios.get(i).setInfoExtra(misHorarios.get(i).getInfoExtra() + " , " + h.getDias());
+                                }else {
+                                    h.setInfoExtra(h.getDias());
+                                    misHorarios.add(h);
+                                }
                             }
+
+                            //Quitamos los dias duplicados de cada linea
+                            for (Horario h: misHorarios) {
+                                ArrayList<String> listInfo = new ArrayList<String>(Arrays.asList(h.getInfoExtra().replace(" ","").split(",")));
+                                HashSet<String> hashSet = new HashSet<String>(listInfo);
+                                listInfo.clear();
+                                listInfo.addAll(hashSet);
+                                h.setInfoExtra(listInfo.toString());
+                            }
+
+
+                            setDataToRecyclerView(misHorarios);
+                        } catch (IOException e) {
+
+                            e.printStackTrace();
+                            clearRecycler();
                         }
-                        
-                        setDataToRecyclerView(misHorarios);
+                    }else{
+                        clearRecycler();
 
                     }
                 }
 
                 @Override
-                public void onFailure(Call<CapsuleLineasPorNucleo> call, Throwable t) {
-
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    progressDialog.dismiss();
+                    clearRecycler();
                 }
             });
 
@@ -319,15 +342,24 @@ public class LineasOrigenDestinoFragment extends Fragment {
         });
     }
 
-    private boolean hasItem(ArrayList<Horario> misHorarios, Horario h) {
+    private int hasItem(ArrayList<Horario> misHorarios, Horario h) {
         boolean has = false;
+        int i;
 
-        for(int i = 0;i < misHorarios.size() ; i++){
+        for(i = 0;i < misHorarios.size() && !has; i++){
             Horario horario = misHorarios.get(i);
-            if (h.getIdlinea() == horario.getIdlinea())
+            if (h.getIdlinea().equals(horario.getIdlinea()))
                 has = true;
         }
+
+        if (!has)
+            i = -1;
         
-        return has;
+        return i;
+    }
+
+    private void clearRecycler(){
+        recyclerView.removeAllViewsInLayout();
+
     }
 }

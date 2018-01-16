@@ -34,7 +34,7 @@ public class LineasHorariosAdapter extends RecyclerView.Adapter<LineasHorariosAd
 
     @Override
     public LineasHorariosAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_adapter_lineas, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_adapter_lineas_origen_destino, parent, false);
         LineasHorariosAdapter.ViewHolder viewHolder= new LineasHorariosAdapter.ViewHolder(v);
         return viewHolder;
     }
@@ -44,8 +44,9 @@ public class LineasHorariosAdapter extends RecyclerView.Adapter<LineasHorariosAd
         Horario horario = horarios[position];
 
 
-        /*holder.title.setText(linea.getCodigo());
-        holder.subTitle.setText(linea.getNombre());
+        holder.title.setText("Linea :"+horario.getIdlinea());
+        holder.subTitle.setText(horario.getInfoExtra());
+        /*holder.subTitle.setText(linea.getNombre());
         Drawable drawable = null;
 
         if (linea.modo == null){

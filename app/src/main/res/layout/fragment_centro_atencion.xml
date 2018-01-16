@@ -1,0 +1,11 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.consorcio.consorciotransportesandalucia.fragments.CentroAtencionFragment">
+
+    <WebView
+        android:id="@+id/fragment_centro_atencion_webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</FrameLayout>

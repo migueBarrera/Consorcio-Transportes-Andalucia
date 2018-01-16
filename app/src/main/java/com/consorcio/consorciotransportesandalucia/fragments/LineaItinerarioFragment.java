@@ -1,6 +1,8 @@
 package com.consorcio.consorciotransportesandalucia.fragments;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
@@ -44,6 +46,7 @@ public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallb
 
     private GoogleMap mMap;
     private ClusterManager<Parada> mClusterManager;
+    Dialog progressDialog;
 
     public LineaItinerarioFragment() {
         // Required empty public constructor
@@ -85,13 +88,21 @@ public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallb
     @Override
     public void onStart() {
         super.onStart();
+        loadItinerary();
+
+    }
+
+    private void loadItinerary() {
         if (Util.hasInternet(getContext())){
+            //Activamos el progress
+            progressDialog = ProgressDialog.show(getContext(), "", getResources().getString(R.string.progress_lineas), true);
             ClienteApi clienteApi = new ClienteApi();
             int idConsorcio = SharedPreferencesUtil.getInt(getActivity(), Const.SHAREDKEYS.ID_CONSORCIO);
             int idLinea = SharedPreferencesUtil.getInt(getActivity(), Const.SHAREDKEYS.ID_LINEA);
             clienteApi.getParadasDeLinea(null, idConsorcio, idLinea, new Callback<CapsuleParadas>() {
                 @Override
                 public void onResponse(Call<CapsuleParadas> call, Response<CapsuleParadas> response) {
+                    progressDialog.dismiss();
                     if (response.isSuccessful()){
                         CapsuleParadas capsuleParadas = response.body();
                         setDataToView(capsuleParadas);
@@ -100,7 +111,7 @@ public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallb
 
                 @Override
                 public void onFailure(Call<CapsuleParadas> call, Throwable t) {
-
+                    progressDialog.dismiss();
                 }
             });
         }

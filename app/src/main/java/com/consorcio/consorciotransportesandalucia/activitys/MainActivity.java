@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.consorcio.consorciotransportesandalucia.R;
+import com.consorcio.consorciotransportesandalucia.fragments.CentroAtencionFragment;
 import com.consorcio.consorciotransportesandalucia.fragments.LineasFragment;
 import com.consorcio.consorciotransportesandalucia.fragments.LineasOrigenDestinoFragment;
 import com.consorcio.consorciotransportesandalucia.fragments.MiConsorcioFragment;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.drawer_layout) DrawerLayout drawer;
     @BindView(R.id.nav_view) NavigationView navigationView;
+
 
     Activity parentActivity;
 
@@ -130,7 +132,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_consorcio_detail) {
             fragment = new MiConsorcioFragment();
             title = getString(R.string.title_activity_consorcio_detail);
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_centro_atencion) {
+            fragment = new CentroAtencionFragment();
 
         }
 

@@ -1,5 +1,7 @@
 package com.consorcio.consorciotransportesandalucia.models;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.ArrayList;
 
 /**
@@ -37,9 +39,20 @@ public class Horario {
 
     public void setObservaciones(String observaciones) { this.observaciones = observaciones; }
 
+    @Expose
     private String demandahoras;
 
     public String getDemandahoras() { return this.demandahoras; }
 
     public void setDemandahoras(String demandahoras) { this.demandahoras = demandahoras; }
+
+    private String infoExtra;
+
+    public String getInfoExtra() {
+        return infoExtra;
+    }
+
+    public void setInfoExtra(String infoExtra) {
+        this.infoExtra = infoExtra;
+    }
 }

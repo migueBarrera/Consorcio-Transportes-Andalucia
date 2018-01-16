@@ -38,7 +38,7 @@
                 android:icon="@drawable/ic_menu_share"
                 android:title="@string/title_activity_consorcio_detail" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_centro_atencion"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Centro de Atención" />
         </menu>

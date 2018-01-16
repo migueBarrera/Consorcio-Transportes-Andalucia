@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.consorcio.consorciotransportesandalucia.interfaces.RestInterface;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleConsorcio;
+import com.consorcio.consorciotransportesandalucia.models.CapsuleHorariosLinea;
+import com.consorcio.consorciotransportesandalucia.models.CapsuleLineaDetalle;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleLineas;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleLineasPorNucleo;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleMunicipio;
@@ -14,8 +16,13 @@ import com.consorcio.consorciotransportesandalucia.models.Consorcio;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
+import okhttp3.OkHttpClient;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -28,8 +35,14 @@ public class ClienteApi {
     private RestInterface service;
 
     public ClienteApi() {
+        final OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(10, TimeUnit.SECONDS)
+                .writeTimeout(10, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .build();
         miRetrofit = new Retrofit.Builder().baseUrl(Const.REST.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
                 .build();
         service = miRetrofit.create(RestInterface.class);
     }
@@ -54,8 +67,9 @@ public class ClienteApi {
         service.getLineas(idConsorcio).enqueue(getLineasCallback);
     }
 
-    public void getLineasPorNucleos(Map<String, String> mapHeaders,int idConsorcio, Callback<CapsuleLineasPorNucleo> getLineasCallback) {
-        service.getLineasPorNucleos(mapHeaders,idConsorcio).enqueue(getLineasCallback);
+
+    public void getLineasPorNucleos(Map<String, String> mapHeaders,int idConsorcio, Callback<ResponseBody> getLineasCallback) {
+        service.getLineasPorNucleos(idConsorcio,mapHeaders).enqueue(getLineasCallback);
     }
 
     public void getParadasDeLinea(Map<String, String> mapHeaders,int idConsorcio,int idLinea, Callback<CapsuleParadas> getParadasLineaCallback) {
@@ -68,6 +82,18 @@ public class ClienteApi {
 
     public void getNucleos(Map<String, String> mapHeaders,int idConsorcio,Callback<CapsuleNucleo> getNucleosCallback){
         service.getNucleos(idConsorcio).enqueue(getNucleosCallback);
+    }
+
+    public void getAtencionUsuario(Map<String,String> mapHeader, int idConsorcio, Callback<ResponseBody> responseBodyCall){
+        service.getAtencionUsuario(idConsorcio).enqueue(responseBodyCall);
+    }
+
+    public void getLineaDetalle(Map<String,String> mapHeader, int idConsorcio,int idLinea, Callback<CapsuleLineaDetalle> responseBodyCall){
+        service.getLineaDetalle(idConsorcio,idLinea).enqueue(responseBodyCall);
+    }
+
+    public void getHorariosLinea(Map<String,String> map , int idConsorcio, Callback<CapsuleHorariosLinea> capsuleHorariosLineaCallback){
+        service.getHorariosLinea(idConsorcio,map).enqueue(capsuleHorariosLineaCallback);
     }
 
 
