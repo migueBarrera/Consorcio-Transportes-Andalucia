@@ -9,6 +9,7 @@ import com.consorcio.consorciotransportesandalucia.models.CapsuleLineaDetalle;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleLineas;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleLineasPorNucleo;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleMunicipio;
+import com.consorcio.consorciotransportesandalucia.models.CapsuleNoticias;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleNucleo;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleParadas;
 import com.consorcio.consorciotransportesandalucia.models.CapsulePuntosVenta;
@@ -94,6 +95,10 @@ public class ClienteApi {
 
     public void getHorariosLinea(Map<String,String> map , int idConsorcio, Callback<CapsuleHorariosLinea> capsuleHorariosLineaCallback){
         service.getHorariosLinea(idConsorcio,map).enqueue(capsuleHorariosLineaCallback);
+    }
+
+    public void getNoticias(Map<String,String> map , int idConsorcio, int idLinea, Callback<CapsuleNoticias> capsuleNoticiasCallback){
+        service.getNoticias(idConsorcio,idLinea,map).enqueue(capsuleNoticiasCallback);
     }
 
 

@@ -5,6 +5,190 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.consorcio.consorciotransportesandalucia.fragments.LineaInfoFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10sp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5sp"
+            android:layout_marginEnd="5sp"
+            android:layout_marginBottom="14sp">
+
+            <ImageView
+                android:id="@+id/linea_detail_icon"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:scaleType="fitXY"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="35sp">
+
+                <TextView
+                    android:id="@+id/linea_detail_termometro_ida"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:text="@string/linea_detail_view_main_termometro_ida"/>
+
+                <TextView
+                    android:id="@+id/linea_detail_termometro_vuelta"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    android:text="@string/linea_detail_view_main_termometro_vuelta"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <!-- RECORRIDO VIEW -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/linea_detail_view_recorrido_title"
+            android:layout_marginStart="20sp"/>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/general_elevation"
+            android:layout_marginStart="5sp"
+            android:layout_marginEnd="5sp"
+            android:layout_marginTop="2sp"
+            android:layout_marginBottom="14sp"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8sp">
+                <TextView
+                    android:id="@+id/linea_detail_view_recorrido_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+        <!-- OPERADORES VIEW -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/linea_detail_view_operadores_title"
+            android:layout_marginStart="20sp"/>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/general_elevation"
+            android:layout_marginStart="5sp"
+            android:layout_marginEnd="5sp"
+            android:layout_marginTop="2sp"
+            android:layout_marginBottom="14sp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8sp">
+
+                <TextView
+                    android:id="@+id/linea_detail_view_operadores_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+        <!-- ATENCION VIEW -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/linea_detail_view_warning_title"
+            android:layout_marginStart="20sp"/>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/general_elevation"
+            android:layout_marginStart="5sp"
+            android:layout_marginEnd="5sp"
+            android:layout_marginTop="2sp"
+            android:layout_marginBottom="14sp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8sp">
+
+                <TextView
+                    android:id="@+id/linea_detail_view_warning_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textAlignment="center"/>
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <!-- NOTICIAS VIEW -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/linea_detail_view_noticias_title"
+            android:layout_marginStart="20sp"/>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/general_elevation"
+            android:layout_marginStart="5sp"
+            android:layout_marginEnd="5sp"
+            android:layout_marginTop="2sp"
+            android:layout_marginBottom="14sp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8sp">
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linea_detail_listado_noticias"
+                    android:nestedScrollingEnabled="false"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/linea_detail_view_noticias_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textAlignment="center"
+                    android:visibility="gone"
+                    android:text="@string/linea_detail_view_noticias_no_data"/>
+
+                <ProgressBar
+                    android:id="@+id/linea_detail_view_noticias_progressBar"
+                    android:layout_width="30sp"
+                    android:layout_height="30sp"
+                    android:layout_centerInParent="true"/>
+
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
 
 
 

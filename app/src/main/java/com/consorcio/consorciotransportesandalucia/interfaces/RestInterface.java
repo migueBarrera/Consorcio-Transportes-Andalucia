@@ -6,6 +6,7 @@ import com.consorcio.consorciotransportesandalucia.models.CapsuleLineaDetalle;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleLineas;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleLineasPorNucleo;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleMunicipio;
+import com.consorcio.consorciotransportesandalucia.models.CapsuleNoticias;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleNucleo;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleParadas;
 import com.consorcio.consorciotransportesandalucia.models.CapsulePuntosVenta;
@@ -62,5 +63,8 @@ public interface RestInterface {
 
     @GET(Const.REST.GET_HORARIOS_LINEA)
     Call<CapsuleHorariosLinea> getHorariosLinea(@Path("idConsorcio") int idConsorcio, @QueryMap Map<String, String> options);
+
+    @GET(Const.REST.GET_NOTICIAS)
+    Call<CapsuleNoticias> getNoticias(@Path("idConsorcio") int idConsorcio,@Path("idLinea") int idLinea, @QueryMap Map<String, String> options);
 
 }

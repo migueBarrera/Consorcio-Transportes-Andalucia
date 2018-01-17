@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:theme="@style/noActionBar">
+    android:theme="@style/noActionBar"
+    android:fitsSystemWindows="true">
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -33,14 +34,9 @@
 
                     <ImageView
                         android:layout_width="match_parent"
+                        android:scaleType="fitXY"
                         android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/analytics_image"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="HOLA"/>
+                        android:src="@mipmap/transport"/>
 
                 </RelativeLayout>
 
@@ -57,7 +53,7 @@
 
         </android.support.design.widget.AppBarLayout>
 
-        <android.support.v4.widget.NestedScrollView
+        <com.consorcio.consorciotransportesandalucia.controls.MyNestedScrollView
             android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -75,7 +71,15 @@
                 </FrameLayout>
             </LinearLayout>
 
-        </android.support.v4.widget.NestedScrollView>
+        </com.consorcio.consorciotransportesandalucia.controls.MyNestedScrollView>
+
+        <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        app:layout_anchor="@id/appbar"
+        app:layout_anchorGravity="bottom|right|end"
+        style="@style/FabStyle"/>
+
+
 
     </android.support.design.widget.CoordinatorLayout>
 

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.consorcio.consorciotransportesandalucia.R;
+import com.consorcio.consorciotransportesandalucia.interfaces.LineaDetailInterface;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleHorariosLinea;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleLineaDetalle;
 import com.consorcio.consorciotransportesandalucia.utils.ClienteApi;
@@ -36,7 +37,7 @@ public class LineaHorarioFragment extends Fragment {
     private int idConsorcio;
     private int idLinea;
 
-    private OnFragmentInteractionListenerLineaHorario mListener;
+    private LineaDetailInterface mListener;
     private CapsuleLineaDetalle capsuleLineaDetalle;
     private CapsuleHorariosLinea capsuleHorariosLinea;
     Dialog progressDialog;
@@ -102,8 +103,8 @@ public class LineaHorarioFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListenerLineaHorario) {
-            mListener = (OnFragmentInteractionListenerLineaHorario) context;
+        if (context instanceof LineaDetailInterface) {
+            mListener = (LineaDetailInterface) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListenerLineaHorario");
@@ -114,13 +115,5 @@ public class LineaHorarioFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
-
-
-    public interface OnFragmentInteractionListenerLineaHorario {
-        // TODO: Update argument type and name
-        CapsuleLineaDetalle getCapsuleLineaDetail();
-        int getConsorcioId();
-        int getLineaId();
     }
 }

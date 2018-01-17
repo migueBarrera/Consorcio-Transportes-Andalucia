@@ -3,6 +3,7 @@ package com.consorcio.consorciotransportesandalucia.activitys;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.annotation.NonNull;
@@ -11,14 +12,18 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
 
 import com.consorcio.consorciotransportesandalucia.R;
+import com.consorcio.consorciotransportesandalucia.controls.MyNestedScrollView;
 import com.consorcio.consorciotransportesandalucia.fragments.LineaHorarioFragment;
 import com.consorcio.consorciotransportesandalucia.fragments.LineaInfoFragment;
 import com.consorcio.consorciotransportesandalucia.fragments.LineaItinerarioFragment;
+import com.consorcio.consorciotransportesandalucia.interfaces.LineaDetailInterface;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleLineaDetalle;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleLineas;
 import com.consorcio.consorciotransportesandalucia.utils.ClienteApi;
@@ -32,7 +37,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LineaDetailActivity extends AppCompatActivity implements LineaHorarioFragment.OnFragmentInteractionListenerLineaHorario {
+public class LineaDetailActivity extends AppCompatActivity implements LineaDetailInterface {
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @BindView(R.id.navigation_linea)
     BottomNavigationView navigation;
@@ -41,7 +56,9 @@ public class LineaDetailActivity extends AppCompatActivity implements LineaHorar
     private int idConsorcio, idLinea;
     Dialog progressDialog;
     @BindView(R.id.nestedScrollView)
-    NestedScrollView nestedScrollView;
+    MyNestedScrollView nestedScrollView;
+    @BindView(R.id.collapsing_toolbar)
+    CollapsingToolbarLayout collapsingToolbarLayout;
 
 
     @Override
@@ -50,7 +67,18 @@ public class LineaDetailActivity extends AppCompatActivity implements LineaHorar
         setContentView(R.layout.activity_linea_detail);
         ButterKnife.bind(this);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        getSupportActionBar().hide();
+        configureToolbar();
+    }
+
+    private void configureToolbar() {
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        collapsingToolbarLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+    }
+
+    private void setTitleToolbar(String toolbarTitle){
+        collapsingToolbarLayout.setTitle(toolbarTitle);
     }
 
     @Override
@@ -66,8 +94,9 @@ public class LineaDetailActivity extends AppCompatActivity implements LineaHorar
             idLinea = SharedPreferencesUtil.getInt(this, Const.SHAREDKEYS.ID_LINEA);
             loadHorarios(idConsorcio,idLinea);
             loadDetail(idConsorcio,idLinea);
+            //TODO PRUEBAS
+            Util.log("ID Linea => "+String.valueOf(idLinea));
         }
-
     }
 
     private void loadHorarios(int idConsorcio, int idLinea) {
@@ -83,6 +112,11 @@ public class LineaDetailActivity extends AppCompatActivity implements LineaHorar
                 progressDialog.dismiss();
                 if (response.isSuccessful()){
                     capsuleLineaDetalle = response.body();
+
+                    //Enviamos el titulo al toolbar
+                    String[] nameLinea = capsuleLineaDetalle.getNombre().split(" ");
+                    setTitleToolbar("Linea: "+nameLinea[0]);
+
                     //Inicializamos el MapsFragemnts al inicio
                     Fragment lineaInfoFragment= new LineaInfoFragment();
                     getSupportFragmentManager().beginTransaction()
@@ -107,25 +141,20 @@ public class LineaDetailActivity extends AppCompatActivity implements LineaHorar
                     fragment = new LineaHorarioFragment();
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.content, fragment).commitAllowingStateLoss();
+                    nestedScrollView.setScrollable(true);
                     return true;
                 case  R.id.navigation_linea_itinerary:
                     fragment = new LineaItinerarioFragment();
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.content, fragment).commitAllowingStateLoss();
-                    disableScroll();
-                    nestedScrollView.setOnTouchListener(new View.OnTouchListener() {
-                        @Override
-                        public boolean onTouch(View view, MotionEvent motionEvent) {
-                            return false;
-                        }
-                    });
+                    nestedScrollView.setScrollable(false);
                     return true;
                 case R.id.navigation_linea_info:
                     fragment = new LineaInfoFragment();
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.content, fragment).commitAllowingStateLoss();
 
-                    //nestedScrollView.stopNestedScroll();
+                    nestedScrollView.setScrollable(true);
                     return true;
             }
             return false;
@@ -145,19 +174,5 @@ public class LineaDetailActivity extends AppCompatActivity implements LineaHorar
     @Override
     public int getLineaId() {
         return idLinea;
-    }
-
-    private void disableScroll(){
-        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
-        CoordinatorLayout.LayoutParams params =
-                (CoordinatorLayout.LayoutParams) appBarLayout.getLayoutParams();
-        AppBarLayout.Behavior behavior = new AppBarLayout.Behavior();
-        behavior.setDragCallback(new AppBarLayout.Behavior.DragCallback() {
-            @Override
-            public boolean canDrag(AppBarLayout appBarLayout) {
-                return false;
-            }
-        });
-        params.setBehavior(behavior);
     }
 }

@@ -33,5 +33,11 @@ public class Const {
         public static final String GET_ATENCION_USUARIO = BASE_URL + "att_usuario";
         public static final String GET_LINEA_DETALLE = BASE_URL + "lineas/{idLinea}";
         public static final String GET_HORARIOS_LINEA = BASE_URL + "horarios_lineas";
+        public static final String GET_NOTICIAS = BASE_URL + "lineas/{idLinea}/noticias";
+
+
+        public class HEADERS{
+            public static final String LANG = "lang";
+        }
     }
 }

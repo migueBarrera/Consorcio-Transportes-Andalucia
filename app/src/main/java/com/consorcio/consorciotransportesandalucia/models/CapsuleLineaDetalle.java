@@ -25,11 +25,11 @@ public class CapsuleLineaDetalle {
 
     public void setNombre(String nombre) { this.nombre = nombre; }
 
-    private String modo;
+    private TipoModoLinea modo;
 
-    public String getModo() { return this.modo; }
+    public TipoModoLinea getModo() { return this.modo; }
 
-    public void setModo(String modo) { this.modo = modo; }
+    public void setModo(TipoModoLinea modo) { this.modo = modo; }
 
     private String operadores;
 

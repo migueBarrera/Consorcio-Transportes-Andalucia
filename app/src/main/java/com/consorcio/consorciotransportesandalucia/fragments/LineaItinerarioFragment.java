@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.consorcio.consorciotransportesandalucia.R;
+import com.consorcio.consorciotransportesandalucia.interfaces.LineaDetailInterface;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleParadas;
 import com.consorcio.consorciotransportesandalucia.models.Parada;
 import com.consorcio.consorciotransportesandalucia.utils.ClienteApi;
@@ -42,7 +43,7 @@ public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallb
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private LineaDetailInterface mListener;
 
     private GoogleMap mMap;
     private ClusterManager<Parada> mClusterManager;
@@ -138,12 +139,12 @@ public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallb
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-       /* if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof LineaDetailInterface) {
+            mListener = (LineaDetailInterface) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
-        }*/
+        }
     }
 
     @Override
@@ -171,10 +172,5 @@ public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallb
         // manager.
         mMap.setOnCameraIdleListener(mClusterManager);
         mMap.setOnMarkerClickListener(mClusterManager);
-    }
-
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
     }
 }
