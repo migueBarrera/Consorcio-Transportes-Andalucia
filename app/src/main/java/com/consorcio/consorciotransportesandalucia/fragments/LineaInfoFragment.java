@@ -1,9 +1,7 @@
 package com.consorcio.consorciotransportesandalucia.fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -25,15 +23,11 @@ import com.consorcio.consorciotransportesandalucia.models.CapsuleLineaDetalle;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleNoticias;
 import com.consorcio.consorciotransportesandalucia.models.Noticia;
 import com.consorcio.consorciotransportesandalucia.utils.ClienteApi;
-import com.consorcio.consorciotransportesandalucia.utils.Const;
 import com.consorcio.consorciotransportesandalucia.utils.HeadersHelpers;
-import com.consorcio.consorciotransportesandalucia.utils.SharedPreferencesUtil;
 import com.consorcio.consorciotransportesandalucia.utils.Util;
-import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -80,7 +74,6 @@ public class LineaInfoFragment extends Fragment {
     }
 
 
-    // TODO: Rename and change types and number of parameters
     public static LineaInfoFragment newInstance(String param1, String param2) {
         LineaInfoFragment fragment = new LineaInfoFragment();
         Bundle args = new Bundle();
@@ -260,15 +253,21 @@ public class LineaInfoFragment extends Fragment {
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_background)
                 .into(imageView);
+        Util.log(url);
 
         b.setCancelable(true);
 
         b.show();
     }
 
-    @OnClick(R.id.)
+    @OnClick(R.id.linea_detail_termometro_ida)
     public void clikcTermometroIda(){
-        showDialogTermometro()
+        showDialogTermometro(capsuleLineaDetalle.getTermometroIda());
+    }
+
+    @OnClick(R.id.linea_detail_termometro_vuelta)
+    public void clikcTermometroVuelta(){
+        showDialogTermometro(capsuleLineaDetalle.getTermometroVuelta());
     }
 
 }

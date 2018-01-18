@@ -85,13 +85,13 @@ public class CapsuleLineaDetalle {
 
     public void setColor(String color) { this.color = color; }
 
-    private int tieneIda;
+    public int tieneIda;
 
     public int getTieneIda() { return this.tieneIda; }
 
     public void setTieneIda(int tieneIda) { this.tieneIda = tieneIda; }
 
-    private int tieneVuelta;
+    public int tieneVuelta;
 
     public int getTieneVuelta() { return this.tieneVuelta; }
 

@@ -11,9 +11,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 
 import com.consorcio.consorciotransportesandalucia.R;
 import com.consorcio.consorciotransportesandalucia.interfaces.LineaDetailInterface;
+import com.consorcio.consorciotransportesandalucia.models.CapsuleLineaDetalle;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleParadas;
 import com.consorcio.consorciotransportesandalucia.models.Parada;
 import com.consorcio.consorciotransportesandalucia.utils.ClienteApi;
@@ -29,6 +31,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.maps.android.clustering.ClusterManager;
 
+import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -48,6 +55,38 @@ public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallb
     private GoogleMap mMap;
     private ClusterManager<Parada> mClusterManager;
     Dialog progressDialog;
+    CapsuleParadas capsuleParadas;
+    CapsuleLineaDetalle capsuleLineaDetalle;
+    @BindView(R.id.linea_detail_radio_button_ida)
+    RadioButton radioButtonIda;
+    @BindView(R.id.linea_detail_radio_button_vuelta)
+    RadioButton radioButtonVuelta;
+
+    private View.OnClickListener listenerRadioButton = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            // Is the button now checked?
+            boolean checked = ((RadioButton) view).isChecked();
+
+            // Check which radio button was clicked
+            switch(view.getId()) {
+                case R.id.linea_detail_radio_button_ida:
+                    if (checked){
+                        cleanMap();
+                        drawIda();
+                        drawParadas(true);
+                    }
+                    break;
+                case R.id.linea_detail_radio_button_vuelta:
+                    if (checked){
+                        cleanMap();
+                        drawVuelta();
+                        drawParadas(false);
+                    }
+                    break;
+            }
+        }
+    };
 
     public LineaItinerarioFragment() {
         // Required empty public constructor
@@ -77,18 +116,34 @@ public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallb
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_linea_itinerario, container, false);
+        ButterKnife.bind(this,v);
 
         //Add support to map fragment
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         mapFragment.getView().setClickable(true);
 
+        //Add Listenes to RadioButon
+        radioButtonIda.setOnClickListener(listenerRadioButton);
+        radioButtonVuelta.setOnClickListener(listenerRadioButton);
+
+
         return v;
+    }
+
+    private void configureRadioButtons() {
+        if (capsuleLineaDetalle.getTieneIda() == 0)
+            radioButtonIda.setVisibility(View.GONE);
+
+        if (capsuleLineaDetalle.getTieneVuelta() == 0)
+            radioButtonVuelta.setVisibility(View.GONE);
     }
 
     @Override
     public void onStart() {
         super.onStart();
+        capsuleLineaDetalle = mListener.getCapsuleLineaDetail();
+        configureRadioButtons();
         loadItinerary();
 
     }
@@ -105,8 +160,9 @@ public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallb
                 public void onResponse(Call<CapsuleParadas> call, Response<CapsuleParadas> response) {
                     progressDialog.dismiss();
                     if (response.isSuccessful()){
-                        CapsuleParadas capsuleParadas = response.body();
-                        setDataToView(capsuleParadas);
+                        capsuleParadas = response.body();
+                        setDataToView();
+                        Util.log(capsuleParadas);
                     }
                 }
 
@@ -118,22 +174,20 @@ public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallb
         }
     }
 
-    private void setDataToView(CapsuleParadas capsuleParadas) {
-        MarkerOptions markerOptions = new MarkerOptions();
-        PolylineOptions polylineOptions = new PolylineOptions()
-                .width(5)
-                .color(Color.RED);
-        LatLng pos;
-
-        for (Parada parada: capsuleParadas.getParadas()) {
-            pos = parada.getPosition();
-            polylineOptions.add(pos);
-            markerOptions.position(pos);
-            mMap.addMarker(markerOptions);
+    private void setDataToView() {
+        if (capsuleLineaDetalle.getTieneIda() == 1){
+            drawIda();
+            drawParadas(true);
+            radioButtonIda.setChecked(true);
+        }else {
+            if (capsuleLineaDetalle.getTieneVuelta() == 1){
+                drawVuelta();
+                drawParadas(false);
+                radioButtonVuelta.setChecked(true);
+            }
         }
-
-        mMap.addPolyline(polylineOptions);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.378176, -6.001057), 12));
+
     }
 
     @Override
@@ -172,5 +226,64 @@ public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallb
         // manager.
         mMap.setOnCameraIdleListener(mClusterManager);
         mMap.setOnMarkerClickListener(mClusterManager);
+    }
+
+    private void cleanMap(){
+        mMap.clear();
+    }
+
+    private void drawIda(){
+        //IDA
+        if (capsuleLineaDetalle.getTieneIda() == 1){
+            PolylineOptions polylineOptions = new PolylineOptions()
+                    .width(5)
+                    .color(Color.RED);
+
+            for (ArrayList<String> route:
+                    capsuleLineaDetalle.getPolilineaIda()) {
+                String[] routes = route.get(0).split(",");
+                polylineOptions.add(new LatLng(Double.valueOf(routes[0]),Double.valueOf(routes[1])));
+            }
+            mMap.addPolyline(polylineOptions);
+        }
+    }
+
+    private void drawVuelta(){
+        //Vuelta
+        if (capsuleLineaDetalle.getTieneVuelta() == 1){
+            PolylineOptions polylineOptions = new PolylineOptions()
+                    .width(5)
+                    .color(Color.BLUE);
+
+            for (ArrayList<String> route:
+                    capsuleLineaDetalle.getPolilineaVuelta()) {
+                String[] routes = route.get(0).split(",");
+                polylineOptions.add(new LatLng(Double.valueOf(routes[0]),Double.valueOf(routes[1])));
+            }
+
+            mMap.addPolyline(polylineOptions);
+        }
+    }
+
+    private void drawParadas(boolean sentido){
+        //PARADAS
+        MarkerOptions markerOptions = new MarkerOptions();
+        LatLng pos;
+
+        for (Parada parada: capsuleParadas.getParadas()) {
+            if (sentido){
+                if (parada.getSentido().equals("1")){
+                    pos = parada.getPosition();
+                    markerOptions.position(pos);
+                    mMap.addMarker(markerOptions);
+                }
+            }else {
+                if (parada.getSentido().equals("2")){
+                    pos = parada.getPosition();
+                    markerOptions.position(pos);
+                    mMap.addMarker(markerOptions);
+                }
+            }
+        }
     }
 }

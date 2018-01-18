@@ -40,4 +40,10 @@ public class Const {
             public static final String LANG = "lang";
         }
     }
+
+    public class APP{
+        public static final String PACKAGE_NAME = "com.consorcio.consorciotransportesandalucia";
+        public static final String RECEIVER = PACKAGE_NAME + ".utils.RECIVER";
+        public static final String LOCATION_NAME_DATA_EXTRA  = PACKAGE_NAME + ".LOCATION_NAME_DATA_EXTRA ";
+    }
 }

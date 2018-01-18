@@ -39,7 +39,7 @@ public class ClienteApi {
         final OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(10, TimeUnit.SECONDS)
                 .writeTimeout(10, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(10, TimeUnit.SECONDS)
                 .build();
         miRetrofit = new Retrofit.Builder().baseUrl(Const.REST.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())

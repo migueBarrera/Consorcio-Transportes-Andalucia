@@ -52,6 +52,8 @@
     <string name="linea_detail_view_recorrido_title">Recorrido</string>
     <string name="linea_detail_view_main_termometro_ida">Ver paradas ida</string>
     <string name="linea_detail_view_main_termometro_vuelta">Ver paradas vuelta</string>
+    <string name="linea_detail_radio_button_ida">Ida</string>
+    <string name="linea_detail_radio_button_vuelta">Vuelta</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

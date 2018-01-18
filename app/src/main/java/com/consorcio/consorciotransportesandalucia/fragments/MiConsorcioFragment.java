@@ -1,12 +1,17 @@
 package com.consorcio.consorciotransportesandalucia.fragments;
 
-import android.content.Context;
+import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.consorcio.consorciotransportesandalucia.R;
 import com.consorcio.consorciotransportesandalucia.models.Consorcio;
@@ -14,13 +19,27 @@ import com.consorcio.consorciotransportesandalucia.utils.ClienteApi;
 import com.consorcio.consorciotransportesandalucia.utils.Const;
 import com.consorcio.consorciotransportesandalucia.utils.SharedPreferencesUtil;
 import com.consorcio.consorciotransportesandalucia.utils.Util;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.ContentValues.TAG;
 
-public class MiConsorcioFragment extends Fragment {
+
+public class MiConsorcioFragment extends Fragment implements OnMapReadyCallback {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,8 +48,11 @@ public class MiConsorcioFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
+    private Consorcio consorcio;
+    GoogleMap consorcioMap;
+    LatLng consorcioPos;
+    @BindView(R.id.fragment_mi_consorcio_consorcio)
+    RelativeLayout relativeLayoutMiConsorcio;
 
     public MiConsorcioFragment() {
         // Required empty public constructor
@@ -60,7 +82,26 @@ public class MiConsorcioFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_mi_consorcio, container, false);
+        ButterKnife.bind(this,v);
+
+        //Add support to map fragment
+        MapFragment mapFragment = (MapFragment) getActivity().getFragmentManager().findFragmentById(R.id.consorcio_map);
+        mapFragment.getMapAsync(this);
+        mapFragment.getView().setClickable(true);
+
+        addListener();
+
         return v;
+    }
+
+    private void addListener() {
+        relativeLayoutMiConsorcio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO Mostrar un listado con los consorcios disponibles y al selecionar uno cargar la nueva info
+
+            }
+        });
     }
 
     @Override
@@ -77,8 +118,9 @@ public class MiConsorcioFragment extends Fragment {
                 @Override
                 public void onResponse(Call<Consorcio> call, Response<Consorcio> response) {
                     if (response.isSuccessful()){
-                        Consorcio consorcio = response.body();
+                        consorcio = response.body();
                         setDataToView(consorcio);
+                        new GeocodeAsyncTask().execute();
                     }
                 }
 
@@ -91,29 +133,80 @@ public class MiConsorcioFragment extends Fragment {
     }
 
     private void setDataToView(Consorcio consorcio) {
-        //TODO desidir el diseño de la pagina y maquetar
+
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        /*if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }*/
+    public void onMapReady(GoogleMap googleMap) {
+        consorcioMap = googleMap;
+        googleMap.clear();
+        googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                        String uri = "http://maps.google.com/maps?daddr=" + consorcioPos.latitude + "," + consorcioPos.longitude;
+                        Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                        mapIntent.setPackage("com.google.android.apps.maps");
+                        if (mapIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+                            startActivity(mapIntent);
+                        }
+            }
+        });
+
+        if (consorcioPos!=null)
+            setPosToMap();
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
+    private void setPosToMap(){
+        MarkerOptions markerOptions = new MarkerOptions().position(consorcioPos);
+        //markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_b));
+        consorcioMap.addMarker(markerOptions);
+
+        consorcioMap.animateCamera(CameraUpdateFactory.newLatLngZoom(consorcioPos, 13));
+    }
+
+    class GeocodeAsyncTask extends AsyncTask<Void, Void, Address> {
+
+        String errorMessage = "";
+
+        @Override
+        protected void onPreExecute() {
+            //infoText.setVisibility(View.INVISIBLE);
+            //rogressBar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected Address doInBackground(Void ... none) {
+            Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
+            List<Address> addresses = null;
+
+
+                String name = consorcio.getDireccion();
+                try {
+                    String newName = name.split(",")[0];
+                    Util.log(newName);
+                    addresses = geocoder.getFromLocationName(newName, 1);
+                } catch (IOException e) {
+                    errorMessage = "Service not available";
+                    Log.e(TAG, errorMessage, e);
+                }
+
+            if(addresses != null && addresses.size() > 0)
+                return addresses.get(0);
+
+            return null;
+        }
+
+        protected void onPostExecute(Address address) {
+            if(address != null) {
+                consorcioPos = new LatLng(address.getLatitude(),address.getLongitude());
+               // progressBar.setVisibility(View.INVISIBLE);
+                //infoText.setVisibility(View.VISIBLE);
+                //infoText.setText(errorMessage);
+                if (consorcioMap != null)
+                    setPosToMap();
+            }
+        }
     }
 
 
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 }

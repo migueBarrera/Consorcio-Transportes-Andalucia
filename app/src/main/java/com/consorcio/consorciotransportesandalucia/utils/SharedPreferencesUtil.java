@@ -34,6 +34,6 @@ public class SharedPreferencesUtil {
 
     public static int getInt(Activity parentActivity,String key){
         SharedPreferences sharedPreferences = getSharedPreferences(parentActivity);
-        return sharedPreferences.getInt(key,1);
+        return sharedPreferences.getInt(key,2);
     }
 }
