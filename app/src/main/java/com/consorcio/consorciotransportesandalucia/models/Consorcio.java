@@ -83,4 +83,9 @@ public class Consorcio {
     public String getProvincia() { return this.provincia; }
 
     public void setProvincia(String provincia) { this.provincia = provincia; }
+
+    @Override
+    public String toString() {
+        return getNombre();
+    }
 }

@@ -49,16 +49,22 @@ public class LineasAdapter extends RecyclerView.Adapter<LineasAdapter.ViewHolder
         Drawable drawable = null;
 
         if (linea.modo == null){
-            linea.setModo(TipoModoLinea.Default);
+            linea.setModo(TipoModoLinea.AUTOBÚS_INTERURBANO);
         }
 
         switch (linea.getModo()){
 
+            case AUTOBÚS_INTERURBANO:
+            case Autobús:
             case Bus:
                 drawable = context.getDrawable(R.mipmap.bus);
                 break;
+            case CERCANÍAS:
             case Tren:
                 drawable = context.getDrawable(R.mipmap.train);
+                break;
+            case BARCO:
+                drawable = context.getResources().getDrawable(R.drawable.boat);
                 break;
             case Default:
                 drawable = context.getDrawable(R.mipmap.route);

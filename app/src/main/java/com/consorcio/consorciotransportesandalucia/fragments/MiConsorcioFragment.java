@@ -1,5 +1,7 @@
 package com.consorcio.consorciotransportesandalucia.fragments;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
@@ -7,16 +9,24 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.consorcio.consorciotransportesandalucia.R;
+import com.consorcio.consorciotransportesandalucia.models.CapsuleConsorcio;
 import com.consorcio.consorciotransportesandalucia.models.Consorcio;
 import com.consorcio.consorciotransportesandalucia.utils.ClienteApi;
 import com.consorcio.consorciotransportesandalucia.utils.Const;
+import com.consorcio.consorciotransportesandalucia.utils.MessageUtil;
 import com.consorcio.consorciotransportesandalucia.utils.SharedPreferencesUtil;
 import com.consorcio.consorciotransportesandalucia.utils.Util;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -25,8 +35,11 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -51,8 +64,20 @@ public class MiConsorcioFragment extends Fragment implements OnMapReadyCallback 
     private Consorcio consorcio;
     GoogleMap consorcioMap;
     LatLng consorcioPos;
+    @BindView(R.id.fragment_mi_consorcio_title)
+    TextView textViewTitle;
+    @BindView(R.id.fragment_mi_consorcio_subtitle)
+    TextView textViewSubTitle;
     @BindView(R.id.fragment_mi_consorcio_consorcio)
     RelativeLayout relativeLayoutMiConsorcio;
+    private ArrayList<Consorcio> listConsorcios;
+    Dialog progressDialog;
+    @BindView(R.id.fragment_mi_consorcio_email)
+    ImageView imageViewEmail;
+    @BindView(R.id.fragment_mi_consorcio_web)
+    ImageView imageViewWeb;
+    @BindView(R.id.fragment_mi_consorcio_phone)
+    ImageView imageViewPhone;
 
     public MiConsorcioFragment() {
         // Required empty public constructor
@@ -98,10 +123,63 @@ public class MiConsorcioFragment extends Fragment implements OnMapReadyCallback 
         relativeLayoutMiConsorcio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO Mostrar un listado con los consorcios disponibles y al selecionar uno cargar la nueva info
+                //Con esto nos ahorramos volver a llamar al servicio si ya ha sido llamado anteriormente
+                if (listConsorcios != null && listConsorcios.size() != 0)
+                    showDialogConsorcios();
+                else
+                    loadConsorcios();
 
             }
         });
+    }
+    private void loadConsorcios(){
+        if (Util.hasInternet(getContext())){
+            //Activamos el progress
+            progressDialog = ProgressDialog.show(getContext(), "", getResources().getString(R.string.progress_lineas), true);
+            ClienteApi clienteApi = new ClienteApi();
+            clienteApi.getConsorcios(null, 0, new Callback<CapsuleConsorcio>() {
+                @Override
+                public void onResponse(Call<CapsuleConsorcio> call, Response<CapsuleConsorcio> response) {
+                    progressDialog.dismiss();
+                    if (response.isSuccessful()){
+                        listConsorcios = response.body().getConsorcios();
+                        showDialogConsorcios();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<CapsuleConsorcio> call, Throwable t) {
+                    progressDialog.dismiss();
+                }
+            });
+        }
+    }
+
+    private void showDialogConsorcios(){
+        final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
+        final LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.dialog_list_consorcio, null);
+        dialogBuilder.setView(dialogView);
+        final AlertDialog b = dialogBuilder.create();
+
+        ListView listConsorcio = (ListView) dialogView.findViewById(R.id.dialog_list_consorcio_list);
+        listConsorcio.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Consorcio consorcio = (Consorcio) listConsorcios.get(i);
+                b.dismiss();
+
+                SharedPreferencesUtil.setInt(getActivity(),Const.SHAREDKEYS.ID_CONSORCIO,Integer.valueOf(consorcio.getIdConsorcio()));
+                loadDataConsorcio();
+            }
+        });
+
+        ArrayAdapter<Consorcio> adapter = new ArrayAdapter<Consorcio>(getContext(),android.R.layout.simple_list_item_1, listConsorcios);
+        listConsorcio.setAdapter(adapter);
+
+        b.setCancelable(true);
+
+        b.show();
     }
 
     @Override
@@ -119,8 +197,11 @@ public class MiConsorcioFragment extends Fragment implements OnMapReadyCallback 
                 public void onResponse(Call<Consorcio> call, Response<Consorcio> response) {
                     if (response.isSuccessful()){
                         consorcio = response.body();
-                        setDataToView(consorcio);
+                        Gson gson = new Gson();
+                        SharedPreferencesUtil.setString(getActivity(),Const.SHAREDKEYS.MY_CONSORCIO,gson.toJson(consorcio,Consorcio.class));
+                        setDataToView();
                         new GeocodeAsyncTask().execute();
+                        //geocodeAsyncTask.execute();
                     }
                 }
 
@@ -132,8 +213,39 @@ public class MiConsorcioFragment extends Fragment implements OnMapReadyCallback 
         }
     }
 
-    private void setDataToView(Consorcio consorcio) {
+    private void setDataToView() {
+        textViewTitle.setText(consorcio.getNombre());
+        textViewSubTitle.setText(consorcio.getNombreCorto());
 
+        imageViewWeb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!consorcio.getWeb().isEmpty())
+                    Util.goToWeb(getContext(),consorcio.getWeb());
+                else
+                    MessageUtil.showSnackbar(getActivity().getWindow().getDecorView().getRootView(),getContext(),R.string.mi_consorcio_no_web);
+            }
+        });
+
+        imageViewEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!consorcio.getEmail().isEmpty())
+                    Util.sendEmail(getContext(),consorcio.getEmail());
+                else
+                    MessageUtil.showSnackbar(getActivity().getWindow().getDecorView().getRootView(),getContext(),R.string.mi_consorcio_no_email);
+            }
+        });
+
+        imageViewPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!consorcio.getTlf1().isEmpty())
+                    Util.callToNumber(getContext(),consorcio.getTlf1());
+                else
+                    MessageUtil.showSnackbar(getActivity().getWindow().getDecorView().getRootView(),getContext(),R.string.mi_consorcio_no_phone);
+            }
+        });
     }
 
     @Override
@@ -181,10 +293,10 @@ public class MiConsorcioFragment extends Fragment implements OnMapReadyCallback 
 
 
                 String name = consorcio.getDireccion();
+                Util.log(consorcio);
                 try {
-                    String newName = name.split(",")[0];
-                    Util.log(newName);
-                    addresses = geocoder.getFromLocationName(newName, 1);
+                    name = name+ " , " + consorcio.getCiudad()+ " , España";
+                    addresses = geocoder.getFromLocationName(name, 1);
                 } catch (IOException e) {
                     errorMessage = "Service not available";
                     Log.e(TAG, errorMessage, e);

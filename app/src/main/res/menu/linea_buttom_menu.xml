@@ -3,15 +3,18 @@
 
     <item
         android:id="@+id/navigation_linea_info"
-        android:title="Información" />
+        android:title="Información"
+        android:icon="@drawable/ic_info_outline_black_24dp"/>
 
     <item
         android:id="@+id/navigation_linea_horario"
-        android:title="Horario" />
+        android:title="Horario"
+        android:icon="@drawable/ic_schedule_black_24dp"/>
 
     <item
         android:id="@+id/navigation_linea_itinerary"
-        android:title="Itinerario" />
+        android:title="Itinerario"
+        android:icon="@drawable/ic_timeline_black_24dp"/>
 
 
 

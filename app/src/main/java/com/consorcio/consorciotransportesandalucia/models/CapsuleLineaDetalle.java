@@ -25,7 +25,7 @@ public class CapsuleLineaDetalle {
 
     public void setNombre(String nombre) { this.nombre = nombre; }
 
-    private TipoModoLinea modo;
+    public TipoModoLinea modo;
 
     public TipoModoLinea getModo() { return this.modo; }
 

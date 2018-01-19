@@ -11,7 +11,7 @@ public class Nucleo {
 
     public void setIdNucleo(String idNucleo) { this.idNucleo = idNucleo; }
 
-    private String idMunicipio;
+    public String idMunicipio;
 
     public String getIdMunicipio() { return this.idMunicipio; }
 

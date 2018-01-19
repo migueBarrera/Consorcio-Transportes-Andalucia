@@ -5,6 +5,11 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorBackground">#c6cad2</color>
 
+    <selector name="colorsItemsBottomNavigation" xmlns:android="http://schemas.android.com/apk/res/android">
+        <item android:state_checked="true" android:color="@color/colorAccent" />
+        <item android:state_checked="false" android:color="@color/basic_black"/>
+    </selector>
+
     <color name="basic_white">#ffffff</color>
     <color name="basic_black">#000000</color>
 

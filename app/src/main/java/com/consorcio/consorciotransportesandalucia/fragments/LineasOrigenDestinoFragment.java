@@ -241,8 +241,9 @@ public class LineasOrigenDestinoFragment extends Fragment {
         if (listNucleos != null){
             for (Nucleo n:
                     listNucleos) {
-                if (Integer.valueOf(n.getIdMunicipio()) == idMunicipio)
-                    list.add(n);
+                if (n.idMunicipio != null)
+                    if (Integer.valueOf(n.getIdMunicipio()) == idMunicipio)
+                        list.add(n);
 
             }
 

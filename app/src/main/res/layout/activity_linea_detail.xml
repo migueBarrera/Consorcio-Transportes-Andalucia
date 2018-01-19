@@ -90,6 +90,9 @@
         android:layout_height="wrap_content"
         android:background="?android:attr/windowBackground"
         app:menu="@menu/linea_buttom_menu"
+        app:itemIconTint="@color/colorBackground"
+        app:itemTextColor="@color/basic_black"
+
         android:layout_alignParentBottom="true"/>
 </RelativeLayout>
 

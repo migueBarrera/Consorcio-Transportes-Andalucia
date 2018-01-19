@@ -5,5 +5,5 @@ package com.consorcio.consorciotransportesandalucia.models;
  */
 
 public enum TipoModoLinea {
-    Bus,Tren,Default,Autobús
+    Bus,Tren,Default,Autobús,BARCO,CERCANÍAS,AUTOBÚS_INTERURBANO;
 }

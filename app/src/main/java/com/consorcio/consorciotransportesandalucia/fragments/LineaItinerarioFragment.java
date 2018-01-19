@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.consorcio.consorciotransportesandalucia.R;
 import com.consorcio.consorciotransportesandalucia.interfaces.LineaDetailInterface;
@@ -61,6 +63,10 @@ public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallb
     RadioButton radioButtonIda;
     @BindView(R.id.linea_detail_radio_button_vuelta)
     RadioButton radioButtonVuelta;
+    @BindView(R.id.linea_detail_no_itinerary)
+    TextView textViewNoItinerary;
+    @BindView(R.id.linea_detail_map_layout)
+    RelativeLayout relativeLayoutMapLayout;
 
     private View.OnClickListener listenerRadioButton = new View.OnClickListener() {
         @Override
@@ -132,10 +138,10 @@ public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallb
     }
 
     private void configureRadioButtons() {
-        if (capsuleLineaDetalle.getTieneIda() == 0)
+        if (capsuleLineaDetalle.getTieneIda() == 0 || capsuleLineaDetalle.getPolilineaIda().size() == 0 || capsuleLineaDetalle.getPolilineaIda().size() == 1)
             radioButtonIda.setVisibility(View.GONE);
 
-        if (capsuleLineaDetalle.getTieneVuelta() == 0)
+        if (capsuleLineaDetalle.getTieneVuelta() == 0 || capsuleLineaDetalle.getPolilineaVuelta().size() == 0 || capsuleLineaDetalle.getPolilineaVuelta().size() == 1)
             radioButtonVuelta.setVisibility(View.GONE);
     }
 
@@ -175,15 +181,18 @@ public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallb
     }
 
     private void setDataToView() {
-        if (capsuleLineaDetalle.getTieneIda() == 1){
+        if (capsuleLineaDetalle.getTieneIda() == 1 && capsuleLineaDetalle.getPolilineaIda().size() != 0 && capsuleLineaDetalle.getPolilineaIda().size() != 1){
             drawIda();
             drawParadas(true);
             radioButtonIda.setChecked(true);
         }else {
-            if (capsuleLineaDetalle.getTieneVuelta() == 1){
+            if (capsuleLineaDetalle.getTieneVuelta() == 1 && capsuleLineaDetalle.getPolilineaVuelta().size() != 0 && capsuleLineaDetalle.getPolilineaVuelta().size() != 1){
                 drawVuelta();
                 drawParadas(false);
                 radioButtonVuelta.setChecked(true);
+            }else {
+                textViewNoItinerary.setVisibility(View.VISIBLE);
+                relativeLayoutMapLayout.setVisibility(View.GONE);
             }
         }
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.378176, -6.001057), 12));

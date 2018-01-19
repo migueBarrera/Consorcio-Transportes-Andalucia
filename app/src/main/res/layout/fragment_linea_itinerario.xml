@@ -25,11 +25,27 @@
             android:text="@string/linea_detail_radio_button_vuelta" />
     </RadioGroup>
 
-    <fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    <RelativeLayout
+        android:id="@+id/linea_detail_map_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.consorcio.consorciotransportesandalucia.fragments.LineaItinerarioFragment"/>
+        android:layout_height="match_parent">
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.consorcio.consorciotransportesandalucia.fragments.LineaItinerarioFragment"/>
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/linea_detail_no_itinerary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="35sp"
+        android:visibility="gone"
+        android:textAlignment="center"
+        android:text="@string/linea_detail_no_itinerary"/>
 
 </FrameLayout>

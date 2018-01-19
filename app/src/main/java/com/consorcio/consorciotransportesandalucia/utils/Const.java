@@ -13,6 +13,7 @@ public class Const {
     public class SHAREDKEYS{
         public static final String ID_CONSORCIO = "Id_consorcio";
         public static final String ID_LINEA = "Id_linea";
+        public static final String MY_CONSORCIO = "My_consorcio";
     }
 
     public class TAGS{

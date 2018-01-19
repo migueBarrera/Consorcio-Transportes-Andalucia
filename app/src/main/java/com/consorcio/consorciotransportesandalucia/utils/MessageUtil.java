@@ -24,4 +24,11 @@ public class MessageUtil {
                 Snackbar.LENGTH_INDEFINITE)
                 .setAction(context.getString(actionStringId), listener).show();
     }
+
+    public static void showSnackbar(View view, Context context, final int mainTextStringId) {
+        Snackbar.make(
+                view.findViewById(android.R.id.content),
+                context.getString(mainTextStringId),
+                Snackbar.LENGTH_LONG).show();
+    }
 }

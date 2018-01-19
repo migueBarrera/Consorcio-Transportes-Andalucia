@@ -1,5 +1,6 @@
 package com.consorcio.consorciotransportesandalucia.activitys;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.support.design.widget.AppBarLayout;
@@ -26,10 +27,12 @@ import com.consorcio.consorciotransportesandalucia.fragments.LineaItinerarioFrag
 import com.consorcio.consorciotransportesandalucia.interfaces.LineaDetailInterface;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleLineaDetalle;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleLineas;
+import com.consorcio.consorciotransportesandalucia.models.Consorcio;
 import com.consorcio.consorciotransportesandalucia.utils.ClienteApi;
 import com.consorcio.consorciotransportesandalucia.utils.Const;
 import com.consorcio.consorciotransportesandalucia.utils.SharedPreferencesUtil;
 import com.consorcio.consorciotransportesandalucia.utils.Util;
+import com.google.gson.Gson;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,12 +62,14 @@ public class LineaDetailActivity extends AppCompatActivity implements LineaDetai
     MyNestedScrollView nestedScrollView;
     @BindView(R.id.collapsing_toolbar)
     CollapsingToolbarLayout collapsingToolbarLayout;
+    Activity parentActivity;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_linea_detail);
+        this.parentActivity = this;
         ButterKnife.bind(this);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         configureToolbar();
@@ -113,9 +118,17 @@ public class LineaDetailActivity extends AppCompatActivity implements LineaDetai
                 if (response.isSuccessful()){
                     capsuleLineaDetalle = response.body();
 
-                    //Enviamos el titulo al toolbar
-                    String[] nameLinea = capsuleLineaDetalle.getNombre().split(" ");
-                    setTitleToolbar("Linea: "+nameLinea[0]);
+                    Gson gson = new Gson();
+                    Consorcio consorcio = gson.fromJson(SharedPreferencesUtil.getString(parentActivity,Const.SHAREDKEYS.MY_CONSORCIO), Consorcio.class);
+                    String title = "Linea: ";
+                    if (consorcio.getCiudad().equals("Sevilla")){
+                        String[] nameLinea = capsuleLineaDetalle.getNombre().split(" ");
+                        title = title + nameLinea[0];
+                    }else {
+                        title = title + capsuleLineaDetalle.getCodigo();
+                    }
+
+                    setTitleToolbar(title);
 
                     //Inicializamos el MapsFragemnts al inicio
                     Fragment lineaInfoFragment= new LineaInfoFragment();

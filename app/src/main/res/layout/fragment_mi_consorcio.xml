@@ -3,9 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginEnd="24sp"
-    android:layout_marginStart="24sp"
-    android:layout_marginBottom="24sp"
+    android:layout_marginEnd="22sp"
+    android:layout_marginStart="22sp"
+    android:layout_marginBottom="22sp"
     tools:context="com.consorcio.consorciotransportesandalucia.fragments.MiConsorcioFragment">
 
     <LinearLayout
@@ -17,8 +17,9 @@
             android:id="@+id/fragment_mi_consorcio_consorcio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8sp"
-            android:layout_marginTop="24sp">
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="12sp"
+            android:layout_marginTop="22sp">
 
             <TextView
                 android:id="@+id/fragment_mi_consorcio_title"
@@ -36,18 +37,19 @@
                 android:layout_height="15sp"
                 android:layout_alignParentTop="true"
                 app:srcCompat="@drawable/ic_edit"
-                android:layout_marginStart="5sp"
+                android:layout_marginLeft="5sp"
                 android:elevation="@dimen/general_elevation"
                 android:layout_toEndOf="@id/fragment_mi_consorcio_title"/>
         </RelativeLayout>
 
 
         <TextView
+            android:id="@+id/fragment_mi_consorcio_subtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="CTMAS"
             android:textAlignment="center"
-            android:layout_marginBottom="12sp"/>
+            android:layout_marginBottom="18sp"/>
 
         <FrameLayout
             android:id="@+id/map_container"
@@ -58,7 +60,7 @@
                 android:id="@+id/consorcio_map"
                 class="com.google.android.gms.maps.MapFragment"
                 android:layout_width="match_parent"
-                android:layout_height="135sp" />
+                android:layout_height="160sp" />
 
            <ImageView
                 android:layout_width="match_parent"
@@ -72,6 +74,42 @@
                 android:src="@android:color/transparent" />
 
         </FrameLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80sp"
+            android:layout_marginBottom="40sp"
+            android:layout_marginStart="50sp"
+            android:layout_marginEnd="50sp">
+
+            <ImageView
+                android:id="@+id/fragment_mi_consorcio_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:src="@drawable/mail"
+                android:layout_alignParentStart="true"/>
+
+            <ImageView
+                android:id="@+id/fragment_mi_consorcio_web"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/web"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/fragment_mi_consorcio_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/phone"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
 
     </LinearLayout>
 

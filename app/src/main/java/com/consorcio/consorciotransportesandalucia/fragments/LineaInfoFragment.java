@@ -22,6 +22,7 @@ import com.consorcio.consorciotransportesandalucia.interfaces.RecyclerOnItemClic
 import com.consorcio.consorciotransportesandalucia.models.CapsuleLineaDetalle;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleNoticias;
 import com.consorcio.consorciotransportesandalucia.models.Noticia;
+import com.consorcio.consorciotransportesandalucia.models.TipoModoLinea;
 import com.consorcio.consorciotransportesandalucia.utils.ClienteApi;
 import com.consorcio.consorciotransportesandalucia.utils.HeadersHelpers;
 import com.consorcio.consorciotransportesandalucia.utils.Util;
@@ -121,14 +122,24 @@ public class LineaInfoFragment extends Fragment {
 
     private void setIcon() {
         Drawable drawable = null;
+
+        if (capsuleLineaDetalle.modo == null){
+            capsuleLineaDetalle.setModo(TipoModoLinea.AUTOBÚS_INTERURBANO);
+        }
+
         switch (capsuleLineaDetalle.getModo()){
 
+            case AUTOBÚS_INTERURBANO:
             case Autobús:
             case Bus:
                 drawable = this.getResources().getDrawable(R.mipmap.bus);
                 break;
+            case CERCANÍAS:
             case Tren:
                 drawable = this.getResources().getDrawable(R.mipmap.train);
+                break;
+            case BARCO:
+                drawable = this.getResources().getDrawable(R.drawable.boat);
                 break;
             case Default:
                 drawable = this.getResources().getDrawable(R.mipmap.bus);
@@ -207,9 +218,10 @@ public class LineaInfoFragment extends Fragment {
     }
 
     private void setRecorrido() {
-        String[] recorrido = capsuleLineaDetalle.getNombre().split(" ");
-        int length = recorrido[0].length();
-        viewRecorridoContent.setText(capsuleLineaDetalle.getNombre().substring(length));
+        //String[] recorrido = capsuleLineaDetalle.getNombre().split(" ");
+        //int length = recorrido[0].length();
+        //viewRecorridoContent.setText(capsuleLineaDetalle.getNombre().substring(length));
+        viewRecorridoContent.setText(capsuleLineaDetalle.getNombre());
     }
 
     private void setOperadora() {

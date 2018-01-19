@@ -54,6 +54,11 @@
     <string name="linea_detail_view_main_termometro_vuelta">Ver paradas vuelta</string>
     <string name="linea_detail_radio_button_ida">Ida</string>
     <string name="linea_detail_radio_button_vuelta">Vuelta</string>
+    <string name="linea_detail_no_itinerary">Lo sentimos ,  la junta no contiene datos sobre este itinerario</string>
+
+    <string name="mi_consorcio_no_email">No tenemos el email de este consorcio</string>
+    <string name="mi_consorcio_no_web">No tenemos la web de este consorcio</string>
+    <string name="mi_consorcio_no_phone">No tenemos el teléfono de este consorcio</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
