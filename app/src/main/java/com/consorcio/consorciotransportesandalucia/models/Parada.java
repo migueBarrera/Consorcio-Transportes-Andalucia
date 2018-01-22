@@ -34,17 +34,19 @@ public class Parada implements ClusterItem {
 
     public void setNombre(String nombre) { this.nombre = nombre; }
 
-    private double latitud;
+    private String latitud;
 
-    public double getLatitud() { return this.latitud; }
+    public String getLatitud() {
+        return this.latitud;
+    }
 
-    public void setLatitud(double latitud) { this.latitud = latitud; }
+    public void setLatitud(String latitud) { this.latitud = latitud; }
 
-    private double longitud;
+    private String longitud;
 
-    public double getLongitud() { return this.longitud; }
+    public String getLongitud() { return this.longitud; }
 
-    public void setLongitud(double longitud) { this.longitud = longitud; }
+    public void setLongitud(String longitud) { this.longitud = longitud; }
 
     private String idMunicipio;
 
@@ -76,11 +78,11 @@ public class Parada implements ClusterItem {
 
     public void setSentido(String sentido) { this.sentido = sentido; }
 
-    private int orden;
+    private String orden;
 
-    public int getOrden() { return this.orden; }
+    public String getOrden() { return this.orden; }
 
-    public void setOrden(int orden) { this.orden = orden; }
+    public void setOrden(String orden) { this.orden = orden; }
 
     private String modos;
 
@@ -90,6 +92,18 @@ public class Parada implements ClusterItem {
 
     @Override
     public LatLng getPosition() {
-        return new LatLng(getLatitud(),getLongitud());
+        Double lat = null;
+        if(latitud == null || latitud.equals(""))
+            lat = 0.0;
+        else
+            lat = Double.valueOf(getLatitud());
+
+        Double lon = null;
+        if(longitud == null || longitud.equals(""))
+            lon = 0.0;
+        else
+            lon = Double.valueOf(getLongitud());
+
+        return new LatLng(lat,lon);
     }
 }

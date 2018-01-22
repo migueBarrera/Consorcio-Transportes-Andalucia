@@ -10,8 +10,9 @@
         android:orientation="horizontal"
         android:elevation="@dimen/general_elevation"
         android:layout_margin="10sp"
-        android:background="@color/colorBackground"
-        android:alpha="0.5">
+        android:background="@drawable/layout_bg_rounded"
+        android:alpha="0.5"
+        android:paddingEnd="3sp">
 
         <RadioButton
             android:id="@+id/linea_detail_radio_button_ida"

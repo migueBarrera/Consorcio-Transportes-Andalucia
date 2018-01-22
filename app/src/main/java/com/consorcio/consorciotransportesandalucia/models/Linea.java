@@ -1,5 +1,7 @@
 package com.consorcio.consorciotransportesandalucia.models;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by migueBarreraBluumi on 11/01/2018.
  */
@@ -29,11 +31,40 @@ public class Linea {
 
     public void setHayNoticias(String hayNoticias) { this.hayNoticias = hayNoticias; }
 
-    public TipoModoLinea modo;
+    public String modo;
+
+    public TipoModoLinea getModo() {
+        TipoModoLinea var = null;
+
+        if (modo.equals("AUTOBÚS INTERURBANO"))
+            var = TipoModoLinea.AUTOBÚS_INTERURBANO;
+        else if (modo.equals("Bus"))
+            var = TipoModoLinea.Bus;
+        else if (modo.equals("Tren"))
+            var = TipoModoLinea.Tren;
+        else if (modo.equals("Autobús") || modo.equals("AUTOBUS"))
+            var = TipoModoLinea.Autobús;
+        else if (modo.equals("BARCO"))
+            var = TipoModoLinea.BARCO;
+        else if (modo.equals("CERCANÍAS"))
+            var = TipoModoLinea.CERCANÍAS;
+        else if (modo.equals("MEDIA_DISTANCIA"))
+            var = TipoModoLinea.MEDIA_DISTANCIA;
+        else
+            var = TipoModoLinea.Default;
+
+        return var;
+    }
+
+    public void setModoString(String modoString) {
+        this.modo = modoString;
+    }
+
+    /*public TipoModoLinea modo;
 
     public TipoModoLinea getModo() { return this.modo; }
 
-    public void setModo(TipoModoLinea modo) { this.modo = modo; }
+    public void setModo(TipoModoLinea modo) { this.modo = modo; }*/
 
     private String idModo;
 

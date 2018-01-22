@@ -53,7 +53,7 @@ public class ClienteApi {
     }
 
     public void getPuntosVenta(Map<String, String> mapHeaders,int idConsorcio, Callback<CapsulePuntosVenta> getPuntosVentaCallback) {
-        service.getPuntosVenta(idConsorcio).enqueue(getPuntosVentaCallback);
+        service.getPuntosVenta(idConsorcio,mapHeaders).enqueue(getPuntosVentaCallback);
     }
 
     public void getConsorcios(Map<String, String> mapHeaders,int idConsorcio, Callback<CapsuleConsorcio> getConsorciosCallback) {

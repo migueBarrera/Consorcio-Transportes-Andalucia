@@ -32,11 +32,46 @@ public class PuntosVenta implements ClusterItem{
 
     public void setIdMunicipio(String idMunicipio) { this.idMunicipio = idMunicipio; }
 
-    public TipoPuntoVenta tipo;
+    public String tipo;
 
-    public TipoPuntoVenta getTipo() { return this.tipo; }
+    public TipoPuntoVenta getTipo() {
+        TipoPuntoVenta var = null;
 
-    public void setTipo(TipoPuntoVenta tipo) { this.tipo = tipo; }
+        if (tipo.equals("Comercio") || tipo.equals("COMERCIO") || tipo.equals(""))
+            var = TipoPuntoVenta.Comercio;
+        else if (tipo.equals("Estanco") || tipo.equals("ESTANCO"))
+            var = TipoPuntoVenta.Estanco;
+        else if (tipo.equals("Kiosco") || tipo.equals("KIOSKO") || tipo.equals("Kiosko"))
+            var = TipoPuntoVenta.Kiosco;
+        else if (tipo.equals("Papelería"))
+            var = TipoPuntoVenta.Papelería;
+        else if (tipo.equals("Taquilla"))
+            var = TipoPuntoVenta.Taquilla;
+        else if (tipo.equals("Copistería"))
+            var = TipoPuntoVenta.Copistería;
+        else if (tipo.equals("Kiosko Librería"))
+            var = TipoPuntoVenta.Kiosko_Librería;
+        else if (tipo.equals("Tienda"))
+            var = TipoPuntoVenta.Tienda;
+        else if (tipo.equals("Prensa"))
+            var = TipoPuntoVenta.Prensa;
+        else if (tipo.equals("Bar"))
+            var = TipoPuntoVenta.Bar;
+        else if (tipo.equals("Información"))
+            var = TipoPuntoVenta.Información;
+        else if (tipo.equals("Alimentación"))
+            var = TipoPuntoVenta.Alimentación;
+        else if (tipo.equals("Metro") || tipo.equals("CTMAS"))
+            var = TipoPuntoVenta.Metro;
+        else if (tipo.equals("OTROS"))
+            var = TipoPuntoVenta.Default;
+        else
+            var = TipoPuntoVenta.Default;
+
+        return var;
+    }
+
+    public void setTipo(String tipo) { this.tipo = tipo; }
 
     private String municipio;
 

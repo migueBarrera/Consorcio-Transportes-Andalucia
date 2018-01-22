@@ -32,7 +32,7 @@ public interface RestInterface {
     Call<CapsuleParadas> getParadas(@Path("idConsorcio") int idConsorcio);
 
     @GET(Const.REST.GET_PUNTOS_DE_VENTAS)
-    Call<CapsulePuntosVenta> getPuntosVenta(@Path("idConsorcio") int idConsorcio);
+    Call<CapsulePuntosVenta> getPuntosVenta(@Path("idConsorcio") int idConsorcio,@QueryMap Map<String, String> options);
 
     @GET(Const.REST.GET_CONSORCIOS)
     Call<CapsuleConsorcio> getConsorcios(@Path("idConsorcio") int idConsorcio);

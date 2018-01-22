@@ -221,6 +221,7 @@ public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallb
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        mMap.getUiSettings().setCompassEnabled(false);
         mMap.setMyLocationEnabled(true);
 
         //TODO enviar la posicion del usuario

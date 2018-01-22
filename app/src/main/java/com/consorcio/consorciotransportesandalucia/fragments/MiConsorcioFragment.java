@@ -119,6 +119,15 @@ public class MiConsorcioFragment extends Fragment implements OnMapReadyCallback 
         return v;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        android.app.FragmentManager fragmentManager = getActivity().getFragmentManager();
+        android.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.remove(getActivity().getFragmentManager().findFragmentById(R.id.consorcio_map));
+        fragmentTransaction.commit();
+    }
+
     private void addListener() {
         relativeLayoutMiConsorcio.setOnClickListener(new View.OnClickListener() {
             @Override

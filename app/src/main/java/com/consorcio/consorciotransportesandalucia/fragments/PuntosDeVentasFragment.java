@@ -20,6 +20,7 @@ import com.consorcio.consorciotransportesandalucia.renders.ParadasCustomClusterR
 import com.consorcio.consorciotransportesandalucia.renders.PuntosVentaCustomClusterRenderer;
 import com.consorcio.consorciotransportesandalucia.utils.ClienteApi;
 import com.consorcio.consorciotransportesandalucia.utils.Const;
+import com.consorcio.consorciotransportesandalucia.utils.HeadersHelpers;
 import com.consorcio.consorciotransportesandalucia.utils.SharedPreferencesUtil;
 import com.consorcio.consorciotransportesandalucia.utils.Util;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -99,7 +100,7 @@ public class PuntosDeVentasFragment extends Fragment implements OnMapReadyCallba
             progressDialog = ProgressDialog.show(getContext(), "", getResources().getString(R.string.progress_puntos_ventas), true);
             ClienteApi miClienteApi = new ClienteApi();
             int idConsorcio = SharedPreferencesUtil.getInt(getActivity(), Const.SHAREDKEYS.ID_CONSORCIO);
-            miClienteApi.getPuntosVenta(null, idConsorcio, new Callback<CapsulePuntosVenta>() {
+            miClienteApi.getPuntosVenta(HeadersHelpers.getHeaders(), idConsorcio, new Callback<CapsulePuntosVenta>() {
                 @Override
                 public void onResponse(Call<CapsulePuntosVenta> call, Response<CapsulePuntosVenta> response) {
                     progressDialog.dismiss();

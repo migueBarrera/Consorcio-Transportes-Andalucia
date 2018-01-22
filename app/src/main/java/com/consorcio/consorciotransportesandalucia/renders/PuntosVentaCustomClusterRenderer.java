@@ -33,9 +33,9 @@ public class PuntosVentaCustomClusterRenderer extends DefaultClusterRenderer<Pun
         BitmapDescriptor markerDescriptor = null;
 
 
-        if (item.tipo == null) {
+        /*if (item.tipo == null) {
             item.setTipo(TipoPuntoVenta.Default);
-        }
+        }*/
 
         String type = "";
 
@@ -46,7 +46,7 @@ public class PuntosVentaCustomClusterRenderer extends DefaultClusterRenderer<Pun
                     type = TipoPuntoVenta.Comercio.toString();
                     break;
                 case Estanco:
-                    markerDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.bussines);
+                    markerDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.smoke);
                     type = TipoPuntoVenta.Estanco.toString();
                     break;
                 case Papelería:
@@ -57,10 +57,44 @@ public class PuntosVentaCustomClusterRenderer extends DefaultClusterRenderer<Pun
                     markerDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.kiosko);
                     type = TipoPuntoVenta.Kiosco.toString();
                     break;
+                case Taquilla:
+                    markerDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.ticket);
+                    type = TipoPuntoVenta.Taquilla.toString();
+                    break;
+                case Copistería:
+                    markerDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.papeleria);
+                    type = TipoPuntoVenta.Copistería.toString();
+                    break;
+                case Kiosko_Librería:
+                    markerDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.kiosko);
+                    type = TipoPuntoVenta.Kiosko_Librería.toString();
+                    break;
+                case Tienda:
+                    markerDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.bussines);
+                    type = TipoPuntoVenta.Tienda.toString();
+                    break;
+                case Alimentación:
+                    markerDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.bar);
+                    type = TipoPuntoVenta.Alimentación.toString();
+                    break;
+                case Información:
+                    markerDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.info);
+                    type = TipoPuntoVenta.Información.toString();
+                    break;
+                case Bar:
+                    markerDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.bar);
+                    type = TipoPuntoVenta.Bar.toString();
+                    break;
+                case Prensa:
+                    markerDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.news);
+                    type = TipoPuntoVenta.Prensa.toString();
+                    break;
+                case Metro:
+                    markerDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.metro);
+                    type = TipoPuntoVenta.Metro.toString();
+                    break;
                 case Default:
-                    markerDescriptor = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED);
-                    if (item.getDireccion().contains("Metro") || item.getDireccion().contains("METRO"))
-                        markerDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.metro);
+                    markerDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.info);
                     type = context.getString(R.string.info_bussines_unknow_puntos_venta);
                     break;
             }

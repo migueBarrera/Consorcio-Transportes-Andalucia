@@ -17,6 +17,14 @@ import com.consorcio.consorciotransportesandalucia.models.TipoModoLinea;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.consorcio.consorciotransportesandalucia.models.TipoModoLinea.AUTOBÚS_INTERURBANO;
+import static com.consorcio.consorciotransportesandalucia.models.TipoModoLinea.Autobús;
+import static com.consorcio.consorciotransportesandalucia.models.TipoModoLinea.BARCO;
+import static com.consorcio.consorciotransportesandalucia.models.TipoModoLinea.Bus;
+import static com.consorcio.consorciotransportesandalucia.models.TipoModoLinea.CERCANÍAS;
+import static com.consorcio.consorciotransportesandalucia.models.TipoModoLinea.Default;
+import static com.consorcio.consorciotransportesandalucia.models.TipoModoLinea.Tren;
+
 /**
  * Created by migueBarreraBluumi on 11/01/2018.
  */
@@ -48,9 +56,6 @@ public class LineasAdapter extends RecyclerView.Adapter<LineasAdapter.ViewHolder
         holder.subTitle.setText(linea.getNombre());
         Drawable drawable = null;
 
-        if (linea.modo == null){
-            linea.setModo(TipoModoLinea.AUTOBÚS_INTERURBANO);
-        }
 
         switch (linea.getModo()){
 
@@ -59,6 +64,7 @@ public class LineasAdapter extends RecyclerView.Adapter<LineasAdapter.ViewHolder
             case Bus:
                 drawable = context.getDrawable(R.mipmap.bus);
                 break;
+            case MEDIA_DISTANCIA:
             case CERCANÍAS:
             case Tren:
                 drawable = context.getDrawable(R.mipmap.train);

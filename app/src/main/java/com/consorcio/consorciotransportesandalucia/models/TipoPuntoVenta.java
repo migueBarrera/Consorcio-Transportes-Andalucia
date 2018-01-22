@@ -5,5 +5,5 @@ package com.consorcio.consorciotransportesandalucia.models;
  */
 
 public enum TipoPuntoVenta {
-    Comercio,Estanco,Papelería,Kiosco,Default
+    Comercio,Estanco,Papelería,Kiosco,Taquilla,Copistería,Kiosko_Librería,Tienda,Alimentación,Información,Bar,Prensa,Metro,Default
 }
