@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
@@ -24,14 +25,17 @@ import com.consorcio.consorciotransportesandalucia.activitys.LineaDetailActivity
 import com.consorcio.consorciotransportesandalucia.adapters.LineasAdapter;
 import com.consorcio.consorciotransportesandalucia.adapters.LineasHorariosAdapter;
 import com.consorcio.consorciotransportesandalucia.interfaces.RecyclerOnItemClickListener;
+import com.consorcio.consorciotransportesandalucia.models.CapsuleLineas;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleLineasPorNucleo;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleMunicipio;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleNucleo;
 import com.consorcio.consorciotransportesandalucia.models.Horario;
+import com.consorcio.consorciotransportesandalucia.models.Linea;
 import com.consorcio.consorciotransportesandalucia.models.Municipio;
 import com.consorcio.consorciotransportesandalucia.models.Nucleo;
 import com.consorcio.consorciotransportesandalucia.utils.ClienteApi;
 import com.consorcio.consorciotransportesandalucia.utils.Const;
+import com.consorcio.consorciotransportesandalucia.utils.HeadersHelpers;
 import com.consorcio.consorciotransportesandalucia.utils.SharedPreferencesUtil;
 import com.consorcio.consorciotransportesandalucia.utils.Util;
 import com.google.gson.Gson;
@@ -65,14 +69,16 @@ public class LineasOrigenDestinoFragment extends Fragment {
     Spinner spinnerMunOrigen;
     @BindView(R.id.spinner_nuc_origen)
     Spinner spinnerNucOrigen;
-    @BindView(R.id.spinner_mun_destino)
-    Spinner spinnerMunDestino;
-    @BindView(R.id.spinner_nuc_destino)
-    Spinner spinnerNucDestino;
+    //@BindView(R.id.spinner_mun_destino)
+    //Spinner spinnerMunDestino;
+    //@BindView(R.id.spinner_nuc_destino)
+    //Spinner spinnerNucDestino;
     ArrayList<Nucleo> listNucleos;
     ArrayList<Municipio> listMunicipios;
     @BindView(R.id.fragment_lineas_origen_destino_recycler_view)
     RecyclerView recyclerView;
+    @BindView(R.id.relative_layout_no_content)
+    RelativeLayout relativeLayoutNoContent;
     Dialog progressDialog;
 
     public LineasOrigenDestinoFragment() {
@@ -176,7 +182,7 @@ public class LineasOrigenDestinoFragment extends Fragment {
 
     private void setMunicipiosToView(ArrayList<Municipio> municipios){
         SpinnerAdapter adapter = new ArrayAdapter<Municipio>(getContext(),android.R.layout.simple_spinner_dropdown_item,municipios);
-        spinnerMunDestino.setAdapter(adapter);
+        /*spinnerMunDestino.setAdapter(adapter);
         spinnerMunDestino.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -188,7 +194,7 @@ public class LineasOrigenDestinoFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
-        });
+        });*/
         spinnerMunOrigen.setAdapter(adapter);
         spinnerMunOrigen.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -219,7 +225,19 @@ public class LineasOrigenDestinoFragment extends Fragment {
     private void setNucleosToView(ArrayList<Nucleo> listadoNucleos){
         final SpinnerAdapter adapter = new ArrayAdapter<Nucleo>(getContext(),android.R.layout.simple_spinner_dropdown_item,listadoNucleos);
         spinnerNucOrigen.setAdapter(adapter);
-        spinnerNucDestino.setAdapter(adapter);
+        spinnerNucOrigen.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Nucleo nucleoOrigen = (Nucleo) spinnerNucOrigen.getSelectedItem();
+                loadLineas(Integer.valueOf(nucleoOrigen.getIdNucleo()));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        /*spinnerNucDestino.setAdapter(adapter);
         spinnerNucDestino.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -233,7 +251,7 @@ public class LineasOrigenDestinoFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
-        });
+        });*/
     }
 
     private void filterNucleos(boolean origin ,int idMunicipio){
@@ -251,31 +269,27 @@ public class LineasOrigenDestinoFragment extends Fragment {
 
             if (origin)
                 spinnerNucOrigen.setAdapter(adapter);
-            else
-                spinnerNucDestino.setAdapter(adapter);
+            //else
+                //spinnerNucDestino.setAdapter(adapter);
         }
     }
 
-    private void loadLineas(int idNucleoOrigen,int idNucleoDestino){
+    private void loadLineas(int idNucleoOrigen){
         if (Util.hasInternet(getContext())){
             //Activamos el progress
             progressDialog = ProgressDialog.show(getContext(), "", getResources().getString(R.string.progress_lineas), true);
             ClienteApi clienteApi = new ClienteApi();
             int idConsorcio = SharedPreferencesUtil.getInt(getActivity(), Const.SHAREDKEYS.ID_CONSORCIO);
 
-            Map<String, String> params = new HashMap<String, String>();
-            params.put("idNucleoOrigen", String.valueOf(idNucleoOrigen));
-            params.put("idNucleoDestino", String.valueOf(idNucleoDestino));
-
-            clienteApi.getLineasPorNucleos(params, idConsorcio, new Callback<ResponseBody>() {
+            clienteApi.getLineasPorNucleos(HeadersHelpers.getHeaders(), idConsorcio,idNucleoOrigen ,new Callback<CapsuleLineas>() {
                 @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                public void onResponse(Call<CapsuleLineas> call, Response<CapsuleLineas> response) {
                     progressDialog.dismiss();
                     if (response.isSuccessful()){
                         ArrayList<Horario> misHorarios = new ArrayList<>();
-                        ResponseBody responseBody = response.body();
-                        Gson g = new Gson();
-                        try {
+                        CapsuleLineas responseBody = response.body();
+                        setDataToRecyclerView(responseBody.getLineas());
+                       /* try {
                             String d = responseBody.string();
                             CapsuleLineasPorNucleo capsuleLineasPorNucleo = g.fromJson(d,CapsuleLineasPorNucleo.class);
                             ArrayList<Horario> horarios = capsuleLineasPorNucleo.getHorario();
@@ -307,7 +321,7 @@ public class LineasOrigenDestinoFragment extends Fragment {
 
                             e.printStackTrace();
                             clearRecycler();
-                        }
+                        }*/
                     }else{
                         clearRecycler();
 
@@ -315,7 +329,7 @@ public class LineasOrigenDestinoFragment extends Fragment {
                 }
 
                 @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                public void onFailure(Call<CapsuleLineas> call, Throwable t) {
                     progressDialog.dismiss();
                     clearRecycler();
                 }
@@ -324,8 +338,10 @@ public class LineasOrigenDestinoFragment extends Fragment {
         }
     }
 
-    private void setDataToRecyclerView(final ArrayList<Horario> misHorarios) {
-        LineasHorariosAdapter adapter = new LineasHorariosAdapter(getContext(),misHorarios.toArray(new Horario[0]));
+    private void setDataToRecyclerView(final ArrayList<Linea> lineas) {
+        relativeLayoutNoContent.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.VISIBLE);
+        LineasAdapter adapter = new LineasAdapter(getContext(),lineas.toArray(new Linea[0]));
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(llm);
@@ -335,8 +351,8 @@ public class LineasOrigenDestinoFragment extends Fragment {
         adapter.SetOnItemClickListener(new RecyclerOnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Horario horario = misHorarios.get(position);
-                SharedPreferencesUtil.setInt(getActivity(),Const.SHAREDKEYS.ID_LINEA,Integer.valueOf(horario.getIdlinea()));
+                Linea linea = lineas.get(position);
+                SharedPreferencesUtil.setInt(getActivity(),Const.SHAREDKEYS.ID_LINEA,Integer.valueOf(linea.getIdLinea()));
                 Intent i = new Intent(getContext(), LineaDetailActivity.class);
                 startActivity(i);
             }
@@ -361,6 +377,7 @@ public class LineasOrigenDestinoFragment extends Fragment {
 
     private void clearRecycler(){
         recyclerView.removeAllViewsInLayout();
-
+        relativeLayoutNoContent.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.GONE);
     }
 }

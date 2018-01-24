@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.consorcio.consorciotransportesandalucia.R;
+import com.consorcio.consorciotransportesandalucia.adapters.ParadasInfoWindowAdapter;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleParadas;
 import com.consorcio.consorciotransportesandalucia.models.Parada;
 import com.consorcio.consorciotransportesandalucia.renders.ParadasCustomClusterRenderer;
@@ -158,7 +159,10 @@ public class ParadasFragment extends Fragment implements OnMapReadyCallback {
         // Point the map's listeners at the listeners implemented by the cluster
         // manager.
         mMap.setOnCameraIdleListener(mClusterManager);
-        mMap.setOnMarkerClickListener(mClusterManager);
+        //mMap.setOnMarkerClickListener(mClusterManager);
+
+        mMap.setInfoWindowAdapter(new ParadasInfoWindowAdapter(getActivity()));
+        mMap.setOnInfoWindowClickListener(null);
 
         //Render Map
         final ParadasCustomClusterRenderer renderer = new ParadasCustomClusterRenderer(getContext(), mMap, mClusterManager);

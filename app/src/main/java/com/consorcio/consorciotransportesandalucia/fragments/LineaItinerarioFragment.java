@@ -16,10 +16,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.consorcio.consorciotransportesandalucia.R;
+import com.consorcio.consorciotransportesandalucia.adapters.ParadasInfoWindowAdapter;
 import com.consorcio.consorciotransportesandalucia.interfaces.LineaDetailInterface;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleLineaDetalle;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleParadas;
 import com.consorcio.consorciotransportesandalucia.models.Parada;
+import com.consorcio.consorciotransportesandalucia.renders.ParadasCustomClusterRenderer;
 import com.consorcio.consorciotransportesandalucia.utils.ClienteApi;
 import com.consorcio.consorciotransportesandalucia.utils.Const;
 import com.consorcio.consorciotransportesandalucia.utils.SharedPreferencesUtil;
@@ -29,6 +31,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.maps.android.clustering.ClusterManager;
@@ -42,7 +45,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallback {
+public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallback{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -129,6 +132,21 @@ public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallb
         mapFragment.getMapAsync(this);
         mapFragment.getView().setClickable(true);
 
+        View mapView = mapFragment.getView();
+
+        if (mapView != null &&
+                mapView.findViewById(Integer.parseInt("1")) != null) {
+            // Get the button view
+            View locationButton = ((View) mapView.findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
+            // and next place it, on bottom right (as Google Maps app)
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)
+                    locationButton.getLayoutParams();
+            // position on right bottom
+            //layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0);
+            //layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+            layoutParams.setMargins(0, 90, 0, 0);
+        }
+
         //Add Listenes to RadioButon
         radioButtonIda.setOnClickListener(listenerRadioButton);
         radioButtonVuelta.setOnClickListener(listenerRadioButton);
@@ -168,7 +186,6 @@ public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallb
                     if (response.isSuccessful()){
                         capsuleParadas = response.body();
                         setDataToView();
-                        Util.log(capsuleParadas);
                     }
                 }
 
@@ -224,6 +241,8 @@ public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallb
         mMap.getUiSettings().setCompassEnabled(false);
         mMap.setMyLocationEnabled(true);
 
+
+
         //TODO enviar la posicion del usuario
         // Position the map.
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.378176, -6.001057), 8));
@@ -236,6 +255,12 @@ public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallb
         // manager.
         mMap.setOnCameraIdleListener(mClusterManager);
         mMap.setOnMarkerClickListener(mClusterManager);
+
+
+
+        //Render Map
+        final ParadasCustomClusterRenderer renderer = new ParadasCustomClusterRenderer(getContext(), mMap, mClusterManager);
+        mClusterManager.setRenderer(renderer);
     }
 
     private void cleanMap(){
@@ -279,21 +304,26 @@ public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallb
         //PARADAS
         MarkerOptions markerOptions = new MarkerOptions();
         LatLng pos;
+        mClusterManager.clearItems();
 
         for (Parada parada: capsuleParadas.getParadas()) {
             if (sentido){
                 if (parada.getSentido().equals("1")){
-                    pos = parada.getPosition();
-                    markerOptions.position(pos);
-                    mMap.addMarker(markerOptions);
+                    mClusterManager.addItem(parada);
+                    //pos = parada.getPosition();
+                    //markerOptions.position(pos);
+                    //mMap.addMarker(markerOptions);
                 }
             }else {
                 if (parada.getSentido().equals("2")){
-                    pos = parada.getPosition();
-                    markerOptions.position(pos);
-                    mMap.addMarker(markerOptions);
+                    mClusterManager.addItem(parada);
+                    //pos = parada.getPosition();
+                    //markerOptions.position(pos);
+                    //mMap.addMarker(markerOptions);
                 }
             }
         }
+
+        mClusterManager.cluster();
     }
 }

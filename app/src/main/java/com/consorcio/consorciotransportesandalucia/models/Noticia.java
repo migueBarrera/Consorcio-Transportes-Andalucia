@@ -59,6 +59,12 @@ public class Noticia {
 
     public void setFechafinFija(String fechafinFija) { this.fechafinFija = fechafinFija; }
 
+    private String lineas;
+
+    public String getLineas() { return this.lineas; }
+
+    public void setLineas(String lineas) { this.lineas = lineas; }
+
     private String novedad;
 
     public String getNovedad() { return this.novedad; }

@@ -1,6 +1,7 @@
 package com.consorcio.consorciotransportesandalucia.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -24,7 +26,10 @@ import com.consorcio.consorciotransportesandalucia.models.CapsuleNoticias;
 import com.consorcio.consorciotransportesandalucia.models.Noticia;
 import com.consorcio.consorciotransportesandalucia.models.TipoModoLinea;
 import com.consorcio.consorciotransportesandalucia.utils.ClienteApi;
+import com.consorcio.consorciotransportesandalucia.utils.Const;
 import com.consorcio.consorciotransportesandalucia.utils.HeadersHelpers;
+import com.consorcio.consorciotransportesandalucia.utils.LinearLayoutManagerNoScroll;
+import com.consorcio.consorciotransportesandalucia.utils.SharedPreferencesUtil;
 import com.consorcio.consorciotransportesandalucia.utils.Util;
 import com.squareup.picasso.Picasso;
 
@@ -134,6 +139,7 @@ public class LineaInfoFragment extends Fragment {
             case Bus:
                 drawable = this.getResources().getDrawable(R.mipmap.bus);
                 break;
+            case MEDIA_DISTANCIA:
             case CERCANÍAS:
             case Tren:
                 drawable = this.getResources().getDrawable(R.mipmap.train);
@@ -189,14 +195,15 @@ public class LineaInfoFragment extends Fragment {
         }
     }
 
-    private void setNoticiasToView(ArrayList<Noticia> noticias) {
+    private void setNoticiasToView(final ArrayList<Noticia> noticias) {
         progressBarNoticias.setActivated(false);
         progressBarNoticias.setVisibility(View.GONE);
         if (noticias != null){
             listNoticias.setVisibility(View.VISIBLE);
             NoticiasAdapter adapter = new NoticiasAdapter(getContext(),noticias.toArray(new Noticia[0]));
             listNoticias.setHasFixedSize(true);
-            LinearLayoutManager llm = new LinearLayoutManager(getContext());
+            LinearLayoutManagerNoScroll llm = new LinearLayoutManagerNoScroll(getContext());
+            llm.setScrollEnabled(false);
             listNoticias.setLayoutManager(llm);
             listNoticias.setRecycledViewPool(new RecyclerView.RecycledViewPool());
             listNoticias.setItemAnimator(new DefaultItemAnimator());
@@ -204,10 +211,8 @@ public class LineaInfoFragment extends Fragment {
             adapter.SetOnItemClickListener(new RecyclerOnItemClickListener() {
                 @Override
                 public void onItemClick(View view, int position) {
-               /* Linea linea = capsuleLineas.getLineas().get(position);
-                SharedPreferencesUtil.setInt(getActivity(), Const.SHAREDKEYS.ID_LINEA,Integer.valueOf(linea.getIdLinea()));
-                Intent i = new Intent(getContext(), LineaDetailActivity.class);
-                startActivity(i);*/
+                    Noticia noticia = noticias.get(position);
+                    showDialogNews(noticia);
                 }
             });
 
@@ -266,6 +271,44 @@ public class LineaInfoFragment extends Fragment {
                 .error(R.drawable.ic_launcher_background)
                 .into(imageView);
         Util.log(url);
+
+        b.setCancelable(true);
+
+        b.show();
+    }
+
+    private void showDialogNews(Noticia noticia){
+        final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
+        final LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.dialog_news, null);
+        dialogBuilder.setView(dialogView);
+        final AlertDialog b = dialogBuilder.create();
+        //DATE
+        TextView date = (TextView) dialogView.findViewById(R.id.dialog_news_date);
+        date.setText(noticia.getFechaInicio());
+
+        //TITLE
+        TextView title = (TextView) dialogView.findViewById(R.id.dialog_news_title);
+        title.setText(noticia.getTitulo());
+
+        //SUBTITLE
+        TextView subtitle = (TextView) dialogView.findViewById(R.id.dialog_news_subtitle);
+        subtitle.setText(noticia.getSubTitulo());
+
+        //RESUMEN
+        TextView resumen = (TextView) dialogView.findViewById(R.id.dialog_news_resumen);
+        //Hay ocaciones que el resumen es el subtitulo . aveces algo mas . Si lo contiene lo ocultamos para no duplicar la info
+        if (noticia.getResumen().contains(noticia.getSubTitulo()))
+            subtitle.setVisibility(View.GONE);
+        resumen.setText(noticia.getResumen());
+
+        //LINES TODO Por algun motivo siempre viene a null el objeto pero desde postman si sale ese parametro
+        TextView lines = (TextView) dialogView.findViewById(R.id.dialog_news_lines);
+        LinearLayout linearLayoutLines = dialogView.findViewById(R.id.dialog_news_lines_layout);
+        if (noticia.getLineas() != null){
+            linearLayoutLines.setVisibility(View.VISIBLE);
+            lines.setText(noticia.getLineas());
+        }
 
         b.setCancelable(true);
 

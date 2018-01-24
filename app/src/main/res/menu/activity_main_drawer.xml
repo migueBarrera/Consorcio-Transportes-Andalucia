@@ -3,20 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <item android:title="Horarios">
-        <menu>
-            <item
-                android:id="@+id/nav_horarios_lineas"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/title_activity_lineas" />
-            <item
-                android:id="@+id/nav_horarios_origen"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/title_activity_lineas_origen_destino" />
-        </menu>
-    </item>
-
     <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_home"
+            android:title="Principal"
+            android:icon="@drawable/ic_menu_share"/>
+
+        <item android:id="@+id/nav_tarifas"
+            android:title="Tarifas"
+            android:icon="@drawable/ic_menu_share"/>
+
         <item
             android:id="@+id/nav_paradas"
             android:icon="@drawable/ic_menu_camera"
@@ -30,6 +25,20 @@
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/title_activity_saldo" />
     </group>
+
+
+    <item android:title="Lineas">
+        <menu>
+            <item
+                android:id="@+id/nav_horarios_lineas"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/title_activity_lineas" />
+            <item
+                android:id="@+id/nav_horarios_origen"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/title_activity_lineas_origen_destino" />
+        </menu>
+    </item>
 
     <item android:title="Consorcio">
         <menu>

@@ -14,6 +14,7 @@ public class Const {
         public static final String ID_CONSORCIO = "Id_consorcio";
         public static final String ID_LINEA = "Id_linea";
         public static final String MY_CONSORCIO = "My_consorcio";
+        public static final String NOTICIA = "Noticia";
     }
 
     public class TAGS{
@@ -30,11 +31,13 @@ public class Const {
         public static final String GET_PARADAS_DE_LINEAS = BASE_URL + "lineas/{idLinea}/paradas";
         public static final String GET_MUNICIPIOS = BASE_URL + "municipios/";
         public static final String GET_NUCLEOS = BASE_URL + "nucleos";
-        public static final String GET_LINEAS_NUCLEO_ORIGEN_DESTINO = BASE_URL + "horarios_origen_destino";
+        public static final String GET_LINEAS_NUCLEO = BASE_URL + "nucleos/{idNucleo}/lineas";
         public static final String GET_ATENCION_USUARIO = BASE_URL + "att_usuario";
         public static final String GET_LINEA_DETALLE = BASE_URL + "lineas/{idLinea}";
         public static final String GET_HORARIOS_LINEA = BASE_URL + "horarios_lineas";
         public static final String GET_NOTICIAS = BASE_URL + "lineas/{idLinea}/noticias";
+        public static final String GET_TARIFAS_INTERURBANAS = BASE_URL + "tarifas_interurbanas";
+        public static final String GET_TARIFAS_URBANAS = BASE_URL + "tarifas_urbanas";
 
 
         public class HEADERS{

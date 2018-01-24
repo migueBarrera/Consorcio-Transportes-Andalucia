@@ -5,11 +5,13 @@ import android.graphics.Bitmap;
 import android.support.v4.content.ContextCompat;
 
 import com.consorcio.consorciotransportesandalucia.R;
+import com.consorcio.consorciotransportesandalucia.models.MarkerInfo;
 import com.consorcio.consorciotransportesandalucia.models.Parada;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.gson.Gson;
 import com.google.maps.android.clustering.Cluster;
 import com.google.maps.android.clustering.ClusterManager;
 import com.google.maps.android.clustering.view.DefaultClusterRenderer;
@@ -35,8 +37,12 @@ public class ParadasCustomClusterRenderer extends DefaultClusterRenderer<Parada>
                                                          MarkerOptions markerOptions) {
         final BitmapDescriptor markerDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.busstop);
 
-        markerOptions.icon(markerDescriptor).snippet(item.getNombre());
-        markerOptions.title("zona D");
+        markerOptions.icon(markerDescriptor);
+        MarkerInfo markerInfo = new MarkerInfo();
+        markerInfo.setTitle(item.getNombre());
+        markerInfo.setNucleo(item.getNucleo());
+        markerInfo.setPos(item.getPosition());
+        markerOptions.snippet(new Gson().toJson(markerInfo));
     }
 
 

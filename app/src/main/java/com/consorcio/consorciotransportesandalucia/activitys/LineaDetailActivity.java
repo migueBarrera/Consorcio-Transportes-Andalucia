@@ -99,8 +99,6 @@ public class LineaDetailActivity extends AppCompatActivity implements LineaDetai
             idLinea = SharedPreferencesUtil.getInt(this, Const.SHAREDKEYS.ID_LINEA);
             loadHorarios(idConsorcio,idLinea);
             loadDetail(idConsorcio,idLinea);
-            //TODO PRUEBAS
-            Util.log("ID Linea => "+String.valueOf(idLinea));
         }
     }
 
@@ -134,6 +132,7 @@ public class LineaDetailActivity extends AppCompatActivity implements LineaDetai
                     Fragment lineaInfoFragment= new LineaInfoFragment();
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.content, lineaInfoFragment).commitAllowingStateLoss();
+                    nestedScrollView.setScrollable(true);
                 }
             }
 

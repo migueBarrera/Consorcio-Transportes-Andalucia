@@ -14,6 +14,12 @@
     <string name="progress_paradas">Cargando paradas...</string>
     <string name="progress_puntos_ventas">Cargando puntos de ventas...</string>
 
+    <!-- Home Activity -->
+    <string name="title_home">Principal</string>
+
+    <!-- Tarifas Activity -->
+    <string name="title_tarifas">Tarifas</string>
+
     <!-- Main Activity -->
     <string name="title_activity_main">MainActivity</string>
 
@@ -30,19 +36,25 @@
 
     <!-- Saldo Activity -->
     <string name="title_activity_saldo">Saldo</string>
+    <string name="proximamente_activity_saldo">Proximamente</string>
+    <string name="content_activity_saldo">Acerca el telefono a tu tarjeta para conocer tu saldo</string>
 
     <!-- Consorcio Detail Activity -->
     <string name="title_activity_consorcio_detail">Datos del Consorcio</string>
 
+    <!-- Centro de atencion-->
+    <string name="title_centro_atencion">Centro de atención</string>
+
     <!-- Lineas Activity -->
-    <string name="title_activity_lineas">Lineas</string>
+    <string name="title_activity_lineas">Lineas del consorcio</string>
 
     <!-- Lineas Origen Y Destino Activity -->
-    <string name="title_activity_lineas_origen_destino">Origen y destino</string>
-    <string name="municipio_origen__activity_lineas_origen_destino">Municipio origen</string>
+    <string name="title_activity_lineas_origen_destino">Lineas por municipio</string>
+    <string name="municipio_origen__activity_lineas_origen_destino">Municipio</string>
     <string name="municipio_destino__activity_lineas_origen_destino">Municipio destino</string>
-    <string name="nucleo_origen__activity_lineas_origen_destino">Nucleo origen</string>
+    <string name="nucleo_origen__activity_lineas_origen_destino">Nucleo</string>
     <string name="nucleo_destino__activity_lineas_origen_destino">Nucleo destino</string>
+    <string name="no_content_activity_lineas_origen_destino">No existen lineas. Prueba con otros destinos </string>
 
     <!-- Linea Detail Activity -->
     <string name="title_activity_linea_detail">Detalle de lineas</string>

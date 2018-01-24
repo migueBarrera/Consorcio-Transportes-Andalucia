@@ -20,12 +20,14 @@ import android.view.View;
 
 import com.consorcio.consorciotransportesandalucia.R;
 import com.consorcio.consorciotransportesandalucia.fragments.CentroAtencionFragment;
+import com.consorcio.consorciotransportesandalucia.fragments.HomeFragment;
 import com.consorcio.consorciotransportesandalucia.fragments.LineasFragment;
 import com.consorcio.consorciotransportesandalucia.fragments.LineasOrigenDestinoFragment;
 import com.consorcio.consorciotransportesandalucia.fragments.MiConsorcioFragment;
 import com.consorcio.consorciotransportesandalucia.fragments.ParadasFragment;
 import com.consorcio.consorciotransportesandalucia.fragments.PuntosDeVentasFragment;
 import com.consorcio.consorciotransportesandalucia.fragments.SaldoFragment;
+import com.consorcio.consorciotransportesandalucia.fragments.TarifaFragment;
 import com.consorcio.consorciotransportesandalucia.utils.Const;
 import com.consorcio.consorciotransportesandalucia.utils.MessageUtil;
 
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity
 
 
     Activity parentActivity;
+    String lastFragment = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +64,12 @@ public class MainActivity extends AppCompatActivity
             requestPermissions();
 
 
-        //Inicializamos el MapsFragemnts al inicio
-        Fragment mapsFragment = new ParadasFragment();
+        //Inicializamos el HomeFragemnts al inicio
+        Fragment fragment = new HomeFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.fragment_container, mapsFragment).commit();
+        transaction.add(R.id.fragment_container, fragment).commit();
         //Set title to toolbar
-        setTitleToToolbar(getString(R.string.title_activity_paradas));
+        setTitleToToolbar(getString(R.string.title_tarifas));
     }
 
     @Override
@@ -134,16 +137,26 @@ public class MainActivity extends AppCompatActivity
             title = getString(R.string.title_activity_consorcio_detail);
         } else if (id == R.id.nav_centro_atencion) {
             fragment = new CentroAtencionFragment();
-
+            title = getString(R.string.title_centro_atencion);
+        }else if (id == R.id.nav_home){
+            fragment = new HomeFragment();
+            title = getString(R.string.title_home);
+        }else if (id == R.id.nav_tarifas){
+            fragment = new TarifaFragment();
+            title = getString(R.string.title_tarifas);
         }
 
         if (fragment != null){
-            //Begin transaction
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment_container, fragment).commit();
+            //Solo iniciamos las transaccion si es diferente al ultimo fragment
+            if (!lastFragment.equals(fragment.getClass().getName())){
+                lastFragment = fragment.getClass().getName();
+                //Begin transaction
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, fragment).commit();
 
-            //Set title to toolbar
-            setTitleToToolbar(title);
+                //Set title to toolbar
+                setTitleToToolbar(title);
+            }
         }
 
         drawer.closeDrawer(GravityCompat.START);

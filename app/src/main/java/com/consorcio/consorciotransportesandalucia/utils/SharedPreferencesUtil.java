@@ -4,6 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.google.gson.Gson;
+
+import java.lang.reflect.Type;
+
 /**
  * Created by migueBarreraBluumi on 10/01/2018.
  */
@@ -18,6 +22,28 @@ public class SharedPreferencesUtil {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(key, value);
         editor.apply();
+    }
+
+    public static void setObject(Activity parentActivity,String key,Object object){
+        Gson gson = new Gson();
+        String json = gson.toJson(object,object.getClass());
+        SharedPreferences sharedPreferences = getSharedPreferences(parentActivity);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(key, json);
+        editor.apply();
+    }
+
+    public static Object getObject(Activity parentActivity,String key,Type type){
+        SharedPreferences sharedPreferences = getSharedPreferences(parentActivity);
+        String json = sharedPreferences.getString(key,"");
+        Object object = null;
+
+        if (!json.equals("")){
+            Gson gson = new Gson();
+            object = gson.fromJson(json,type);
+        }
+
+        return object;
     }
 
     public static String getString(Activity parentActivity,String key){

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_height="wrap_content" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:padding="16sp">
+
+        <!-- DATE -->
+        <TextView
+            android:id="@+id/dialog_news_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"/>
+
+        <!-- TITLE -->
+        <TextView
+            android:id="@+id/dialog_news_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- LINES -->
+        <LinearLayout
+            android:id="@+id/dialog_news_lines_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lineas afectadas: "/>
+            <TextView
+                android:id="@+id/dialog_news_lines"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+        <!-- SUB TITLE -->
+        <TextView
+            android:id="@+id/dialog_news_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30sp"/>
+
+        <!-- RESUMEN -->
+        <TextView
+            android:id="@+id/dialog_news_resumen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"/>
+
+
+    </LinearLayout>
+</ScrollView>

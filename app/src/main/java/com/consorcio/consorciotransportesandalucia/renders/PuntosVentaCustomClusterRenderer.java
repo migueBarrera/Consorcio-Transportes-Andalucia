@@ -94,7 +94,10 @@ public class PuntosVentaCustomClusterRenderer extends DefaultClusterRenderer<Pun
                     type = TipoPuntoVenta.Metro.toString();
                     break;
                 case Default:
-                    markerDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.info);
+                    if(item.getDireccion().contains("Metro") || item.getDireccion().contains("METRO") || item.getDireccion().contains("metro"))
+                        markerDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.metro);
+                    else
+                        markerDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.info);
                     type = context.getString(R.string.info_bussines_unknow_puntos_venta);
                     break;
             }

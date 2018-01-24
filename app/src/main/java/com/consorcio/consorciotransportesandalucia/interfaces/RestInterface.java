@@ -10,6 +10,8 @@ import com.consorcio.consorciotransportesandalucia.models.CapsuleNoticias;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleNucleo;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleParadas;
 import com.consorcio.consorciotransportesandalucia.models.CapsulePuntosVenta;
+import com.consorcio.consorciotransportesandalucia.models.CapsuleTarifasInterurbanas;
+import com.consorcio.consorciotransportesandalucia.models.CapsuleTarifasUrbanas;
 import com.consorcio.consorciotransportesandalucia.models.Consorcio;
 import com.consorcio.consorciotransportesandalucia.utils.Const;
 
@@ -43,8 +45,8 @@ public interface RestInterface {
     @GET(Const.REST.GET_LINEAS)
     Call<CapsuleLineas> getLineas(@Path("idConsorcio") int idConsorcio);
 
-    @GET(Const.REST.GET_LINEAS_NUCLEO_ORIGEN_DESTINO)
-    Call<ResponseBody> getLineasPorNucleos(@Path("idConsorcio") int idConsorcio,@QueryMap Map<String, String> options);
+    @GET(Const.REST.GET_LINEAS_NUCLEO)
+    Call<CapsuleLineas> getLineasPorNucleos(@Path("idConsorcio") int idConsorcio,@Path("idNucleo") int idNucleo,@QueryMap Map<String, String> options);
 
     @GET(Const.REST.GET_PARADAS_DE_LINEAS)
     Call<CapsuleParadas> getParadasDeLinea(@Path("idConsorcio") int idConsorcio,@Path("idLinea") int idLinea);
@@ -67,4 +69,9 @@ public interface RestInterface {
     @GET(Const.REST.GET_NOTICIAS)
     Call<CapsuleNoticias> getNoticias(@Path("idConsorcio") int idConsorcio,@Path("idLinea") int idLinea, @QueryMap Map<String, String> options);
 
+    @GET(Const.REST.GET_TARIFAS_INTERURBANAS)
+    Call<CapsuleTarifasInterurbanas> getTarifasInterurbana(@Path("idConsorcio") int idConsorcio,@QueryMap Map<String, String> options);
+
+    @GET(Const.REST.GET_TARIFAS_URBANAS)
+    Call<CapsuleTarifasUrbanas> getTarifasUrbana(@Path("idConsorcio") int idConsorcio, @QueryMap Map<String, String> options);
 }

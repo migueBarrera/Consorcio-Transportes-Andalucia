@@ -13,6 +13,8 @@ import com.consorcio.consorciotransportesandalucia.models.CapsuleNoticias;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleNucleo;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleParadas;
 import com.consorcio.consorciotransportesandalucia.models.CapsulePuntosVenta;
+import com.consorcio.consorciotransportesandalucia.models.CapsuleTarifasInterurbanas;
+import com.consorcio.consorciotransportesandalucia.models.CapsuleTarifasUrbanas;
 import com.consorcio.consorciotransportesandalucia.models.Consorcio;
 
 import java.util.List;
@@ -69,8 +71,8 @@ public class ClienteApi {
     }
 
 
-    public void getLineasPorNucleos(Map<String, String> mapHeaders,int idConsorcio, Callback<ResponseBody> getLineasCallback) {
-        service.getLineasPorNucleos(idConsorcio,mapHeaders).enqueue(getLineasCallback);
+    public void getLineasPorNucleos(Map<String, String> mapHeaders,int idConsorcio,int idNucleo, Callback<CapsuleLineas> getLineasCallback) {
+        service.getLineasPorNucleos(idConsorcio,idNucleo,mapHeaders).enqueue(getLineasCallback);
     }
 
     public void getParadasDeLinea(Map<String, String> mapHeaders,int idConsorcio,int idLinea, Callback<CapsuleParadas> getParadasLineaCallback) {
@@ -101,6 +103,12 @@ public class ClienteApi {
         service.getNoticias(idConsorcio,idLinea,map).enqueue(capsuleNoticiasCallback);
     }
 
+    public void getTarifasInterurbana(Map<String,String> map , int idConsorcio, Callback<CapsuleTarifasInterurbanas> capsuleTarifasCallBAck){
+        service.getTarifasInterurbana(idConsorcio,map).enqueue(capsuleTarifasCallBAck);
+    }
 
+    public void getTarifasUrbanas(Map<String,String> map , int idConsorcio, Callback<CapsuleTarifasUrbanas> capsuleTarifasCallBAck){
+        service.getTarifasUrbana(idConsorcio,map).enqueue(capsuleTarifasCallBAck);
+    }
 
 }
