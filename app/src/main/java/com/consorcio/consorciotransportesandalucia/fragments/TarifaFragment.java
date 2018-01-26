@@ -1,5 +1,7 @@
 package com.consorcio.consorciotransportesandalucia.fragments;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -53,6 +55,7 @@ public class TarifaFragment extends Fragment {
     TextView titleInterurbana;
     @BindView(R.id.fragment_tarifa_title_urb)
     TextView titleUrbana;
+    Dialog progressDialog;
 
     public TarifaFragment() {
         // Required empty public constructor
@@ -119,9 +122,12 @@ public class TarifaFragment extends Fragment {
 
     private void loadTarifasInterurbanas(){
         if (Util.hasInternet(getContext())){
+            //Activamos el progress
+            progressDialog = ProgressDialog.show(getContext(), "", getResources().getString(R.string.progress_lineas), true);
             clienteApi.getTarifasInterurbana(HeadersHelpers.getHeaders(), idConsorcio, new Callback<CapsuleTarifasInterurbanas>() {
                 @Override
                 public void onResponse(Call<CapsuleTarifasInterurbanas> call, Response<CapsuleTarifasInterurbanas> response) {
+                    progressDialog.dismiss();
                     if (response.isSuccessful()){
                         setTarifasInterurbanas(response.body().getTarifasInterurbanas());
                     }else
@@ -130,6 +136,7 @@ public class TarifaFragment extends Fragment {
 
                 @Override
                 public void onFailure(Call<CapsuleTarifasInterurbanas> call, Throwable t) {
+                    progressDialog.dismiss();
                     setTarifasInterurbanas(null);
                 }
             });

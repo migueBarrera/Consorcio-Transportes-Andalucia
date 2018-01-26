@@ -2,6 +2,8 @@ package com.consorcio.consorciotransportesandalucia.activitys;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -12,6 +14,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -41,9 +44,14 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.drawer_layout) DrawerLayout drawer;
     @BindView(R.id.nav_view) NavigationView navigationView;
 
+    private SearchView searchView;
+
 
     Activity parentActivity;
     String lastFragment = "";
+    Fragment fragment = null;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,8 +99,53 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
+
+        searchView = (SearchView) menu.findItem(R.id.action_search)
+                .getActionView();
+
+        if (lastFragment.equals(LineasFragment.class.getName()) || lastFragment.equals(LineasOrigenDestinoFragment.class.getName())){
+            configureSearchView(menu);
+        }else{
+            menu.findItem(R.id.action_search).setVisible(false);
+            searchView.setOnQueryTextListener(null);
+        }
+
+
         return true;
     }
+
+    private void configureSearchView(Menu menu) {
+        // Associate searchable configuration with the SearchView
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchView.setSearchableInfo(searchManager
+                .getSearchableInfo(getComponentName()));
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+
+        // listening to search query text change
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                if (fragment instanceof  LineasFragment)
+                    ((LineasFragment)fragment).filter(query);
+                else
+                    if (fragment instanceof LineasOrigenDestinoFragment)
+                        ((LineasOrigenDestinoFragment)fragment).filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String query) {
+                if (fragment instanceof  LineasFragment)
+                    ((LineasFragment)fragment).filter(query);
+                else
+                if (fragment instanceof LineasOrigenDestinoFragment)
+                    ((LineasOrigenDestinoFragment)fragment).filter(query);
+                return false;
+            }
+        });
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -101,10 +154,12 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+
+
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        /*if (id == R.id.action_settings) {
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
@@ -112,7 +167,6 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        Fragment fragment = null;
         String title  = "";
         // Handle navigation view item clicks here.
         int id = item.getItemId();
@@ -156,6 +210,8 @@ public class MainActivity extends AppCompatActivity
 
                 //Set title to toolbar
                 setTitleToToolbar(title);
+
+                supportInvalidateOptionsMenu();
             }
         }
 

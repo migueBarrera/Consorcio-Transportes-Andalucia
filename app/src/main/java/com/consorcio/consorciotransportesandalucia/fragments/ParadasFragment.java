@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.consorcio.consorciotransportesandalucia.R;
 import com.consorcio.consorciotransportesandalucia.adapters.ParadasInfoWindowAdapter;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleParadas;
+import com.consorcio.consorciotransportesandalucia.models.MarkerInfo;
 import com.consorcio.consorciotransportesandalucia.models.Parada;
 import com.consorcio.consorciotransportesandalucia.renders.ParadasCustomClusterRenderer;
 import com.consorcio.consorciotransportesandalucia.utils.ClienteApi;
@@ -25,6 +26,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.gson.Gson;
 import com.google.maps.android.clustering.ClusterManager;
 
 import retrofit2.Call;
@@ -85,13 +88,6 @@ public class ParadasFragment extends Fragment implements OnMapReadyCallback {
         return view;
 
 
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
     }
 
     @Override
@@ -162,7 +158,14 @@ public class ParadasFragment extends Fragment implements OnMapReadyCallback {
         //mMap.setOnMarkerClickListener(mClusterManager);
 
         mMap.setInfoWindowAdapter(new ParadasInfoWindowAdapter(getActivity()));
-        mMap.setOnInfoWindowClickListener(null);
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                String markerInfoJSON = marker.getSnippet();
+                MarkerInfo markerInfo = new Gson().fromJson(markerInfoJSON,MarkerInfo.class);
+                Util.goToMap(getActivity(),markerInfo.getPos());
+            }
+        });
 
         //Render Map
         final ParadasCustomClusterRenderer renderer = new ParadasCustomClusterRenderer(getContext(), mMap, mClusterManager);
@@ -183,16 +186,6 @@ public class ParadasFragment extends Fragment implements OnMapReadyCallback {
         }
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);

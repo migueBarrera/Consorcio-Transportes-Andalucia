@@ -12,7 +12,7 @@
         android:id="@+id/custom_info_paradas_go_maps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ir a la parada"
+        android:text="@string/info_windows_adapter_paradas"
         android:layout_gravity="end"/>
 
 </LinearLayout>

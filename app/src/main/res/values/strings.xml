@@ -25,6 +25,7 @@
 
     <!-- Paradas Activity -->
     <string name="title_activity_paradas">Paradas</string>
+    <string name="info_windows_adapter_paradas"><u>Ir a la parada</u></string>
 
     <!-- Horarios Activity -->
     <string name="title_activity_horarios">Horarios</string>
@@ -63,8 +64,8 @@
     <string name="linea_detail_view_noticias_no_data">No hay noticias para esta linea</string>
     <string name="linea_detail_view_operadores_title">Operadora</string>
     <string name="linea_detail_view_recorrido_title">Recorrido</string>
-    <string name="linea_detail_view_main_termometro_ida">Ver paradas ida</string>
-    <string name="linea_detail_view_main_termometro_vuelta">Ver paradas vuelta</string>
+    <string name="linea_detail_view_main_termometro_ida"><u>Ver paradas ida</u></string>
+    <string name="linea_detail_view_main_termometro_vuelta"><u>Ver paradas vuelta</u></string>
     <string name="linea_detail_radio_button_ida">Ida</string>
     <string name="linea_detail_radio_button_vuelta">Vuelta</string>
     <string name="linea_detail_no_itinerary">Lo sentimos ,  la junta no contiene datos sobre este itinerario</string>

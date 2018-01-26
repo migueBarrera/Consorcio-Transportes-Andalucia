@@ -36,13 +36,13 @@ public class ParadasInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
         String markerInfoJSON = marker.getSnippet();
         MarkerInfo markerInfo = new Gson().fromJson(markerInfoJSON,MarkerInfo.class);
 
-        TextView textViewGoToMap = myContentsView.findViewById(R.id.custom_info_paradas_go_maps);
+        /*TextView textViewGoToMap = myContentsView.findViewById(R.id.custom_info_paradas_go_maps);
         textViewGoToMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MessageUtil.showSnackbar(parentActivity.getParent().getWindow().getDecorView().getRootView(),parentActivity,R.string.title_activity_main);
             }
-        });
+        });*/
 
         TextView textViewTitle = myContentsView.findViewById(R.id.custom_info_paradas_title);
         textViewTitle.setText(markerInfo.getTitle());

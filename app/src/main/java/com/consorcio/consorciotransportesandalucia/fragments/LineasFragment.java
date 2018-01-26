@@ -11,6 +11,8 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -47,6 +49,7 @@ public class LineasFragment extends Fragment {
     @BindView(R.id.rv_lineas)
     RecyclerView recyclerView;
     Dialog progressDialog;
+    LineasAdapter adapter;
 
     public LineasFragment() {
         // Required empty public constructor
@@ -111,6 +114,10 @@ public class LineasFragment extends Fragment {
         }
     }
 
+    public void filter(String query){
+        adapter.getFilter().filter(query);
+    }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -129,7 +136,7 @@ public class LineasFragment extends Fragment {
     }
 
     private void setDataToView(final CapsuleLineas capsuleLineas){
-        LineasAdapter adapter = new LineasAdapter(getContext(),capsuleLineas.getLineas().toArray(new Linea[0]));
+        adapter = new LineasAdapter(getContext(),capsuleLineas.getLineas());
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(llm);

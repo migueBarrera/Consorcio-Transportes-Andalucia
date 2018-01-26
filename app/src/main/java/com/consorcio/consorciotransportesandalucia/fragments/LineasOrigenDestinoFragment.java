@@ -80,6 +80,7 @@ public class LineasOrigenDestinoFragment extends Fragment {
     @BindView(R.id.relative_layout_no_content)
     RelativeLayout relativeLayoutNoContent;
     Dialog progressDialog;
+    LineasAdapter adapter;
 
     public LineasOrigenDestinoFragment() {
         // Required empty public constructor
@@ -129,6 +130,10 @@ public class LineasOrigenDestinoFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    public void filter(String query){
+        adapter.getFilter().filter(query);
     }
 
     public interface OnFragmentInteractionListener {
@@ -341,7 +346,7 @@ public class LineasOrigenDestinoFragment extends Fragment {
     private void setDataToRecyclerView(final ArrayList<Linea> lineas) {
         relativeLayoutNoContent.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
-        LineasAdapter adapter = new LineasAdapter(getContext(),lineas.toArray(new Linea[0]));
+        adapter = new LineasAdapter(getContext(),lineas);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(llm);

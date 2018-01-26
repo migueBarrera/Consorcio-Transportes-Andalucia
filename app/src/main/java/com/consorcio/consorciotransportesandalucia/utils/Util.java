@@ -1,5 +1,6 @@
 package com.consorcio.consorciotransportesandalucia.utils;
 
+import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.util.Log;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 
 /**
@@ -67,6 +69,15 @@ public class Util {
             context.startActivity(emailIntent);
         } catch (ActivityNotFoundException e) {
             //TODO: Handle case where no email app is available
+        }
+    }
+
+    public static void goToMap(Activity parentActivity, LatLng pos) {
+        String uri = "http://maps.google.com/maps?daddr=" + pos.latitude + "," + pos.longitude;
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+        mapIntent.setPackage("com.google.android.apps.maps");
+        if (mapIntent.resolveActivity(parentActivity.getPackageManager()) != null) {
+            parentActivity.startActivity(mapIntent);
         }
     }
 }

@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +15,10 @@ import com.consorcio.consorciotransportesandalucia.R;
 import com.consorcio.consorciotransportesandalucia.interfaces.RecyclerOnItemClickListener;
 import com.consorcio.consorciotransportesandalucia.models.Linea;
 import com.consorcio.consorciotransportesandalucia.models.TipoModoLinea;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,14 +35,16 @@ import static com.consorcio.consorciotransportesandalucia.models.TipoModoLinea.T
  * Created by migueBarreraBluumi on 11/01/2018.
  */
 
-public class LineasAdapter extends RecyclerView.Adapter<LineasAdapter.ViewHolder>{
+public class LineasAdapter extends RecyclerView.Adapter<LineasAdapter.ViewHolder> implements Filterable {
 
-    Linea[] lineas;
+    List<Linea> lineas;
+    List<Linea> lineasFiltered;
     Context context;
     RecyclerOnItemClickListener mItemClickListener;
 
-    public LineasAdapter(Context context,Linea[] lineas){
+    public LineasAdapter(Context context,List<Linea> lineas){
         this.lineas = lineas;
+        this.lineasFiltered = lineas;
         this.context = context;
     }
 
@@ -50,7 +58,7 @@ public class LineasAdapter extends RecyclerView.Adapter<LineasAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Linea linea = lineas[position];
+        Linea linea = lineasFiltered.get(position);
 
         holder.title.setText(linea.getCodigo());
         holder.subTitle.setText(linea.getNombre());
@@ -82,11 +90,48 @@ public class LineasAdapter extends RecyclerView.Adapter<LineasAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return lineas.length;
+        return lineasFiltered.size();
     }
 
     public void SetOnItemClickListener(final RecyclerOnItemClickListener mItemClickListener) {
         this.mItemClickListener = mItemClickListener;
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString().toLowerCase();
+                if (charString.isEmpty()) {
+                    lineasFiltered = new ArrayList<>(lineas);
+                } else {
+                    List<Linea> filteredList = new ArrayList<>();
+                    for (Linea row : lineas) {
+
+                        if (row.getNombre().toLowerCase().contains(charSequence))
+                            filteredList.add(row);
+
+                    }
+
+                    lineasFiltered = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = lineasFiltered;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                lineasFiltered = (ArrayList<Linea>) filterResults.values;
+
+                //neas.clear();
+                //lineas.addAll(lineasFiltered);
+
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
