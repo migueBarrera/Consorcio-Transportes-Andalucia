@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -30,6 +31,7 @@ import com.consorcio.consorciotransportesandalucia.models.CapsuleLineas;
 import com.consorcio.consorciotransportesandalucia.models.Consorcio;
 import com.consorcio.consorciotransportesandalucia.utils.ClienteApi;
 import com.consorcio.consorciotransportesandalucia.utils.Const;
+import com.consorcio.consorciotransportesandalucia.utils.MessageUtil;
 import com.consorcio.consorciotransportesandalucia.utils.SharedPreferencesUtil;
 import com.consorcio.consorciotransportesandalucia.utils.Util;
 import com.google.gson.Gson;
@@ -62,6 +64,8 @@ public class LineaDetailActivity extends AppCompatActivity implements LineaDetai
     MyNestedScrollView nestedScrollView;
     @BindView(R.id.collapsing_toolbar)
     CollapsingToolbarLayout collapsingToolbarLayout;
+    @BindView(R.id.fab)
+    FloatingActionButton floatingActionButton;
     Activity parentActivity;
 
 
@@ -71,8 +75,21 @@ public class LineaDetailActivity extends AppCompatActivity implements LineaDetai
         setContentView(R.layout.activity_linea_detail);
         this.parentActivity = this;
         ButterKnife.bind(this);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
         configureToolbar();
+        addListener();
+    }
+
+    private void addListener() {
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO añadir a favoritos
+                MessageUtil.showSnackbar(parentActivity.getWindow().getDecorView().getRootView(),parentActivity,R.string.no_work);
+            }
+        });
     }
 
     private void configureToolbar() {

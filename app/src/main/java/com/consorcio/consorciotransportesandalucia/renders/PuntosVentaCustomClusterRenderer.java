@@ -4,12 +4,14 @@ import android.content.Context;
 
 
 import com.consorcio.consorciotransportesandalucia.R;
+import com.consorcio.consorciotransportesandalucia.models.MarkerInfo;
 import com.consorcio.consorciotransportesandalucia.models.PuntosVenta;
 import com.consorcio.consorciotransportesandalucia.models.TipoPuntoVenta;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.gson.Gson;
 import com.google.maps.android.clustering.ClusterManager;
 import com.google.maps.android.clustering.view.DefaultClusterRenderer;
 
@@ -104,6 +106,14 @@ public class PuntosVentaCustomClusterRenderer extends DefaultClusterRenderer<Pun
 
             markerOptions.icon(markerDescriptor).snippet(item.getDireccion());
             markerOptions.title(type);
+
+
+        MarkerInfo markerInfo = new MarkerInfo();
+        markerInfo.setTitle(item.getDireccion());
+        markerInfo.setNucleo(item.getNucleo());
+        markerInfo.setPos(item.getPosition());
+        markerInfo.setTipoPuntoVenta(item.getTipo());
+        markerOptions.snippet(new Gson().toJson(markerInfo));
 
     }
 }

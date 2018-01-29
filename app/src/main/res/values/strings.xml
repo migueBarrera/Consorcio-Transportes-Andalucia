@@ -2,6 +2,7 @@
     <string name="app_name">Consorcio Transportes Andalucia</string>
     <string name="google_maps_key">AIzaSyAgWoroTajBibyp5HRaCXAgyuMLC5iA7j4</string>
     <string name="permission_rationale">Se necesitan permisillos</string>
+    <string name="no_work">Funcionalidad no disponible</string>
 
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -16,6 +17,7 @@
 
     <!-- Home Activity -->
     <string name="title_home">Principal</string>
+    <string name="fav_home">Lineas favoritas</string>
 
     <!-- Tarifas Activity -->
     <string name="title_tarifas">Tarifas</string>
@@ -25,6 +27,7 @@
 
     <!-- Paradas Activity -->
     <string name="title_activity_paradas">Paradas</string>
+    <string name="title_windows_adapter_paradas">Parada</string>
     <string name="info_windows_adapter_paradas"><u>Ir a la parada</u></string>
 
     <!-- Horarios Activity -->
@@ -33,6 +36,7 @@
     <!-- Puntos De Ventas Activity -->
     <string name="title_activity_puntos_venta">Puntos de Venta</string>
     <string name="info_bussines_unknow_puntos_venta">Negocio desconocido</string>
+    <string name="info_windows_adapter_puntoventa"><u>Ir a recargar la tarjeta</u></string>
 
 
     <!-- Saldo Activity -->
@@ -76,5 +80,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>

@@ -4,25 +4,25 @@
     android:padding="16sp">
 
     <TextView
+        android:id="@+id/custom_info_puntoventa_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/title_windows_adapter_paradas"
         android:layout_gravity="center"
         android:textSize="@dimen/text_large"
         android:layout_marginBottom="12sp"/>
 
     <TextView
-        android:id="@+id/custom_info_paradas_title"
+        android:id="@+id/custom_info_puntoventa_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginBottom="8sp"/>
 
     <TextView
-        android:id="@+id/custom_info_paradas_go_maps"
+        android:id="@+id/custom_info_puntoventa_go_maps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/info_windows_adapter_paradas"
+        android:text="@string/info_windows_adapter_puntoventa"
         android:layout_gravity="end"/>
 
 </LinearLayout>

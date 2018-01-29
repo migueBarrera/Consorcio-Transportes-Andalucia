@@ -12,8 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.consorcio.consorciotransportesandalucia.R;
+import com.consorcio.consorciotransportesandalucia.adapters.PuntoVentaInfoWindowAdapter;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleParadas;
 import com.consorcio.consorciotransportesandalucia.models.CapsulePuntosVenta;
+import com.consorcio.consorciotransportesandalucia.models.MarkerInfo;
 import com.consorcio.consorciotransportesandalucia.models.Parada;
 import com.consorcio.consorciotransportesandalucia.models.PuntosVenta;
 import com.consorcio.consorciotransportesandalucia.renders.ParadasCustomClusterRenderer;
@@ -28,6 +30,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.gson.Gson;
 import com.google.maps.android.clustering.ClusterManager;
 
 import retrofit2.Call;
@@ -171,6 +175,16 @@ public class PuntosDeVentasFragment extends Fragment implements OnMapReadyCallba
         // manager.
         mMap.setOnCameraIdleListener(mClusterManager);
         mMap.setOnMarkerClickListener(mClusterManager);
+
+        mMap.setInfoWindowAdapter(new PuntoVentaInfoWindowAdapter(getActivity()));
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                String markerInfoJSON = marker.getSnippet();
+                MarkerInfo markerInfo = new Gson().fromJson(markerInfoJSON,MarkerInfo.class);
+                Util.goToMap(getActivity(),markerInfo.getPos());
+            }
+        });
         //Render Map
         final PuntosVentaCustomClusterRenderer renderer = new PuntosVentaCustomClusterRenderer(getContext(), mMap, mClusterManager);
         mClusterManager.setRenderer(renderer);

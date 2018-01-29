@@ -11,8 +11,17 @@ public class MarkerInfo {
     private String title;
     private LatLng pos;
     private String nucleo;
+    private TipoPuntoVenta tipoPuntoVenta;
 
     public MarkerInfo(){}
+
+    public TipoPuntoVenta getTipoPuntoVenta() {
+        return tipoPuntoVenta;
+    }
+
+    public void setTipoPuntoVenta(TipoPuntoVenta tipoPuntoVenta) {
+        this.tipoPuntoVenta = tipoPuntoVenta;
+    }
 
     public String getTitle() {
         return title;
