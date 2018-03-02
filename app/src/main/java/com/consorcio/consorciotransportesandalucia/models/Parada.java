@@ -9,13 +9,6 @@ import com.google.maps.android.clustering.ClusterItem;
 
 public class Parada implements ClusterItem {
 
-
-    private String idParada;
-
-    public String getIdParada() { return this.idParada; }
-
-    public void setIdParada(String idParada) { this.idParada = idParada; }
-
     private String idNucleo;
 
     public String getIdNucleo() { return this.idNucleo; }
@@ -106,4 +99,40 @@ public class Parada implements ClusterItem {
 
         return new LatLng(lat,lon);
     }
+
+    private String idParada;
+
+    public String getIdParada() { return this.idParada; }
+
+    public void setIdParada(String idParada) { this.idParada = idParada; }
+
+    private String descripcion;
+
+    public String getDescripcion() { return this.descripcion; }
+
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
+
+    private String observaciones;
+
+    public String getObservaciones() { return this.observaciones; }
+
+    public void setObservaciones(String observaciones) { this.observaciones = observaciones; }
+
+    private String principal;
+
+    public String getPrincipal() { return this.principal; }
+
+    public void setPrincipal(String principal) { this.principal = principal; }
+
+    private String inactiva;
+
+    public String getInactiva() { return this.inactiva; }
+
+    public void setInactiva(String inactiva) { this.inactiva = inactiva; }
+
+    private String correspondecias;
+
+    public String getCorrespondecias() { return this.correspondecias; }
+
+    public void setCorrespondecias(String correspondecias) { this.correspondecias = correspondecias; }
 }

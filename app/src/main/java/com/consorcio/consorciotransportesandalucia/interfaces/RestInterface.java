@@ -13,6 +13,7 @@ import com.consorcio.consorciotransportesandalucia.models.CapsulePuntosVenta;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleTarifasInterurbanas;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleTarifasUrbanas;
 import com.consorcio.consorciotransportesandalucia.models.Consorcio;
+import com.consorcio.consorciotransportesandalucia.models.Parada;
 import com.consorcio.consorciotransportesandalucia.utils.Const;
 
 import java.util.Map;
@@ -32,6 +33,9 @@ public interface RestInterface {
 
     @GET(Const.REST.GET_PARADAS)
     Call<CapsuleParadas> getParadas(@Path("idConsorcio") int idConsorcio);
+
+    @GET(Const.REST.GET_PARADAS_DETAIL)
+    Call<Parada> getParadaDetail(@Path("idConsorcio") int idConsorcio,@Path("idParada") int idParada);
 
     @GET(Const.REST.GET_PUNTOS_DE_VENTAS)
     Call<CapsulePuntosVenta> getPuntosVenta(@Path("idConsorcio") int idConsorcio,@QueryMap Map<String, String> options);

@@ -7,8 +7,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.consorcio.consorciotransportesandalucia.R;
+import com.consorcio.consorciotransportesandalucia.utils.MessageUtil;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class SaldoFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -21,6 +26,9 @@ public class SaldoFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    @BindView(R.id.fragment_saldo_image)
+    ImageView imageViewLogoNFC;
 
     public SaldoFragment() {
         // Required empty public constructor
@@ -49,15 +57,21 @@ public class SaldoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_saldo, container, false);
+        View view =inflater.inflate(R.layout.fragment_saldo, container, false);
+        ButterKnife.bind(this,view);
+
+        addListener();
+
+        return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    private void addListener() {
+        imageViewLogoNFC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MessageUtil.showSnackbar(getActivity().getWindow().getDecorView().getRootView(),getActivity(),R.string.no_work);
+            }
+        });
     }
 
     @Override

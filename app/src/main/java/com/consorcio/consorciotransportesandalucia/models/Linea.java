@@ -60,12 +60,6 @@ public class Linea {
         this.modo = modoString;
     }
 
-    /*public TipoModoLinea modo;
-
-    public TipoModoLinea getModo() { return this.modo; }
-
-    public void setModo(TipoModoLinea modo) { this.modo = modo; }*/
-
     private String idModo;
 
     public String getIdModo() { return this.idModo; }

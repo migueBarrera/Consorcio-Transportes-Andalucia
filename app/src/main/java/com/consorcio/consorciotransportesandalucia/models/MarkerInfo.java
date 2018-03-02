@@ -8,6 +8,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class MarkerInfo {
 
+    private String idParada;
     private String title;
     private LatLng pos;
     private String nucleo;
@@ -21,6 +22,14 @@ public class MarkerInfo {
 
     public void setTipoPuntoVenta(TipoPuntoVenta tipoPuntoVenta) {
         this.tipoPuntoVenta = tipoPuntoVenta;
+    }
+
+    public String getIdParada() {
+        return idParada;
+    }
+
+    public void setIdParada(String idParada) {
+        this.idParada = idParada;
     }
 
     public String getTitle() {

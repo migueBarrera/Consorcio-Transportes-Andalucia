@@ -3,22 +3,16 @@ package com.consorcio.consorciotransportesandalucia.activitys;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.TextView;
 
 import com.consorcio.consorciotransportesandalucia.R;
 import com.consorcio.consorciotransportesandalucia.controls.MyNestedScrollView;
@@ -27,11 +21,11 @@ import com.consorcio.consorciotransportesandalucia.fragments.LineaInfoFragment;
 import com.consorcio.consorciotransportesandalucia.fragments.LineaItinerarioFragment;
 import com.consorcio.consorciotransportesandalucia.interfaces.LineaDetailInterface;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleLineaDetalle;
-import com.consorcio.consorciotransportesandalucia.models.CapsuleLineas;
 import com.consorcio.consorciotransportesandalucia.models.Consorcio;
 import com.consorcio.consorciotransportesandalucia.utils.ClienteApi;
 import com.consorcio.consorciotransportesandalucia.utils.Const;
 import com.consorcio.consorciotransportesandalucia.utils.MessageUtil;
+import com.consorcio.consorciotransportesandalucia.utils.SharedPreferencesDatabase;
 import com.consorcio.consorciotransportesandalucia.utils.SharedPreferencesUtil;
 import com.consorcio.consorciotransportesandalucia.utils.Util;
 import com.google.gson.Gson;
@@ -67,6 +61,7 @@ public class LineaDetailActivity extends AppCompatActivity implements LineaDetai
     @BindView(R.id.fab)
     FloatingActionButton floatingActionButton;
     Activity parentActivity;
+    Boolean isFavourite = false;
 
 
     @Override
@@ -75,7 +70,9 @@ public class LineaDetailActivity extends AppCompatActivity implements LineaDetai
         setContentView(R.layout.activity_linea_detail);
         this.parentActivity = this;
         ButterKnife.bind(this);
-
+        idConsorcio = SharedPreferencesUtil.getInt(this, Const.SHAREDKEYS.ID_CONSORCIO);
+        idLinea = SharedPreferencesUtil.getInt(this, Const.SHAREDKEYS.ID_LINEA);
+        isFavourite = SharedPreferencesDatabase.isFavouriteLine(this,idLinea);
         configureToolbar();
         addListener();
     }
@@ -86,8 +83,17 @@ public class LineaDetailActivity extends AppCompatActivity implements LineaDetai
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO añadir a favoritos
-                MessageUtil.showSnackbar(parentActivity.getWindow().getDecorView().getRootView(),parentActivity,R.string.no_work);
+                int infoId = R.string.linea_add_favourite;
+                if (isFavourite){
+                    SharedPreferencesDatabase.removeLineFav(parentActivity,idLinea);
+                    infoId = R.string.linea_remove_favourite;
+                }else {
+                    SharedPreferencesDatabase.addLineToFav(parentActivity,capsuleLineaDetalle);
+                }
+
+                isFavourite = !isFavourite;
+                MessageUtil.showSnackbar(getWindow().getDecorView().getRootView(),parentActivity,infoId);
+                configureFloatingButton();
             }
         });
     }
@@ -107,20 +113,23 @@ public class LineaDetailActivity extends AppCompatActivity implements LineaDetai
     protected void onStart() {
         super.onStart();
         loadData();
+        configureFloatingButton();
+    }
+
+    private void configureFloatingButton() {
+        int resIdImage = R.drawable.ic_star_outline;
+
+        if (isFavourite)
+            resIdImage = R.drawable.ic_star_fill;
+
+        floatingActionButton.setImageResource(resIdImage);
     }
 
     private void loadData() {
         if (Util.hasInternet(getApplicationContext())){
             clienteApi = new ClienteApi();
-            idConsorcio = SharedPreferencesUtil.getInt(this, Const.SHAREDKEYS.ID_CONSORCIO);
-            idLinea = SharedPreferencesUtil.getInt(this, Const.SHAREDKEYS.ID_LINEA);
-            loadHorarios(idConsorcio,idLinea);
             loadDetail(idConsorcio,idLinea);
         }
-    }
-
-    private void loadHorarios(int idConsorcio, int idLinea) {
-        //
     }
 
     private void loadDetail(int idConsorcio, int idLinea) {
@@ -132,6 +141,7 @@ public class LineaDetailActivity extends AppCompatActivity implements LineaDetai
                 progressDialog.dismiss();
                 if (response.isSuccessful()){
                     capsuleLineaDetalle = response.body();
+                    Util.log(capsuleLineaDetalle);
 
                     Gson gson = new Gson();
                     Consorcio consorcio = gson.fromJson(SharedPreferencesUtil.getString(parentActivity,Const.SHAREDKEYS.MY_CONSORCIO), Consorcio.class);

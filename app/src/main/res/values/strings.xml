@@ -18,6 +18,9 @@
     <!-- Home Activity -->
     <string name="title_home">Principal</string>
     <string name="fav_home">Lineas favoritas</string>
+    <string name="fav_home_no_content">No hay ninguna linea favorita.</string>
+    <string name="fav_home_paradas_no_content">No hay ninguna parada favorita.</string>
+    <string name="fav_home_paradas">Paradas favoritas</string>
 
     <!-- Tarifas Activity -->
     <string name="title_tarifas">Tarifas</string>
@@ -73,6 +76,8 @@
     <string name="linea_detail_radio_button_ida">Ida</string>
     <string name="linea_detail_radio_button_vuelta">Vuelta</string>
     <string name="linea_detail_no_itinerary">Lo sentimos ,  la junta no contiene datos sobre este itinerario</string>
+    <string name="linea_add_favourite">Linea añadida a favoritos</string>
+    <string name="linea_remove_favourite">Linea eliminada de favoritos</string>
 
     <string name="mi_consorcio_no_email">No tenemos el email de este consorcio</string>
     <string name="mi_consorcio_no_web">No tenemos la web de este consorcio</string>

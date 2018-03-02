@@ -16,6 +16,7 @@ import com.consorcio.consorciotransportesandalucia.models.CapsulePuntosVenta;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleTarifasInterurbanas;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleTarifasUrbanas;
 import com.consorcio.consorciotransportesandalucia.models.Consorcio;
+import com.consorcio.consorciotransportesandalucia.models.Parada;
 
 import java.util.List;
 import java.util.Map;
@@ -52,6 +53,10 @@ public class ClienteApi {
 
     public void getParadas(Map<String, String> mapHeaders,int idConsorcio, Callback<CapsuleParadas> getParadasCallback) {
         service.getParadas(idConsorcio).enqueue(getParadasCallback);
+    }
+
+    public void getParadaDetail(Map<String, String> mapHeaders,int idConsorcio,int idParada, Callback<Parada> getParadasCallback) {
+        service.getParadaDetail(idConsorcio,idParada).enqueue(getParadasCallback);
     }
 
     public void getPuntosVenta(Map<String, String> mapHeaders,int idConsorcio, Callback<CapsulePuntosVenta> getPuntosVentaCallback) {

@@ -125,10 +125,6 @@ public class LineasAdapter extends RecyclerView.Adapter<LineasAdapter.ViewHolder
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
                 lineasFiltered = (ArrayList<Linea>) filterResults.values;
-
-                //neas.clear();
-                //lineas.addAll(lineasFiltered);
-
                 notifyDataSetChanged();
             }
         };

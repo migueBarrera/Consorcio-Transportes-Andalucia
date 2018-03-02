@@ -15,6 +15,12 @@ public class Const {
         public static final String ID_LINEA = "Id_linea";
         public static final String MY_CONSORCIO = "My_consorcio";
         public static final String NOTICIA = "Noticia";
+        public static final String ID_PARADA = "id_parada";
+    }
+
+    public class SHAREDDATABASEKEYS{
+        public static final String MY_FAVOURITES_LINES = "my_favourites_lines";
+        public static final String MY_FAVOURITES_PARADAS = "my_favourites_paradas";
     }
 
     public class TAGS{
@@ -26,6 +32,7 @@ public class Const {
         public static final String GET_CONSORCIOS = BASE_URL + "consorcios";
         public static final String GET_CONSORCIO_DETAIL = BASE_URL + "consorcios/consorcio";
         public static final String GET_PARADAS =  BASE_URL +"paradas";
+        public static final String GET_PARADAS_DETAIL =  BASE_URL +"paradas/{idParada}";
         public static final String GET_PUNTOS_DE_VENTAS = BASE_URL +"puntos_venta";
         public static final String GET_LINEAS = BASE_URL + "lineas";
         public static final String GET_PARADAS_DE_LINEAS = BASE_URL + "lineas/{idLinea}/paradas";

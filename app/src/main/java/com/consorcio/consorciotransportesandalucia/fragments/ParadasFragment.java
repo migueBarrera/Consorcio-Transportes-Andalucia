@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.consorcio.consorciotransportesandalucia.R;
+import com.consorcio.consorciotransportesandalucia.activitys.ParadaDetailActivity;
 import com.consorcio.consorciotransportesandalucia.adapters.ParadasInfoWindowAdapter;
 import com.consorcio.consorciotransportesandalucia.models.CapsuleParadas;
 import com.consorcio.consorciotransportesandalucia.models.MarkerInfo;
@@ -163,7 +165,9 @@ public class ParadasFragment extends Fragment implements OnMapReadyCallback {
             public void onInfoWindowClick(Marker marker) {
                 String markerInfoJSON = marker.getSnippet();
                 MarkerInfo markerInfo = new Gson().fromJson(markerInfoJSON,MarkerInfo.class);
-                Util.goToMap(getActivity(),markerInfo.getPos());
+                SharedPreferencesUtil.setInt(getActivity(),Const.SHAREDKEYS.ID_PARADA,Integer.valueOf(markerInfo.getIdParada()));
+                Intent i = new Intent(getContext(), ParadaDetailActivity.class);
+                startActivity(i);
             }
         });
 

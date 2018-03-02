@@ -74,26 +74,15 @@
         </com.consorcio.consorciotransportesandalucia.controls.MyNestedScrollView>
 
         <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        app:layout_anchor="@id/appbar"
-        app:layout_anchorGravity="bottom|right|end"
-        android:background="@color/colorPrimary"
-        style="@style/FabStyle"/>
+            android:id="@+id/fab"
+            app:layout_anchor="@id/appbar"
+            app:layout_anchorGravity="bottom|right|end"
+            android:background="@color/colorPrimary"
+            style="@style/FabStyle"/>
 
 
 
     </android.support.design.widget.CoordinatorLayout>
-
-
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation_linea"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
-        app:menu="@menu/linea_buttom_menu"
-        app:itemIconTint="@color/colorBackground"
-        app:itemTextColor="@color/basic_black"
-
-        android:layout_alignParentBottom="true"/>
 </RelativeLayout>
+
 

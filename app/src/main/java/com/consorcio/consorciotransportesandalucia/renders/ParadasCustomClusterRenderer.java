@@ -39,6 +39,7 @@ public class ParadasCustomClusterRenderer extends DefaultClusterRenderer<Parada>
 
         markerOptions.icon(markerDescriptor);
         MarkerInfo markerInfo = new MarkerInfo();
+        markerInfo.setIdParada(item.getIdParada());
         markerInfo.setTitle(item.getNombre());
         markerInfo.setNucleo(item.getNucleo());
         markerInfo.setPos(item.getPosition());
