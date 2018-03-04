@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ConsorcioTransportesAndalucia.iml" filepath="$PROJECT_DIR$/ConsorcioTransportesAndalucia.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Consorcio-Transportes-Andalucia.iml" filepath="$PROJECT_DIR$/Consorcio-Transportes-Andalucia.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

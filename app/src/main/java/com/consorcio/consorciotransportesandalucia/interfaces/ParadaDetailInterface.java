@@ -6,4 +6,5 @@ package com.consorcio.consorciotransportesandalucia.interfaces;
 
 public interface ParadaDetailInterface {
     int getParadaId();
+    void setTitleToolbar(String toolbarTitle);
 }

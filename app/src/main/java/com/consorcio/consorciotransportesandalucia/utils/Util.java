@@ -1,14 +1,25 @@
 package com.consorcio.consorciotransportesandalucia.utils;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
+import android.view.View;
 
+import com.consorcio.consorciotransportesandalucia.R;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 
@@ -79,5 +90,63 @@ public class Util {
         if (mapIntent.resolveActivity(parentActivity.getPackageManager()) != null) {
             parentActivity.startActivity(mapIntent);
         }
+    }
+
+    public static boolean checkPermissions(Activity parentActivity) {
+        int permissionState = ActivityCompat.checkSelfPermission(parentActivity,
+                Manifest.permission.ACCESS_FINE_LOCATION);
+        return permissionState == PackageManager.PERMISSION_GRANTED;
+    }
+
+    public static void requestPermissions(final Activity parentActivity) {
+        boolean shouldProvideRationale =
+                ActivityCompat.shouldShowRequestPermissionRationale(parentActivity,
+                        Manifest.permission.ACCESS_FINE_LOCATION);
+
+        // Provide an additional rationale to the user. This would happen if the user denied the
+        // request previously, but didn't check the "Don't ask again" checkbox.
+        if (shouldProvideRationale) {
+            Log.i(Const.TAGS.TAG_PARADAS_FRAGMENT, "Displaying permission rationale to provide additional context.");
+            /*MessageUtil.showSnackbar(parentActivity.getWindow().getDecorView().getRootView(), parentActivity, R.string.permission_rationale,
+                    R.string.permission_rationale_ok, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            // Request permission
+                            ActivityCompat.requestPermissions(parentActivity,
+                                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                                    0);
+                        }
+                    });*/
+            // Request permission
+            ActivityCompat.requestPermissions(parentActivity,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    0);
+        } else {
+            Log.i(Const.TAGS.TAG_PARADAS_FRAGMENT, "Requesting permission");
+            // Request permission. It's possible this can be auto answered if device policy
+            // sets the permission in a given state or the user denied the permission
+            // previously and checked "Never ask again".
+            ActivityCompat.requestPermissions(parentActivity,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    0);
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    public static CameraUpdate getCamaraUpdate(Activity parentActivity){
+        if (!checkPermissions(parentActivity))
+            requestPermissions(parentActivity);
+
+
+        LocationManager locationManager = (LocationManager)
+                parentActivity.getSystemService(Context.LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+         Location location = locationManager.getLastKnownLocation(locationManager
+                .getBestProvider(criteria, false));
+        double latitude = location.getLatitude();
+        double longitud = location.getLongitude();
+
+
+        return CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitud), 12);
     }
 }

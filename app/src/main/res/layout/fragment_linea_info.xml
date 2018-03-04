@@ -38,12 +38,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:visibility="gone"
+                    android:layout_marginBottom="12sp"
                     android:text="@string/linea_detail_view_main_termometro_ida"/>
 
                 <TextView
                     android:id="@+id/linea_detail_termometro_vuelta"
                     android:layout_width="wrap_content"
-                    android:layout_marginTop="12sp"
                     android:visibility="gone"
                     android:layout_height="wrap_content"
                     android:text="@string/linea_detail_view_main_termometro_vuelta"/>

@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Consorcio Transportes Andalucia</string>
     <string name="google_maps_key">AIzaSyAgWoroTajBibyp5HRaCXAgyuMLC5iA7j4</string>
-    <string name="permission_rationale">Se necesitan permisillos</string>
+    <string name="permission_rationale">Se necesitan permisos para funcionar</string>
+    <string name="permission_rationale_ok">Dar Permisos</string>
     <string name="no_work">Funcionalidad no disponible</string>
 
 
@@ -13,6 +14,7 @@
     <!-- Progress Dialog -->
     <string name="progress_lineas">Cargando lineas...</string>
     <string name="progress_paradas">Cargando paradas...</string>
+    <string name="progress_tarifas">Cargando tarifas...</string>
     <string name="progress_puntos_ventas">Cargando puntos de ventas...</string>
 
     <!-- Home Activity -->
@@ -31,7 +33,15 @@
     <!-- Paradas Activity -->
     <string name="title_activity_paradas">Paradas</string>
     <string name="title_windows_adapter_paradas">Parada</string>
-    <string name="info_windows_adapter_paradas"><u>Ir a la parada</u></string>
+    <string name="info_windows_adapter_paradas"><u>Ver detalle de la parada</u></string>
+    <string name="parada_add_favourite">Parada añadida a favoritos</string>
+    <string name="parada_remove_favourite">Parada eliminada de favoritos</string>
+
+    <!-- Paradas Detail -->
+    <string name="parada_detail_view_correspondecias_title">Corresponde con:</string>
+    <string name="parada_detail_view_main_municipio_title">Municipio:</string>
+    <string name="parada_detail_view_main_nucleo_title">Nucleo: </string>
+    <string name="parada_detail_view_ir_a_mapa_title"><u>Ver parada en el mapa</u></string>
 
     <!-- Horarios Activity -->
     <string name="title_activity_horarios">Horarios</string>

@@ -1,10 +1,13 @@
 package com.consorcio.consorciotransportesandalucia.activitys;
 
 import android.app.Activity;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.consorcio.consorciotransportesandalucia.R;
@@ -20,12 +23,24 @@ import butterknife.ButterKnife;
 
 public class ParadaDetailActivity extends AppCompatActivity implements ParadaDetailInterface {
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     int idParada;
     boolean isFavourite;
     @BindView(R.id.fab)
     FloatingActionButton floatingActionButton;
     ParadaDetailFragment fragment;
     Activity parentActivity;
+    @BindView(R.id.collapsing_toolbar)
+    CollapsingToolbarLayout collapsingToolbarLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +53,7 @@ public class ParadaDetailActivity extends AppCompatActivity implements ParadaDet
         isFavourite = SharedPreferencesDatabase.isFavouriteParada(this,idParada);
 
         addListener();
+        configureToolbar();
 
         //Inicializamos el MapsFragemnts al inicio
         fragment = new ParadaDetailFragment();
@@ -49,17 +65,17 @@ public class ParadaDetailActivity extends AppCompatActivity implements ParadaDet
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int infoId = R.string.linea_add_favourite;
+                int infoId = R.string.parada_add_favourite;
                 if (isFavourite){
                     SharedPreferencesDatabase.removeParadaFav(parentActivity,idParada);
-                    infoId = R.string.linea_remove_favourite;
+                    infoId = R.string.parada_remove_favourite;
                 }else {
                     SharedPreferencesDatabase.addParadaToFav(parentActivity,fragment.getParada());
                 }
 
                 isFavourite = !isFavourite;
                 MessageUtil.showSnackbar(getWindow().getDecorView().getRootView(),parentActivity,infoId);
-                configureFloatingButton();
+                updateFloatingButton();
             }
         });
     }
@@ -67,16 +83,28 @@ public class ParadaDetailActivity extends AppCompatActivity implements ParadaDet
     @Override
     protected void onStart() {
         super.onStart();
-        configureFloatingButton();
+        updateFloatingButton();
     }
 
-    private void configureFloatingButton() {
+    private void updateFloatingButton() {
         int resIdImage = R.drawable.ic_star_outline;
 
         if (isFavourite)
             resIdImage = R.drawable.ic_star_fill;
 
         floatingActionButton.setImageResource(resIdImage);
+    }
+
+    private void configureToolbar() {
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        collapsingToolbarLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+    }
+
+    @Override
+    public void setTitleToolbar(String toolbarTitle){
+        collapsingToolbarLayout.setTitle(toolbarTitle);
     }
 
     @Override

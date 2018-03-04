@@ -282,7 +282,8 @@ public class LineasOrigenDestinoFragment extends Fragment {
     private void loadLineas(int idNucleoOrigen){
         if (Util.hasInternet(getContext())){
             //Activamos el progress
-            progressDialog = ProgressDialog.show(getContext(), "", getResources().getString(R.string.progress_lineas), true);
+            if(progressDialog == null || !progressDialog.isShowing())
+                progressDialog = ProgressDialog.show(getContext(), "", getResources().getString(R.string.progress_lineas), true);
             ClienteApi clienteApi = new ClienteApi();
             int idConsorcio = SharedPreferencesUtil.getInt(getActivity(), Const.SHAREDKEYS.ID_CONSORCIO);
 

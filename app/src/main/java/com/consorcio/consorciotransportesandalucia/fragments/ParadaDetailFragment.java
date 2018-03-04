@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.consorcio.consorciotransportesandalucia.R;
 import com.consorcio.consorciotransportesandalucia.interfaces.ParadaDetailInterface;
@@ -16,6 +17,9 @@ import com.consorcio.consorciotransportesandalucia.utils.Const;
 import com.consorcio.consorciotransportesandalucia.utils.SharedPreferencesUtil;
 import com.consorcio.consorciotransportesandalucia.utils.Util;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,6 +37,15 @@ public class ParadaDetailFragment extends Fragment {
     private ParadaDetailInterface mListener;
     private int idParada;
     private Parada parada;
+
+    @BindView(R.id.parada_detail_view_correspondecia_content)
+    TextView viewCorrespondeciaContent;
+    @BindView(R.id.parada_detail_municipio)
+    TextView viewMunicipio;
+    @BindView(R.id.parada_detail_nucleo)
+    TextView viewNucleo;
+    @BindView(R.id.parada_detail_ir_a_mapa)
+    TextView viewIrAParada;
 
     public ParadaDetailFragment() {
         // Required empty public constructor
@@ -64,8 +77,9 @@ public class ParadaDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_parada_detail, container, false);
+        View view = inflater.inflate(R.layout.fragment_parada_detail, container, false);
+        ButterKnife.bind(this,view);
+        return view;
     }
 
     @Override
@@ -99,6 +113,30 @@ public class ParadaDetailFragment extends Fragment {
     }
 
     private void setDataToView(Parada parada) {
+        if (parada != null){
+            setCorrespondencias();
+            setMunicipioYNucleo();
+            mListener.setTitleToolbar(parada.getNombre());
+        }else {
+            viewCorrespondeciaContent.setText("No se encuentran correspondecias de esta parada");
+            viewNucleo.setText("desconocido");
+            viewMunicipio.setText("desconocido");
+            viewIrAParada.setVisibility(View.GONE);
+        }
+    }
+
+    private void setMunicipioYNucleo() {
+        viewMunicipio.setText(" " + parada.getMunicipio());
+        viewNucleo.setText(" " + parada.getNucleo());
+    }
+
+    private void setCorrespondencias() {
+        String correspondecias = parada.getCorrespondecias();
+        //Preparamos correspondecias
+        if (correspondecias.contains("Correspondencia con:"))
+            correspondecias = correspondecias.replace("Correspondencia con:","").replace(","," , ");
+
+        viewCorrespondeciaContent.setText(correspondecias);
     }
 
     @Override
@@ -116,5 +154,10 @@ public class ParadaDetailFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @OnClick(R.id.parada_detail_ir_a_mapa)
+    public void clikcIrAMapa(){
+        Util.goToMap(getActivity(),parada.getPosition());
     }
 }

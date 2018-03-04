@@ -29,27 +29,34 @@
 
     <item android:title="Lineas">
         <menu>
-            <item
-                android:id="@+id/nav_horarios_lineas"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/title_activity_lineas" />
-            <item
-                android:id="@+id/nav_horarios_origen"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/title_activity_lineas_origen_destino" />
+
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_horarios_lineas"
+                    android:icon="@drawable/ic_menu_share"
+                    android:title="@string/title_activity_lineas" />
+                <item
+                    android:id="@+id/nav_horarios_origen"
+                    android:icon="@drawable/ic_menu_send"
+                    android:title="@string/title_activity_lineas_origen_destino" />
+            </group>
         </menu>
+
     </item>
 
     <item android:title="Consorcio">
         <menu>
-            <item
-                android:id="@+id/nav_consorcio_detail"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/title_activity_consorcio_detail" />
-            <item
-                android:id="@+id/nav_centro_atencion"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Centro de Atención" />
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_consorcio_detail"
+                    android:icon="@drawable/ic_menu_share"
+                    android:title="@string/title_activity_consorcio_detail" />
+                <item
+                    android:id="@+id/nav_centro_atencion"
+                    android:icon="@drawable/ic_menu_send"
+                    android:title="Centro de Atención" />
+            </group>
+
         </menu>
     </item>
 

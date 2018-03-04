@@ -128,7 +128,7 @@ public class PuntosDeVentasFragment extends Fragment implements OnMapReadyCallba
         }
 
         // Position the map.
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.378176, -6.001057), 10));
+        mMap.moveCamera(Util.getCamaraUpdate(getActivity()));
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -31,8 +31,11 @@ import com.consorcio.consorciotransportesandalucia.fragments.ParadasFragment;
 import com.consorcio.consorciotransportesandalucia.fragments.PuntosDeVentasFragment;
 import com.consorcio.consorciotransportesandalucia.fragments.SaldoFragment;
 import com.consorcio.consorciotransportesandalucia.fragments.TarifaFragment;
+import com.consorcio.consorciotransportesandalucia.models.Consorcio;
 import com.consorcio.consorciotransportesandalucia.utils.Const;
 import com.consorcio.consorciotransportesandalucia.utils.MessageUtil;
+import com.consorcio.consorciotransportesandalucia.utils.SharedPreferencesUtil;
+import com.consorcio.consorciotransportesandalucia.utils.Util;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -68,16 +71,20 @@ public class MainActivity extends AppCompatActivity
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        if (!checkPermissions())
-            requestPermissions();
+        if (!Util.checkPermissions(parentActivity))
+            Util.requestPermissions(parentActivity);
 
+       init();
+    }
 
-        //Inicializamos el HomeFragemnts al inicio
-        Fragment fragment = new HomeFragment();
+    private void init(){
+         Fragment fragment = new HomeFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.fragment_container, fragment).commit();
+        transaction.replace(R.id.fragment_container, fragment).commit();
         //Set title to toolbar
-        setTitleToToolbar(getString(R.string.title_tarifas));
+        setTitleToToolbar(getString(R.string.title_home));
+        navigationView.setCheckedItem(R.id.nav_home);
+        supportInvalidateOptionsMenu();
     }
 
     @Override
@@ -182,7 +189,8 @@ public class MainActivity extends AppCompatActivity
             title = getString(R.string.title_activity_lineas);
         } else if (id == R.id.nav_puntos_venta) {
             fragment = new PuntosDeVentasFragment();
-            title = getString(R.string.title_activity_puntos_venta);
+            Consorcio consorcio = (Consorcio) SharedPreferencesUtil.getObject(parentActivity,Const.SHAREDKEYS.MY_CONSORCIO, Consorcio.class);
+            title = getString(R.string.title_activity_puntos_venta) + " "+  consorcio.getProvincia();
         } else if (id == R.id.nav_saldo) {
             fragment = new SaldoFragment();
             title = getString(R.string.title_activity_saldo);
@@ -221,41 +229,6 @@ public class MainActivity extends AppCompatActivity
 
 
 
-    private boolean checkPermissions() {
-        int permissionState = ActivityCompat.checkSelfPermission(parentActivity,
-                Manifest.permission.ACCESS_FINE_LOCATION);
-        return permissionState == PackageManager.PERMISSION_GRANTED;
-    }
-
-    private void requestPermissions() {
-        boolean shouldProvideRationale =
-                ActivityCompat.shouldShowRequestPermissionRationale(this,
-                        Manifest.permission.ACCESS_FINE_LOCATION);
-
-        // Provide an additional rationale to the user. This would happen if the user denied the
-        // request previously, but didn't check the "Don't ask again" checkbox.
-        if (shouldProvideRationale) {
-            Log.i(Const.TAGS.TAG_PARADAS_FRAGMENT, "Displaying permission rationale to provide additional context.");
-            MessageUtil.showSnackbar(getWindow().getDecorView().getRootView(), this, R.string.permission_rationale,
-                    android.R.string.ok, new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            // Request permission
-                            ActivityCompat.requestPermissions(parentActivity,
-                                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                                    0);
-                        }
-                    });
-        } else {
-            Log.i(Const.TAGS.TAG_PARADAS_FRAGMENT, "Requesting permission");
-            // Request permission. It's possible this can be auto answered if device policy
-            // sets the permission in a given state or the user denied the permission
-            // previously and checked "Never ask again".
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                    0);
-        }
-    }
 
     private void setTitleToToolbar(String title){
         getSupportActionBar().setTitle(title);

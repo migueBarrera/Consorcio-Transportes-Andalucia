@@ -80,7 +80,12 @@ public class Consorcio {
 
     private String provincia;
 
-    public String getProvincia() { return this.provincia; }
+    public String getProvincia() {
+        if (this.provincia == null || this.provincia.isEmpty())
+            return "";
+        else
+            return this.provincia;
+    }
 
     public void setProvincia(String provincia) { this.provincia = provincia; }
 

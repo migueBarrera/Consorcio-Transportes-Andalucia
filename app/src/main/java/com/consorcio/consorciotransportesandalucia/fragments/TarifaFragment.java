@@ -123,7 +123,7 @@ public class TarifaFragment extends Fragment {
     private void loadTarifasInterurbanas(){
         if (Util.hasInternet(getContext())){
             //Activamos el progress
-            progressDialog = ProgressDialog.show(getContext(), "", getResources().getString(R.string.progress_lineas), true);
+            progressDialog = ProgressDialog.show(getContext(), "", getResources().getString(R.string.progress_tarifas), true);
             clienteApi.getTarifasInterurbana(HeadersHelpers.getHeaders(), idConsorcio, new Callback<CapsuleTarifasInterurbanas>() {
                 @Override
                 public void onResponse(Call<CapsuleTarifasInterurbanas> call, Response<CapsuleTarifasInterurbanas> response) {

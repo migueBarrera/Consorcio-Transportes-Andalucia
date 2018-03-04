@@ -64,7 +64,9 @@ public class LineaHorarioFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_linea_horario, container, false);
+        View view = inflater.inflate(R.layout.fragment_linea_horario, container, false);
+
+        return view;
     }
 
     @Override
@@ -89,6 +91,10 @@ public class LineaHorarioFragment extends Fragment {
                     progressDialog.dismiss();
                     if (response.isSuccessful()){
                         capsuleHorariosLinea = response.body();
+                        if(capsuleHorariosLinea!=null)
+                            setDataToView(capsuleHorariosLinea);
+                        else
+                            setDataToView(null);
                     }
                 }
 
@@ -97,6 +103,12 @@ public class LineaHorarioFragment extends Fragment {
                     progressDialog.dismiss();
                 }
             });
+        }
+    }
+
+    private void setDataToView(CapsuleHorariosLinea capsuleHorariosLinea) {
+        if (capsuleHorariosLinea != null){
+
         }
     }
 

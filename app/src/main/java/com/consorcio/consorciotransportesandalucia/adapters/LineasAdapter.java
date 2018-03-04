@@ -109,7 +109,7 @@ public class LineasAdapter extends RecyclerView.Adapter<LineasAdapter.ViewHolder
                     List<Linea> filteredList = new ArrayList<>();
                     for (Linea row : lineas) {
 
-                        if (row.getNombre().toLowerCase().contains(charSequence))
+                        if (row.getNombre().toLowerCase().contains(charSequence) || row.getCodigo().contains(charSequence))
                             filteredList.add(row);
 
                     }
