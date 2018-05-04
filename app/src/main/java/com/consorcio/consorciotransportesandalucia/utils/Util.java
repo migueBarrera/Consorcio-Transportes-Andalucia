@@ -132,7 +132,7 @@ public class Util {
         }
     }
 
-    @SuppressLint("MissingPermission")
+
     public static CameraUpdate getCamaraUpdate(Activity parentActivity){
         if (!checkPermissions(parentActivity))
             requestPermissions(parentActivity);
@@ -141,7 +141,7 @@ public class Util {
         LocationManager locationManager = (LocationManager)
                 parentActivity.getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
-         Location location = locationManager.getLastKnownLocation(locationManager
+         @SuppressLint("MissingPermission") Location location = locationManager.getLastKnownLocation(locationManager
                 .getBestProvider(criteria, false));
         double latitude = location.getLatitude();
         double longitud = location.getLongitude();

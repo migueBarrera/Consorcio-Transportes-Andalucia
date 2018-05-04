@@ -212,7 +212,7 @@ public class LineaItinerarioFragment extends Fragment implements OnMapReadyCallb
                 relativeLayoutMapLayout.setVisibility(View.GONE);
             }
         }
-        mMap.moveCamera(Util.getCamaraUpdate(getActivity()));
+        //mMap.moveCamera(Util.getCamaraUpdate(getActivity()));
 
     }
 
