@@ -51,6 +51,18 @@ public class SharedPreferencesUtil {
         return sharedPreferences.getString(key,"");
     }
 
+    public static Boolean getBoolean(Activity parentActivity,String key,boolean defaultValue){
+        SharedPreferences sharedPreferences = getSharedPreferences(parentActivity);
+        return sharedPreferences.getBoolean(key,defaultValue);
+    }
+
+    public static void setBoolean(Activity parentActivity,String key,Boolean value){
+        SharedPreferences sharedPreferences = getSharedPreferences(parentActivity);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(key, value);
+        editor.apply();
+    }
+
     public static void setInt(Activity parentActivity,String key,int value){
         SharedPreferences sharedPreferences = getSharedPreferences(parentActivity);
         SharedPreferences.Editor editor = sharedPreferences.edit();

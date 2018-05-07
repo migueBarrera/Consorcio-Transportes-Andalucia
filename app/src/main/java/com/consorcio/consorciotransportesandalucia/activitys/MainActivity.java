@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -56,6 +57,8 @@ public class MainActivity extends AppCompatActivity
 
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +66,12 @@ public class MainActivity extends AppCompatActivity
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         parentActivity = this;
+
+
+        if(SharedPreferencesUtil.getBoolean(this,Const.APP.IS_FIRST_TIME_LAUNCH,true)){
+            startActivity(new Intent(parentActivity, WelcomeActivity.class));
+            finish();
+        }
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

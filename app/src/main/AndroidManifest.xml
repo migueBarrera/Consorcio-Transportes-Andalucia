@@ -54,7 +54,8 @@
             android:name=".activitys.PuntosVentasActivity"
             android:parentActivityName=".activitys.MainActivity" />
         <activity android:name=".activitys.LineaDetailActivity" />
-        <activity android:name=".activitys.ParadaDetailActivity"></activity>
+        <activity android:name=".activitys.ParadaDetailActivity" />
+        <activity android:name=".activitys.WelcomeActivity"></activity>
     </application>
 
 </manifest>
