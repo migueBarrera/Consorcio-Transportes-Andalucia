@@ -6,23 +6,23 @@
     <group android:checkableBehavior="single">
         <item android:id="@+id/nav_home"
             android:title="Principal"
-            android:icon="@drawable/ic_menu_share"/>
+            android:icon="@drawable/home_outline"/>
 
         <item android:id="@+id/nav_tarifas"
             android:title="Tarifas"
-            android:icon="@drawable/ic_menu_share"/>
+            android:icon="@drawable/coin"/>
 
         <item
             android:id="@+id/nav_paradas"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/bus_clock"
             android:title="@string/title_activity_paradas" />
         <item
             android:id="@+id/nav_puntos_venta"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/basket"
             android:title="@string/title_activity_puntos_venta" />
         <item
             android:id="@+id/nav_saldo"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/credit_card"
             android:title="@string/title_activity_saldo" />
     </group>
 
@@ -33,11 +33,11 @@
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_horarios_lineas"
-                    android:icon="@drawable/ic_menu_share"
+                    android:icon="@drawable/bus_line"
                     android:title="@string/title_activity_lineas" />
                 <item
                     android:id="@+id/nav_horarios_origen"
-                    android:icon="@drawable/ic_menu_send"
+                    android:icon="@drawable/bus_line"
                     android:title="@string/title_activity_lineas_origen_destino" />
             </group>
         </menu>
@@ -49,11 +49,11 @@
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_consorcio_detail"
-                    android:icon="@drawable/ic_menu_share"
+                    android:icon="@drawable/account_settings_variant"
                     android:title="@string/title_activity_consorcio_detail" />
                 <item
                     android:id="@+id/nav_centro_atencion"
-                    android:icon="@drawable/ic_menu_send"
+                    android:icon="@drawable/help"
                     android:title="Centro de Atención" />
             </group>
 

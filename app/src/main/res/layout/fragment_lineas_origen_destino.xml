@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context="com.consorcio.consorciotransportesandalucia.fragments.LineasOrigenDestinoFragment">
+    tools:context="com.miguebarrera.consorciotransportesandalucia.fragments.LineasOrigenDestinoFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,6 +23,7 @@
                 android:padding="10sp">
 
                 <TextView
+                    android:id="@+id/fragment_lineas_origen_destino_text_municipio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/municipio_origen__activity_lineas_origen_destino"/>
@@ -42,6 +43,7 @@
                 android:padding="10sp">
 
                 <TextView
+                    android:id="@+id/fragment_lineas_origen_destino_text_nucleo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/nucleo_origen__activity_lineas_origen_destino"/>

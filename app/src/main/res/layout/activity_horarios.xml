@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.consorcio.consorciotransportesandalucia.activitys.HorariosActivity">
+    tools:context="com.miguebarrera.consorciotransportesandalucia.activitys.HorariosActivity">
 
 </android.support.constraint.ConstraintLayout>

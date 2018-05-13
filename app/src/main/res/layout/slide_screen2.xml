@@ -1,15 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_slider_screen2">
+    android:background="@color/basic_white">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/goals"
+        android:id="@+id/golas_image"
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentBottom="true"/>
     <LinearLayout
+        android:layout_above="@id/golas_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="40dp">
+
+
+
+        <TextView
+            android:id="@+id/screen_textView_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_marginTop="12sp"
+            style="@style/TitleWelcomeScreenStyle"
+            android:text="@string/welcome_screen_2_title"/>
+
+        <TextView
+            android:id="@+id/screen_textView_sub_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_marginTop="10sp"
+            style="@style/SubTitleWelcomeScreenStyle"
+            android:text="@string/welcome_screen_2_sub_title"/>
 
     </LinearLayout>
 </RelativeLayout>

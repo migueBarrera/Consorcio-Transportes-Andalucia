@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.consorcio.consorciotransportesandalucia.fragments.LineaInfoFragment">
+    tools:context="com.miguebarrera.consorciotransportesandalucia.fragments.LineaInfoFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,6 +52,7 @@
 
         <!-- RECORRIDO VIEW -->
         <TextView
+            android:id="@+id/linea_detail_view_recorrido_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/linea_detail_view_recorrido_title"
@@ -82,6 +83,7 @@
 
         <!-- OPERADORES VIEW -->
         <TextView
+            android:id="@+id/linea_detail_view_operadora_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/linea_detail_view_operadores_title"
@@ -112,6 +114,7 @@
 
         <!-- ATENCION VIEW -->
         <TextView
+            android:id="@+id/linea_detail_view_warning_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/linea_detail_view_warning_title"
@@ -142,6 +145,7 @@
 
         <!-- NOTICIAS VIEW -->
         <TextView
+            android:id="@+id/linea_detail_view_noticias_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/linea_detail_view_noticias_title"

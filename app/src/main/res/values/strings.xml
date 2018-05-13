@@ -11,11 +11,26 @@
 
     <string name="action_settings">Settings</string>
 
+    <!-- Welcome_Screen -->
+    <string name="welcome_screen_1_title">Servidores públicos</string>
+    <string name="welcome_screen_1_sub_title">Todos los datos que ofrecemos provienen de los servidores del propio consorcio , el mismo que usa la app oficial</string>
+    <string name="welcome_screen_2_title">Nuestras metas</string>
+    <string name="welcome_screen_2_sub_title">Tenemos el objetivo de ser una alternativa a la app oficial, usando sus mismos datos pero mucho más rapido, elegante y comodo para el usuario</string>
+    <string name="welcome_screen_3_title">Explora la app</string>
+    <string name="welcome_screen_3_sub_title">Guarda tus paradas y lineas favoritas, encuentra donde recargar tu tarjeta, comprueba el saldo de tu tarjeta y muchas cosas más</string>
+
     <!-- Progress Dialog -->
     <string name="progress_lineas">Cargando lineas...</string>
     <string name="progress_paradas">Cargando paradas...</string>
     <string name="progress_tarifas">Cargando tarifas...</string>
     <string name="progress_puntos_ventas">Cargando puntos de ventas...</string>
+
+    <!-- Dialog -->
+    <string name="dialog_title_warning">Atención</string>
+    <string name="dialog_title_need_internet">Necesitamos internet para consultar los datos. Comprueba tu conección y vuelve a intentarlo.</string>
+    <string name="dialog_title_ups">Ups...</string>
+    <string name="dialog_title_content_ups">Lo sentimos, pero el servidor del consorcio no ha respondido como esperabamos o esta caido.</string>
+    <string name="dialog_txt_ok">Entendido</string>
 
     <!-- Home Activity -->
     <string name="title_home">Principal</string>
@@ -26,6 +41,7 @@
 
     <!-- Tarifas Activity -->
     <string name="title_tarifas">Tarifas</string>
+
 
     <!-- Main Activity -->
     <string name="title_activity_main">MainActivity</string>
@@ -47,7 +63,7 @@
     <string name="title_activity_horarios">Horarios</string>
 
     <!-- Puntos De Ventas Activity -->
-    <string name="title_activity_puntos_venta">Puntos de Venta</string>
+    <string name="title_activity_puntos_venta">Puntos de Venta y Recarga</string>
     <string name="info_bussines_unknow_puntos_venta">Negocio desconocido</string>
     <string name="info_windows_adapter_puntoventa"><u>Ir a recargar la tarjeta</u></string>
 
@@ -58,7 +74,7 @@
     <string name="content_activity_saldo">Acerca el telefono a tu tarjeta para conocer tu saldo</string>
 
     <!-- Consorcio Detail Activity -->
-    <string name="title_activity_consorcio_detail">Datos del Consorcio</string>
+    <string name="title_activity_consorcio_detail">Mi Consorcio</string>
 
     <!-- Centro de atencion-->
     <string name="title_centro_atencion">Centro de atención</string>

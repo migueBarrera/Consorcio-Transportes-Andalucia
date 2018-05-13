@@ -24,7 +24,8 @@
                 android:id="@+id/row_lineas_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/route"/>
+                android:src="@mipmap/route"
+                android:layout_marginEnd="8sp"/>
 
             <TextView
                 android:layout_width="wrap_content"

@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="5sp"
+        android:layout_marginBottom="12sp"
         android:gravity="center"
         android:orientation="horizontal"></LinearLayout>
     <View
@@ -23,7 +23,7 @@
         android:layout_height="1dp"
         android:alpha=".5"
         android:layout_above="@id/layoutDots"
-        android:background="@android:color/white" />
+        android:background="@color/medium_black" />
     <Button
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
         android:layout_alignParentRight="true"
         android:background="@null"
         android:text="Siguiente"
-        android:textColor="@android:color/white" />
+        android:textColor="@color/medium_black" />
     <Button
         android:id="@+id/btn_skip"
         android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
         android:layout_alignParentLeft="true"
         android:background="@null"
         android:text="Saltar"
-        android:textColor="@android:color/white" />
+        android:textColor="@color/medium_black" />
 
 </RelativeLayout>
 

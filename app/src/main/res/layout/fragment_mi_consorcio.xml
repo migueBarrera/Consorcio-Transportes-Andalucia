@@ -6,7 +6,7 @@
     android:layout_marginEnd="22sp"
     android:layout_marginStart="22sp"
     android:layout_marginBottom="22sp"
-    tools:context="com.consorcio.consorciotransportesandalucia.fragments.MiConsorcioFragment">
+    tools:context="com.miguebarrera.consorciotransportesandalucia.fragments.MiConsorcioFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
